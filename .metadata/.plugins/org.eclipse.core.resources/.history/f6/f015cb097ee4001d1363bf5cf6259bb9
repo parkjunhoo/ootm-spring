@@ -1,0 +1,193 @@
+section{
+    max-width: 100%;
+}
+#mainPageCarouselSection{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.outer{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+.grayBG{
+    background-color: #fbfbfb;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 80px;
+}
+.promotionSection{
+    background-color: white;
+}
+.promotionHR{
+    width: 50px;
+    padding: 100px 0px 25px 1%;
+    white-space: nowrap;
+}
+.promotionHR>hr{
+    height:1px;
+    background-color: black;
+}
+.rankingList{
+    display: flex;
+}
+.rankingListItem{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.promotionSection h4{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+.rankingList>li{
+    display: flex;
+    height: 20%;
+    margin: 0 auto;
+    padding:0 1%;
+}
+.rankingList p{
+    color: #787878;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: color .25s ease-out;
+}
+
+.rankingList img{
+    display: block;
+    margin-left: auto;
+    width: 88%;
+    height: auto;
+}
+#promotionRanking{
+    width: 30%;
+    margin:0 auto;
+}
+
+.rankingListItem:hover>p{
+    color:black;
+}
+
+
+.promotionTable{
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    padding-bottom: 80px;
+}
+.promotionTable .productBG{
+    background-image: url(https://www.everfree.co.kr/shopimages/manish/0130070010722.jpg?1655623346%27);
+    
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+.promotionProduct{
+    box-sizing: border-box;
+    padding: 2px;
+    width: 25%;
+    height: 22.25vw;
+    cursor: pointer;
+}
+
+.productBox{
+    background-color: white;
+}
+.promotionProduct img{
+    display: block;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+.productAfterUp{
+    height: 50%;
+    width: 100%;
+}
+.productAfterDown{
+    padding-top: 10%;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+}
+.descDiv{
+    padding-top:10%;
+    display: flex;
+    justify-content: center;
+}
+.afterBox{
+    background-color: white;
+}
+.afterBox h1{
+    font-weight: 700;
+    font-size: 13px;
+    color: #222222;
+}
+.afterBox h2{
+    font-weight: 400;
+    font-size: 13px;
+    color: #222222;
+}
+.afterBox h3{
+    font-weight: 400;
+    margin-right:5px;
+    font-size: 12px;
+    color: #787878;
+}
+.afterBox h4{
+    font-weight: 400;
+    margin-left:2px;
+    font-size: 12px;
+    color: #AAAAAA;
+}
+
+
+@media (max-width: 1100px) {
+    .outer{
+        width: 100%;
+    }
+    .rankingList>li{
+        padding:0;
+    }
+    .rankingList h4{
+        display: none;
+        width: 0;
+        height: 0;
+    }
+    .promotionHR{
+        width: 50px;
+        padding: 100px 0px 25px 0px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.decoSection{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    background-image: url("/ootm/images/bg0.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.decoSection2{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    background-image: url("/ootm/images/bg1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

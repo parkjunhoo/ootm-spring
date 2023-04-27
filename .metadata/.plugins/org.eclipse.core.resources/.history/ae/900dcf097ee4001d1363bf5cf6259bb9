@@ -1,0 +1,106 @@
+@charset "UTF-8";
+		
+	body{
+		margin:0;
+		height:auto;
+		font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+	}
+	/* 로그인 박스 */
+	.login-box{
+		width: 300px;
+		height: 400px;
+		padding-top: 150px;
+		background-color: white;
+		padding-left:400px;
+		box-sizing: border;
+		display: flex;
+		flex-wrap:wrap;
+	}
+	/* 로그인 로고 */
+	.login-box .login-sign{
+		font-family:fantasy;
+		font-size: 60px;
+		margin-bottom: 30px;
+		
+		
+	}
+	/* 로그인 정보 */
+	.login-box .login-table{
+		width: 100%;
+		height:300px;
+		
+	}
+	.login-box .login-table .sub1{
+		width:100%;
+		height:30px;
+		font-size:16px;
+		margin-bottom:20px;
+		box-sizing: border;
+	}
+	.login-box .login-table #sign-in{
+		width:100%;
+		height:40px;
+		font-size:20px;
+		margin-bottom:40px;
+		background-color: black;
+		color:white;
+		box-sizing: border;
+		cursor: pointer;
+	}
+	/* 채널링 로그인 */
+	.login-box .login-table .login-channeling{
+		width:100%;
+		height:40px;
+		display:flex;
+		padding-top:5px;
+		flex-direction: row;
+	}
+	.login-box .login-table .login-channeling a{
+		align-items: baseline;
+	}
+	.login-box .login-table .login-channeling a:link{
+		text-decoration:none;
+	}
+	.login-box .login-table .login-channeling a:visited{
+		text-decoration:none;
+	}
+	.login-box .login-table .login-channeling .login-channeling-naver{
+		width:30%;
+		height:100%;
+		border: solid black 1px;
+		background-color:black;
+		box-sizing:border;
+		margin-left: 3%;
+		display:flex;
+		flex: auto;
+		color:white;
+		justify-content:center;
+  		align-items:center;
+		
+	}
+	.login-box .login-table .login-channeling .login-channeling-kakao{
+		width:30%;
+		height:100%;
+		border: solid border 1px;
+		background-color:yellow;
+		box-sizing:border;
+		margin-left: 3%;
+		display:flex;
+		flex: auto;
+		color:black;
+		justify-content:center;
+  		align-items:center;
+	}
+	.login-box .login-table .login-channeling .login-channeling-google{
+		width:30%;
+		height:100%;
+		border: solid border 1px;
+		background-color:red;
+		box-sizing:border;
+		margin-left: 3%;
+		display:flex;
+		flex: auto;
+		color:white;
+		justify-content:center;
+  		align-items:center;
+	}

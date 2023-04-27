@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.tab-wrap {
+	border-bottom: 1px solid #858585;
+}
+
+.popup .tab-wrap .title-box {
+	width: 50%;
+	border-top: 1px solid #858585;
+	border-left: 1px solid #858585;
+	border-right: 1px solid #858585;
+	line-height: 40px;
+	text-align: center;
+	font-size: 13px;
+	color: #3b3b3b;
+	background: #f1f1f1;
+}
+
+.popup {
+	padding: 20px 10px;
+	font-size: 14pt;
+	color: #4c4c4c;
+}
+
+div {
+	display: block;
+}
+
+form {
+	display: block;
+	margin-top: 0em;
+	margin-block-end: 1em;
+}
+
+.btn-wrap .btn-white {
+	width: auto;
+	float: none;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.shipping_details {
+	text-align: center;
+	margin-top: 100px;
+	
+}
+
+button {
+	background-color: white;
+	border: 2px solid #000000;
+	color: #333;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 16px;
+	transition: all 0.3s ease;
+	width: 1405px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+a {
+	color: black;	
+	
+}

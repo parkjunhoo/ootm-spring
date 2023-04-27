@@ -1,0 +1,92 @@
+@charset "UTF-8";
+		
+	body{
+		margin:0;
+		height:auto;
+		font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+	}
+	.container{
+		width: 600px;
+		height: 800px;
+		padding-top: 130px;
+		background-color: white;
+		padding-left:400px;
+		box-sizing: border;
+		display: flex;
+		flex-wrap:wrap;
+	}
+	/* 찾기 박스 */
+	.container .head{
+		font-size: 50pt;
+		font-weight: bold;
+		height:60px;
+		margin-bottom: 70px;
+		flex:none;
+		overflow:visible;
+	}
+	.container .find-sub{
+		width:100%;
+		height:300px;
+	}
+	.container .find-sub h4{
+		font-size: 12pt;
+		font-weight: bold;
+	}
+	.container .find-sub .find-radio{
+		width:100%;
+		font-size:12pt;
+		margin-bottom:30px;
+		box-sizing: border;
+	}
+	.container .find-sub h4{
+		margin-bottom:10px;
+	}
+	.container .find-sub #name{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	.container .find-sub #id{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	.container .find-sub #email{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	.container .find-sub #find-id{
+		width:69%;
+		height:40px;
+		border: solid 3px black;
+		font-size:14pt;
+		margin-bottom:40px;
+		background-color: white;
+		color: black;
+		box-sizing: content-box;
+		cursor: pointer;
+	}
+	.container .find-sub #replace-pass{
+		width:69%;
+		height:40px;
+		border : solid 3px black;
+		font-size:14pt;
+		margin-bottom:40px;
+		background-color: white;
+		color:black;
+		box-sizing: content-box;
+		cursor: pointer;
+	}
+	.container .login-page{
+		color:black;
+		text-decoration:none;
+	}
+	.container .login-page:visited{
+		color:black;
+		text-decoration:none;
+	}
+	.container .login-page:hover{
+		text-decoration: underline;
+		
+	}

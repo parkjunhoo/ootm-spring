@@ -1,0 +1,44 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+html, body{
+	font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+	color: #222222;
+	font-size: 13px;
+    font-weight: 400;
+	line-height: 1.45;
+	width: 100%;
+	word-break: keep-all;
+}
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, abbr, article, aside, command, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time {
+    margin: 0;
+    padding: 0;
+}
+.page-header{
+	margin-top: 150px;
+}
+
+.all-margin h2{
+	font-size: 46px;
+	font-weight: 600;
+}
+.all-margin {
+	max-width: 1620px;
+	width: 100%;
+	position: relative;
+	padding: 0 60px;
+	margin: 0 auto;
+}
+.all-margin:before, .all-margin:after {
+    content: '';
+    display: table;
+}
+.all-margin  a{
+	text-decoration:none;
+	color: #222;
+}
+.all-margin  ul, li{
+	list-style: none;
+}
+

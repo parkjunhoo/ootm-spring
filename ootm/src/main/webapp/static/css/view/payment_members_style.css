@@ -1,0 +1,690 @@
+@charset "UTF-8";
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding-top: 30px;
+}
+
+.checkout {
+	margin-top: 150px;
+	margin-left: 50px;
+	font-size: 40pt;
+}
+
+/* 진한 선 */
+.line1 {
+	height: 2px;
+	border-style: solid;
+	border-width: 0;
+	border-top-width: 2px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 80px;
+}
+
+/* 연한 선 */
+.line2 {
+	height: 1px;
+	border-style: 1px solid lightgray;
+	border-width: 0;
+	border-top-width: 1px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 80px;
+}
+
+/* 연한 선 */
+.line3 {
+	height: 1px;
+	border-style: 1px solid lightgray;
+	border-width: 0;
+	border-top-width: 1px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 80px;
+}
+
+/* 연한 선 */
+.line4 {
+	height: 1px;
+	border-style: 1px solid lightgray;
+	border-width: 0;
+	border-top-width: 1px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 80px;
+}
+
+/* 진한 선 */
+.line5 {
+	height: 2px;
+	border-style: solid;
+	border-width: 0;
+	border-top-width: 2px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 80px;
+}
+
+/* 연한 선 */
+.line6 {
+	height: 1px;
+	border-style: 1px solid lightgray;
+	border-width: 0;
+	border-top-width: 1px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 25px;
+}
+
+/* 연한 선 */
+.line7 {
+	height: 1px;
+	border-style: 1px solid lightgray;
+	border-width: 0;
+	border-top-width: 1px;
+	border-color: black;
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 500px;
+	margin-top: 40px;
+}
+
+/* 결제정보 */
+h3 {
+	margin-bottom: 40px;
+}
+
+.user_order_info1 {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
+.user_order_info1 #name {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info1 #email {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info1 #phone_number {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info3 #business_number {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info3 #business_number_company_name {
+	width: 130px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info3 #revenue_number {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info3 #revenue_number_last {
+	width: 50px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+/* 배송지선택 체크박스 */
+#home {
+	margin-left: 73px;
+}
+
+/*  */
+
+#title_name {
+	margin-right: 114px;
+}
+
+#title_phone_number {
+	margin-right: 100px;
+}
+
+#title_email {
+	margin-right: 100px;
+}
+
+#right_checkbox {
+	float: left;
+}
+
+#title_phone_number_additional {
+	margin-right: 68px;
+}
+
+#title_address {
+	margin-right: 113px;
+}
+
+#empty_space {
+	margin-right: 145px;
+}
+
+#title_shipping_request {
+	margin-right: 57px;
+}
+
+#shipping {
+	margin-top: 20px;
+	margin-left: 100px;
+	
+}
+
+#kakaopay {
+	margin-left: 85px;
+}
+
+#bankbook {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#credit_card {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#realtime_bank {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#escrow {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#mobile_payment {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#cash_receipts_no {
+	margin-top: 8px;
+	margin-left: 71px;
+}
+
+#cash_receipts_yes {
+	margin-top: 8px;
+	margin-left: 145px;
+}
+
+#cash_receipts_container {
+	margin-top: 35px;
+}
+
+.privacy {
+	margin-top: 20px;
+}
+
+.user_order_info2 {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.user_order_info3 {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.user_order_info4 {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.privacy {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.shipping-container {
+	display: flex;
+}
+
+.shipping-container h3 {
+	margin-right: 15px;
+}
+
+.user_order_info2 div #name {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #phone_number {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #phone_number_additional {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #address_code1 {
+	width: 210px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #address_code2 {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #remaining_address {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #post_button {
+	font-size: 10pt;
+	background-color: white;
+	width: 100px;
+	height: 43px;
+	padding: 12px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+
+.user_order_info2 div #shipping_request {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+	resize: both;
+}
+
+#dropdown {
+	width: 520px;
+	height: 45px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	margin-left: 145px;
+	margin-top: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+}
+
+.privacy #item {
+	margin-left: 210px;
+}
+
+.privacy #retention_period {
+	margin-left: 210px;
+}
+
+.privacy #purpose {
+	margin-left: 150px;
+}
+
+.privacy #purpose1 {
+	font-size: 10pt;
+	margin-top: 10px;
+}
+
+.privacy #item1 {
+	font-size: 10pt;
+	margin-top: 10px;
+	margin-left: 24px;
+}
+
+.privacy #purpose2 {
+	font-size: 10pt;
+	margin-top: 10px;
+}
+
+.privacy #item2 {
+	font-size: 10pt;
+	margin-top: 10px;
+	margin-left: 24px;
+}
+
+.privacy #purpose3 {
+	font-size: 10pt;
+	margin-top: 10px;
+}
+
+.privacy #item3 {
+	font-size: 10pt;
+	margin-top: 10px;
+	margin-left: 24px;
+}
+
+.privacy #retention_period1 {
+	font-size: 10pt;
+	margin-left: 24px;
+	text-align: center;
+}
+
+.user_order_info3 div #phone_number {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+}
+
+#phone_number_container {
+	margin-left: 145px;
+}
+
+#business_number_container {
+	margin-left: 145px;
+}
+
+#revenue_container {
+	margin-left: 145px;
+}
+
+#privacy_title {
+	margin-right: 30px;
+}
+
+/* 약관 테이블 요소 */
+th {
+	display: table-cell;
+	vertical-align: inherit;
+	font-weight: bold;
+	text-align: -internal-center;
+	border-left: none;
+	border-right: none;
+	text-align: left;
+	margin-left: 3px;
+}
+
+td {
+	border-right: 1px solid lightgray; /* 열(Column) 선 스타일링 */
+	text-align: left;
+	padding: 10px;
+	font-size: 10pt;
+}
+
+table {
+	border-collapse: collapse;
+	width: 880px;
+	text-indent: initial;
+	border: none;
+}
+
+.privacy1 td {
+	border-right: none; /* 마지막 열(Column) 선 제거 */
+}
+
+.privacy2 td {
+	border-right: none; /* 마지막 열(Column) 선 제거 */
+}
+
+.privacy3 td {
+	border-right: none; /* 마지막 열(Column) 선 제거 */
+}
+
+.privacy4 td {
+	border-right: none; /* 마지막 열(Column) 선 제거 */
+}
+
+thead th {
+	border-bottom: 1px solid lightgray; /* 헤더(Header) 하단 선 스타일링 */
+	margin-left: 5px;
+}
+
+tbody tr {
+	border-bottom: 1px solid lightgray;
+}
+
+tbody td {
+	border-bottom: 1px solid lightgray;
+}
+
+colgroup {
+	display: table-column-group;
+}
+/* 약관 테이블요소 끝 */
+.privacy1 #bold {
+	font-weight: bold;
+}
+
+.checkout_summary h3 {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+ul {
+	list-style: none;
+}
+
+img {
+	float: left;
+	margin-left: 50px;
+}
+/* 상품이미지와의 거리 & 상품정보 글자 자체 간격*/
+.product_info {
+	margin-bottom: 15px;
+	margin-left: 20px;
+	line-height: 0; /* 글자 위 아래 간격 */
+}
+/* 상품이미지와 상품정보를 따로 */
+.checkout_summary {
+	overflow: auto;
+}
+
+.checkout_summary ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.checkout_summary ul li {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.checkout_summary ul.image {
+	float: left;
+	margin-right: 10px;
+}
+
+.checkout_summary ul.image img {
+	max-width: 100%;
+}
+
+.checkout_summary ul.product_info {
+	float: left;
+}
+
+.checkout_summary ul.product_info h4, .checkout_summary ul.product_info div
+	{
+	margin: 0;
+	padding: 0;
+}
+
+/* 상품이미지 상품정보 끝 */
+
+/* 최종결제 리스트 */
+.summary_list {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+summary_list2 {
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.pay_summary {
+	width: 920px;
+}
+
+.pay_summary .label {
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+
+.total_pay_summary .lable {
+	margin-top: 18px;
+	margin-bottom: 18px;
+	margin-left: 50px;
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+.pay_summary .lable_exception {
+	margin-top: 18px;
+}
+
+.pay_summary .product_price {
+	float: right;
+	font-weight: bold;
+}
+
+.pay_summary .delivery_price {
+	float: right;
+	font-weight: bold;
+	margin-top: 0px;
+}
+
+.pay_summary .sale_price {
+	float: right;
+	font-weight: bold;
+	margin-top: 0px;
+}
+
+.pay_summary .additional_price {
+	float: right;
+	font-weight: bold;
+	margin-top: 0px;
+}
+
+.total_pay_summary {
+	width: 920px;
+}
+
+.total_pay_summary .total_price {
+	float: right;
+	font-weight: bold;
+	margin-top: 0px;
+	font-size: 15pt;
+}
+
+.last_checkout .checkout-agreement {
+	margin-top: 60px;
+	margin-left: 50px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: default;
+	font-weight: bold;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+button {
+	background-color: white;
+	border: 2px solid #000000;
+	color: #333;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 16px;
+	transition: all 0.3s ease;
+	width: 420px;
+	height: 50px;
+	margin-top: 25px;
+	margin-left: 50px;
+}
+
+button:hover {
+	background-color: #333;
+	border-color: #333;
+	color: white;
+}

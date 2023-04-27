@@ -16,13 +16,9 @@
 <link rel="icon" href="/images/favicon.ico">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/component/header/header.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/footer/footer.css" />
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/css/test.css" />
-<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link rel="stylesheet" type="text/css" href="/css/view/login.css">
 
 
 </head>
@@ -43,12 +39,12 @@
 		<div class="login-table">
 			<input type="text" class="sub1" name="id" placeholder="아이디"><br />
 			<input type="password" class="sub1" name="pass" placeholder="비밀번호"><br />
-			<input onclick="location.href='/jsp/mypage_main.jsp'" type="submit"
+			<input onclick="location.href='/mypage'" type="submit"
 				id="sign-in" value="sign in">
 			<div class="login-channeling">
-				<a href="/html/signup.html" class="login-channeling-naver">N</a> <a
-					href="/html/signup.html" class="login-channeling-kakao">K</a> <a
-					href="/html/signup.html" class="login-channeling-google">G</a>
+				<a href="/signup/term" class="login-channeling-naver">N</a> <a
+					href="/signup/term" class="login-channeling-kakao">K</a> <a
+					href="/signup/term" class="login-channeling-google">G</a>
 			</div>
 		</div>
 	</div>

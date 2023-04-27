@@ -20,15 +20,8 @@
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/css/view/basket.css" />
 <link rel="stylesheet" type="text/css"
-	href="/component/carousel/carousel.css" />
-<link rel="stylesheet" type="text/css"
 	href="/component/hoverbox/hoverbox.css" />
 </head>
-
-
-
-
-
 
 <body>
 	<jsp:include page="../layout/header.jsp">
@@ -39,9 +32,77 @@
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
 	</jsp:include>
 
-	<section id="basketSection"></section>
+	<section id="basketSection">
+		<div class="basketOuter">
+			<div class="basketTitleDiv">
+				<h1>Shopping Bag</h1>
+			</div>
+			<div class="basketForm">
+				<div class="basketDeleteDiv">
+					<span>✖</span>
+				</div>
+				<div class="basketItemImgDiv">
+					<img
+						src="http://www.everfree.co.kr/shopimages/manish/014003000506.jpg?1609143478">
+				</div>
+				<div class="basketItemDescDiv">
+					<h1>지퍼조거 팬츠 9077</h1>
+					<h3>컬러: 블랙, 사이즈:L</h3>
+				</div>
+				<div class="basketItemAmount">
+					<div class="amountMinusBtn amountBtn">-</div>
+					<input type="number" name="amount">
+					<div class="amountPlusBtn amountBtn">+</div>
+				</div>
+				<div class="basketItemPriceDiv">
+					<h1>70000원</h1>
+				</div>
+			</div>
+			<div class="basketForm">
+				<div class="basketDeleteDiv">
+					<span>✖</span>
+				</div>
+				<div class="basketItemImgDiv">
+					<img
+						src="http://www.everfree.co.kr/shopimages/manish/007001000519.jpg?1647490141">
+				</div>
+				<div class="basketItemDescDiv">
+					<h1>조지아 나염 무드 맨투맨</h1>
+					<h3>컬러: 버건디, 사이즈:Free</h3>
+				</div>
+				<div class="basketItemAmount">
+					<div class="amountMinusBtn amountBtn">-</div>
+					<input type="number" name="amount">
+					<div class="amountPlusBtn amountBtn">+</div>
+				</div>
+				<div class="basketItemPriceDiv">
+					<h1>37000원</h1>
+				</div>
+			</div>
+			<div id="basketSummaryDiv">
+				<p class="infoP">5만원 이상 구매시 무료배송</p>
+				<div id="basketSummaryListDiv">
+					<div id="basketSubTotalDiv" class="summaryList">
+						<p class="label">주문 금액</p>
+						<p class="value">107000원</p>
+					</div>
+					<div id="basketShippingDiv" class="summaryList">
+						<p class="label">배송비</p>
+						<p class="value">무료</p>
+					</div>
+					<hr noshade="true">
+					<div id="basketTotalDiv" class="summaryList">
+						<h1 id="totalLabel" class="label">합계</h1>
+						<h1 id="totalValue" class="value">107000원</h1>
+					</div>
+					<div onclick="location.href='/payment'" id="basketCheckOutBtn">
+						<span>CHECK OUT</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<jsp:include page="../layout/footer.jsp"/>
-	<script src="/js/basket.js"></script>
+	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

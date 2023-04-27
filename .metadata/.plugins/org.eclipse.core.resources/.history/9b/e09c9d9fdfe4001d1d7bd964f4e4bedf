@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<body>
+	<section id="mainPageCarouselSection">
+		<carousel-component auto="5000">
+		<div class="carouselItem"
+			style="background-image: url('/images/banner.png');"
+			class="carouselItem"></div>
+		<div class="carouselItem"
+			style="background-image: url('/images/banner.png');"
+			class="carouselItem"></div>
+		<div class="carouselItem"
+			style="background-image: url('/images/banner.png');"
+			class="carouselItem"></div>
+		<div class="carouselItem"
+			style="background-image: url('/images/banner.png');"
+			class="carouselItem"></div>
+		<div class="carouselItem"
+			style="background-image: url('/images/banner.png');"
+			class="carouselItem"></div>
+		</carousel-component>
+	</section>
+</body>
+</html>

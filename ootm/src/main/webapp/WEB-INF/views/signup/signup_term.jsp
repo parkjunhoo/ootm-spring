@@ -14,18 +14,9 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="/css/signup_style.css" />
-
+<link rel="stylesheet" type="text/css" href="/css/view/signup_style.css" />
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/header/header.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/carousel/carousel.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/hoverbox/hoverbox.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/footer/footer.css" />
 </head>
 <body>
 	<jsp:include page="../../layout/header.jsp">
@@ -35,6 +26,7 @@
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
 	</jsp:include>
+	
 	<h1 class="signup">Sign Up</h1>
 	<form>
 		<div class="terms">
@@ -121,7 +113,7 @@
 
 		</div>
 	</form>
-	<form action="/jsp/signup.jsp">
+	<form action="/signup/insert">
 		<button class="my-button">CONTINUE</button>
 	</form>
 

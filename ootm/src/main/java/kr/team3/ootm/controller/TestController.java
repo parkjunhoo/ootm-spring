@@ -26,7 +26,7 @@ public class TestController {
 	////////////////////////////////////////
 	@RequestMapping(value = "/")
 	public String main() {
-		return "index";
+		return "main/index";
 	}
 	
 	@RequestMapping(value = "/basket")
@@ -43,13 +43,16 @@ public class TestController {
 
 	@RequestMapping(value = "/signup/term")
 	public String signup_term() {
-		return "signup/term";
+		return "signup/signup_term";
 	}
 	@RequestMapping(value = "/signup/insert")
 	public String signup_insert() {
-		return "signup/insert";
+		return "signup/signup_insert";
 	}
-	
+	@RequestMapping(value = "/signup/addr.popup")
+	public String signup_addr() {
+		return "signup/jusoPopup";
+	}
 	
 	///////////////////////////////////////////
 	

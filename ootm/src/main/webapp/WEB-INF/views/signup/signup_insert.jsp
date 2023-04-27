@@ -6,7 +6,92 @@
 <meta charset="UTF-8">
 <title>개인 회원 가입/수정</title>
 <link rel="icon" href="/images/favicon.ico">
-<link rel="stylesheet" href="/css/all.css">
+<link rel="stylesheet" href="/css/view/all.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function goPopup() {
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("/signup/addr.popup", "pop",
+				"width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
+			roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
+			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
+			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
+		document.getElementById("haddress1").value = roadAddrPart1;
+		document.getElementById("haddress2").value = addrDetail;
+		document.getElementById("hpost").value = zipNo;
+	}
+	//아이디 중복확인 
+	function checkDuplicateId() {
+		if (!!document.getElementById("checkID")) {
+			$('div').remove('#checkID');
+		}
+		var idNode = document.getElementById("id");
+		var parentNode = document.getElementById("id-element");
+		var newDiv = document.createElement("div")
+		newDiv.setAttribute("id", "checkID")
+		if (idNode.value == "java") {
+			var text = "중복되는 아이디입니다."
+			newDiv.setAttribute("style", "color:red; margin-left:150px")
+		} else {
+			var text = "사용가능한 아이디입니다."
+			newDiv.setAttribute("style", "color:blue; margin-left:150px")
+		}
+		var text_node = document.createTextNode(text);
+		parentNode.appendChild(newDiv);
+		document.getElementById("checkID").appendChild(text_node);
+	}
+	//이메일 change id@naver.com
+	
+	//이메일 중복확인 
+	function checkDuplicateEmail() {
+		if (!!document.getElementById("checkEmail")) {
+			$('div').remove('#checkEmail');
+		}
+		var mailNode = document.getElementById("email");
+		var parentNode = document.getElementById("email-element");
+		var newDiv = document.createElement("div")
+		newDiv.setAttribute("id", "checkEmail")
+		if (mailNode.value == "java@naver.com") {
+			var text = "중복되는 메일입니다."
+			newDiv.setAttribute("style", "color:red; margin-left:150px")
+		} else {
+			var text = "사용가능한 메일입니다."
+			newDiv.setAttribute("style", "color:blue; margin-left:150px")
+		}
+		var text_node = document.createTextNode(text);
+		parentNode.appendChild(newDiv);
+		document.getElementById("checkEmail").appendChild(text_node);
+	}
+	//비밀번호 확인
+	function confirmPassword() {
+	if (!!document.getElementById("passcheck")) {
+		$('div').remove('#passcheck');
+	}
+	var pass = document.getElementById("password1").value
+	var passconfirm = document.getElementById("password2").value
+
+	if (pass !== passconfirm) {
+		var text = "비밀번호가 일치하지 않습니다."
+		var parentNode = document.getElementById("pass-confirm");
+		var newdiv = document.createElement("div")
+		newdiv.setAttribute("style", "color:red; margin-left:150px")
+		newdiv.setAttribute("id", "passcheck")
+
+		var text_node = document.createTextNode(text);
+		parentNode.appendChild(newdiv);
+		document.getElementById("passcheck").appendChild(text_node);
+	} else {
+		if (!!document.getElementById("passcheck")) {
+			$('div').remove('#passcheck');
+		}
+	}
+}
+	//휴대폰 글자제한
+	
+</script>
 <style type="text/css">
 .all-margin:before, .all-margin:after {
 	content: '';
@@ -165,11 +250,7 @@ input[type="radio"] {
 }
 </style>
 <!-- CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/component/header/header.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/footer/footer.css" />
-<link rel="stylesheet" type="text/css" href="/css/test.css" />
+<link rel="stylesheet" type="text/css" href="/ootm/css/test.css" />
 </head>
 <body>
 	<jsp:include page="../../layout/header.jsp">
@@ -196,26 +277,28 @@ input[type="radio"] {
 						name="hname" id="hname" value="" class="MS_input_txt form-textbox"
 						size="15" maxlength="30" />
 				</div>
-				<div class="form-element">
+				<div class="form-element" id="id-element">
 					<label class="form-label">아이디</label> <input type="text" name="id"
 						id="id" value="" class="form-textbox" size="10" maxlength="12">
-					<a href="#" class="textbox-button">중복확인</a>
+					<a href="javascript:;" class="textbox-button"
+						onclick="checkDuplicateId();">중복확인</a>
 				</div>
-				<div class="form-element email">
+				<div class="form-element email" id="email-element">
 					<label class="form-label">이메일주소</label> <input type="hidden"
 						name="oldemail" value=""> <input type="text" name="email"
 						id="email" class="MS_input_txt MS_input_txt06" size="20"
-						maxlength="35"> <a href="" class="textbox-button">중복확인</a>
+						maxlength="35"> <a href="javascript:;"
+						class="textbox-button" onclick="checkDuplicateEmail();">중복확인</a>
 				</div>
 				<div class="form-element">
 					<label class="form-label">비밀번호</label> <input type="password"
 						name="password1" id="password1" class="MS_input_txt form-textbox"
 						value="" size="15" maxlength="20">
 				</div>
-				<div class="form-element">
+				<div class="form-element" id="pass-confirm">
 					<label class="form-label">비밀번호확인</label> <input type="password"
 						name="password2" id="password2" class="MS_input_txt form-textbox"
-						value="" size="15" maxlength="20">
+						value="" size="15" maxlength="20" onchange="confirmPassword();">
 				</div>
 				<div class="form-element date-of-birth">
 					<label class="form-label">생일/성별</label> <input type="tel"
@@ -238,7 +321,8 @@ input[type="radio"] {
 					<label class="form-label">주소</label> <input type="text"
 						name="hpost" form="join_form" id="hpost" class="MS_input_txt"
 						value="" size="7" maxlength="15" readonly="readonly"> <a
-						href="#" class="textbox-button">우편번호 검색</a>
+						href='javascript:;' class="textbox-button" onclick="goPopup();">우편번호
+						검색</a>
 				</div>
 				<div class="form-element addresses">
 					<input type="text" name="haddress1" form="join_form" id="haddress1"

@@ -1,0 +1,9 @@
+package kr.team3.ootm.service.product;
+
+import kr.team3.ootm.dao.product.ProductDTO;
+
+public interface ProductService {
+	public int insertProduct(ProductDTO product);
+	public ProductDTO readProduct(int id);
+	public int deleteProduct(int id);
+}

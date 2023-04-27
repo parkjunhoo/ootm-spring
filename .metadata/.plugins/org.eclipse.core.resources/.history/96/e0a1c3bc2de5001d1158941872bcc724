@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<section class="promotionSection">
+	<div class="outer">
+		<div class="promotionHR">
+			<hr>
+			<h4 style="padding-top: 20px;">Best Of the Week</h4>
+		</div>
+		
+		<div class="promotionTable" id="bowTable">
+			<hoverbox-component class="promotionProduct">
+			<div class="superBox">
+				<div class="beforeBox"
+					style="background-image: url(&quot;https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940&quot;);"></div>
+				<div class="afterBox">
+					<div class="downAnim productAfterUp">
+						<img
+							src="http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940">
+					</div>
+					<div class="upAnim productAfterDown">
+						<h1>B 라벨 카라 T - NEW</h1>
+						<h2>34,000</h2>
+						<div class="descDiv">
+							<h3>#오버핏</h3>
+							<h3>#인기</h3>
+							<h4>Free ·</h4>
+							<h4>3 Colors</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			</hoverbox-component>
+		</div>
+	</div>
+</section>
+
+<section class="decoSection"></section>

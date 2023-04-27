@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.product;
+
+public interface ProductDAO {
+	public int insert(ProductDTO product);
+	public ProductDTO read(int product_id);
+	
+}

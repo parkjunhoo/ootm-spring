@@ -1,0 +1,10 @@
+package kr.team3.ootm.dao.cart;
+
+import java.sql.Date;
+
+public class CartDTO {
+	private int cart_id;
+	private int product_id;
+	private int cart_quantity;
+	private Date cart_regdate;
+}

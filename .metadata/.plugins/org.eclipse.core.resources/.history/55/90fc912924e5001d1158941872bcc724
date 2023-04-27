@@ -1,0 +1,116 @@
+package kr.team3.ootm.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.team3.ootm.dao.header.HeaderMenuDAOImpl;
+import kr.team3.ootm.dao.header.HeaderMenuDTO;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class TestController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	
+	////////////////////////////////////////
+	@RequestMapping(value = "/")
+	public String main() {
+		ArrayList<HeaderMenuDTO> list = new HeaderMenuDAOImpl().select();
+		return "main/index";
+	}
+	
+	@RequestMapping(value = "/basket")
+	public String basket() {
+		return "basket";
+	}
+	
+	@RequestMapping(value = "/search")
+	public String search() {
+		return "search";
+	}
+	
+	///////////////////////////////////////////
+
+	@RequestMapping(value = "/signup/term")
+	public String signup_term() {
+		return "signup/signup_term";
+	}
+	@RequestMapping(value = "/signup/insert")
+	public String signup_insert() {
+		return "signup/signup_insert";
+	}
+	@RequestMapping(value = "/signup/addr.popup")
+	public String signup_addr() {
+		return "signup/jusoPopup";
+	}
+	
+	///////////////////////////////////////////
+	
+	
+	@RequestMapping(value = "/mypage/coupon")
+	public String mypage_coupon() {
+		return "mypage/mypage_coupon";
+	}
+	@RequestMapping(value = "/mypage/deposit")
+	public String mypage_deposit() {
+		return "mypage/mypage_deposit";
+	}
+	@RequestMapping(value = "/mypage/inquiry")
+	public String mypage_inquiry() {
+		return "mypage/mypage_inquiry";
+	}
+	@RequestMapping(value = "/mypage")
+	public String mypage_main() {
+		return "mypage/mypage_main";
+	}
+	@RequestMapping(value = "/mypage/orderlist")
+	public String mypage_orderlist() {
+		return "mypage/mypage_orderlist";
+	}
+	@RequestMapping(value = "/mypage/reserve")
+	public String mypage_reserve() {
+		return "mypage/mypage_reserve";
+	}
+	@RequestMapping(value = "/mypage/wishlist")
+	public String mypage_wishlist() {
+		return "mypage/mypage_wishlist";
+	}
+	
+	
+	/////////////////////////////////////////////
+	@RequestMapping(value = "/find")
+	public String find() {
+		return "find";
+	}
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	@RequestMapping(value = "/product")
+	public String product() {
+		return "product";
+	}
+	
+	////////////////////////////////////////////////
+	@RequestMapping(value = "/product-detail")
+	public String product_detail() {
+		return "product_detail";
+	}
+	/////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/payment")
+	public String payment() {
+		return "payment";
+	}
+	/////////////////////////////////////////////////
+	
+	
+}

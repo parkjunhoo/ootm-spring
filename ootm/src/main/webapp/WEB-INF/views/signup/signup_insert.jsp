@@ -250,7 +250,7 @@ input[type="radio"] {
 }
 </style>
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="/ootm/css/test.css" />
+<link rel="stylesheet" type="text/css" href="/css/test.css" />
 </head>
 <body>
 	<jsp:include page="../../layout/header.jsp">

@@ -1,0 +1,46 @@
+package kr.team3.ootm.dao.cart;
+
+import java.sql.Date;
+
+public class CartDTO {
+	private int cart_id;
+	private int product_id;
+	private int cart_quantity;
+	private Date cart_regdate;
+	
+	
+	public CartDTO(int cart_id, int product_id, int cart_quantity, Date cart_regdate) {
+		super();
+		this.cart_id = cart_id;
+		this.product_id = product_id;
+		this.cart_quantity = cart_quantity;
+		this.cart_regdate = cart_regdate;
+	}
+	
+	public int getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
+	}
+	public int getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+	public int getCart_quantity() {
+		return cart_quantity;
+	}
+	public void setCart_quantity(int cart_quantity) {
+		this.cart_quantity = cart_quantity;
+	}
+	public Date getCart_regdate() {
+		return cart_regdate;
+	}
+	public void setCart_regdate(Date cart_regdate) {
+		this.cart_regdate = cart_regdate;
+	}
+	
+	
+}

@@ -1,0 +1,28 @@
+package kr.team3.ootm.dao.cart;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
+public class CartDTAOImpl implements CartDAO{
+
+	@Override
+	public int insert(int product_id, int cart_quantity) {
+		//product id == product_id ?= quantity++
+		return 1;
+	}
+
+	@Override
+	public int delete(int card_id) {
+		return 1;
+	}
+
+	@Override
+	public ArrayList<CartDTO> selectMyCart(String id) {
+		ArrayList<CartDTO> result = new ArrayList<CartDTO>();
+		for(int i =0; i<5; i++) {
+			result.add( new CartDTO(i,i,i,new Date(System.currentTimeMillis()));
+		}
+		return null;
+	}
+	
+}

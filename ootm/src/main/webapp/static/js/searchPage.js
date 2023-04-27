@@ -134,7 +134,7 @@ for(let i =0; i<searchRes.length; i++){
     searchResItemDiv.classList.add("searchResItemDiv");
     searchResultTable.appendChild(searchResItemDiv);
     searchResItemDiv.addEventListener("click", ()=>{
-		location.href = "/ootm/html/1.html";
+		location.href = "/product-detail";
 	});
 
         let hoverbox = document.createElement("hoverbox-component");

@@ -1,6 +1,12 @@
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+ArrayList<ProductDTO> newProductList = (ArrayList<ProductDTO>) request.getAttribute("newProductList");
+%>
 <!DOCTYPE html>
+
 <section class="promotionSection">
 	<div class="outer">
 		<div class="promotionHR">
@@ -8,35 +14,31 @@
 			<h4 style="padding-top: 20px;">Check out our New arrivals</h4>
 		</div>
 		<div class="promotionTable">
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
-			</div>
-			<div class="promotionProduct" onclick="location.href='/html/1.html'">
-				<div class="productBG"></div>
+			<div class="promotionTable" id="bowTable">
+				<%
+				for (ProductDTO dto : newProductList) {
+				%>
+				<hoverbox-component class="promotionProduct">
+				<div class="beforeBox"
+					style="background-image: url(<%=dto.getProduct_image()%>);"></div>
+				<div class="afterBox">
+					<div class="downAnim productAfterUp">
+						<img src="<%=dto.getProduct_image2()%>" />
+					</div>
+					<div class="upAnim productAfterDown">
+						<h1><%=dto.getProduct_name()%></h1>
+						<h2><%=dto.getProduct_price()%></h2>
+						<div class="descDiv">
+							<h3><%=dto.getProduct_tag()%></h3>
+							<h4>Free ·</h4>
+							<h4>3 Colors</h4>
+						</div>
+					</div>
+				</div>
+				</hoverbox-component>
+				<%
+				}
+				%>
 			</div>
 		</div>
 	</div>

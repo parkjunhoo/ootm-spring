@@ -11,7 +11,7 @@
 			<ol class="rankingList">
 				<li>
 					<h4>01</h4>
-					<div class="rankingListItem" onclick="location.href='/html/1.html'">
+					<div class="rankingListItem" onclick="location.href='/product-detail'">
 						<img src="https://yam0513.diskn.com/promo/hero/2021123011111.jpg"
 							alt="">
 						<p>
@@ -22,7 +22,7 @@
 
 				<li>
 					<h4>02</h4>
-					<div class="rankingListItem" onclick="location.href='/html/1.html'">
+					<div class="rankingListItem" onclick="location.href='/product-detail'">
 						<img src="https://yam0513.diskn.com/t7GVcHpAoS" alt="">
 						<p>
 							주문폭주 <br> B라벨카라T!
@@ -32,7 +32,7 @@
 
 				<li>
 					<h4>03</h4>
-					<div class="rankingListItem" onclick="location.href='/html/1.html'">
+					<div class="rankingListItem" onclick="location.href='/product-detail'">
 						<img src="https://yam0513.diskn.com/r7GVcHpC4y" alt="">
 						<p>
 							주문폭주 <br> 박시 컬러 반팔 T

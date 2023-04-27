@@ -1,0 +1,5 @@
+package kr.team3.ootm.dao.basket;
+
+public class BasketDTO {
+	private int cart_no
+}

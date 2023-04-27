@@ -1,0 +1,20 @@
+package kr.team3.ootm.dao.product;
+
+import java.sql.Date;
+
+public class ProductDTO {
+	private int 	product_id;
+	private int 	product_category_id;
+	private int 	product_sub_category_id;
+	private String 	product_name;
+	private int 	product_price;
+	private int		product_discount_rate;
+	private String	product_content;
+	private String 	product_image;
+	private String  product_image2;
+	private String	product_useyn;
+	private Date	product_regdate;
+	private int		product_quantity;
+	
+	
+}

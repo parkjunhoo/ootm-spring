@@ -23,3 +23,9 @@
 1682588673167	Rename resource 'NewFile.jsp'
 1682588743426	Delete element
 1682590359441	Move file
+1682593046926	Rename package 'member'
+1682593684024	Copy compilation units
+1682593714022	Rename type 'MemberDTO'
+1682593736134	Delete elements
+1682623838641	Rename package 'kr.team3.ootm.dao.basket'
+1682623844623	Rename compilation unit 'BasketDTO.java'

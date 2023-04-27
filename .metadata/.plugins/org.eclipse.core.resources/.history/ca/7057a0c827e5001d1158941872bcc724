@@ -1,0 +1,23 @@
+package kr.team3.ootm.dao.product;
+
+public class ProductDAOImpl implements ProductDAO{
+
+	@Override
+	public int insert(ProductDTO product) {
+		/////////////DB에서 추가했다고 가정
+		/////////////
+		
+		return 1;
+	}
+
+	@Override
+	public ProductDTO read(int product_id) {
+		return null;
+	}
+
+	@Override
+	public int delete(String product_id) {
+		return 0;
+	}
+	
+}

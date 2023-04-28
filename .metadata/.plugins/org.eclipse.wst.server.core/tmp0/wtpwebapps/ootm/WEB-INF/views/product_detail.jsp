@@ -44,6 +44,7 @@
 		<jsp:param value="black" name="mTextColor" />
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
+		<jsp:param value="white" name="bgScrollColor"/>
 	</jsp:include>
 	<div class="content-container">
 		<!-- 섹션 1: 제품 이름 및 구매 버튼 -->

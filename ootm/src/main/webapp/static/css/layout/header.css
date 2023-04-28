@@ -20,6 +20,7 @@ header{
     height: 80px;
     z-index: 970;
     overflow: visible;
+    transition : 1s;
 }
 
 /* 헤더 호버시 내려오는 배경 */

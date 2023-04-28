@@ -259,6 +259,7 @@ input[type="radio"] {
 		<jsp:param value="black" name="mTextColor" />
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
+		<jsp:param value="white" name="bgScrollColor"/>
 	</jsp:include>
 	<div class="header"></div>
 	<div class="all-margin">

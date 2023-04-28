@@ -33,6 +33,7 @@
 			<jsp:param value="false" name="logoDark"/>
 			<jsp:param value="true" name="logoHoverDark"/>
 			<jsp:param value="black" name="menuBtnColor"/>
+			<jsp:param value="rgba(55,55,55,.5)" name="bgScrollColor"/>
 		</jsp:include>
 
 		<jsp:include page="./main-section1.jsp"/>

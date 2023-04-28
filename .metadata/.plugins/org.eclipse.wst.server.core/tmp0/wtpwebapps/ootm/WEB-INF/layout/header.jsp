@@ -26,6 +26,8 @@ String bgColor = request.getParameter("bgColor");
 String bgHoverColor = request.getParameter("bgHoverColor");
 String menuBtnColor = request.getParameter("menuBtnColor");
 
+String bgScrollColor = request.getParameter("bgScrollColor");
+
 String logoDarkParam = request.getParameter("logoDark");
 boolean logoDark = (logoDarkParam!=null && logoDarkParam.equals("true")) ? true : false;
 
@@ -135,6 +137,8 @@ String logoDarkPath = "/images/logoDark.png";
 
 	<script type="text/javascript">
 		
+		let isHeaderScrollStyle = false;
+	
 		let header = document.getElementsByTagName("header")[0];
 		header.addEventListener("mouseover", headerMouseOver);
 		header.addEventListener("mouseleave", headerMouseLeave);
@@ -174,7 +178,21 @@ String logoDarkPath = "/images/logoDark.png";
             }
 		});
 		
-		
+		<%if(bgScrollColor != null){%>
+		this.addEventListener('scroll' , ()=>{
+			console.log("scroll");
+			if(window.scrollY == 0 && !isHeaderScrollStyle){
+				isHeaderScrollStyle = true;
+				header.style.backgroundColor = "";
+				header.style.boxShadow = "";
+			}else{
+				isHeaderScrollStyle = false;
+				header.style.backgroundColor = "<%=bgScrollColor%>";
+				header.style.boxShadow = "0px 3px 5px rgba(0,0,0,0.3)"
+				
+			}
+		});
+		<%}%>
 		
 		
 	    function openSearchBar(){

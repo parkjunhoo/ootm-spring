@@ -4,6 +4,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.springframework.stereotype.Repository;
+
+
+@Repository
 public class ProductDAOImpl implements ProductDAO{
 
 	@Override

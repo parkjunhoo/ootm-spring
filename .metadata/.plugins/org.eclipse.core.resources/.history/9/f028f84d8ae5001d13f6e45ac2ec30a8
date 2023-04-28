@@ -1,0 +1,11 @@
+package kr.team3.ootm.service.cart;
+
+import java.util.ArrayList;
+
+import kr.team3.ootm.dao.product.ProductDTO;
+
+public interface CartService {
+	private CartDAO dao;
+	
+	
+}

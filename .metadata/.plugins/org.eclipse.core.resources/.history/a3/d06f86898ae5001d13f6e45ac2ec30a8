@@ -1,0 +1,12 @@
+package kr.team3.ootm.service.cart;
+
+import kr.team3.ootm.dao.cart.CartDAO;
+import kr.team3.ootm.dao.cart.CartDAOImpl;
+
+public class CartServiceImpl implements CartService{
+	private CartDAO dao;
+	
+	public CartServiceImpl() {
+		this.dao = new CartDAOImpl();
+	}
+}

@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Repository;
+
 import util.DBUtil;
 
+@Repository
 public class MemberDAOImpl implements MemberDAO {
 
 	@Override

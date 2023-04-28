@@ -1,0 +1,9 @@
+package kr.team3.ootm.service.cart;
+
+import kr.team3.ootm.dao.cart.CartDAO;
+
+public interface CartService {
+	private CartDAO dao;
+	
+	
+}

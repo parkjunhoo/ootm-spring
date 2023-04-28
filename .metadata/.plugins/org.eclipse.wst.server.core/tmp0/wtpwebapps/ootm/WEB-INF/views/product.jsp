@@ -31,7 +31,7 @@
 	<jsp:include page="../layout/header.jsp">
 			<jsp:param value="false" name="logoDark"/>
 			<jsp:param value="true" name="logoHoverDark"/>
-			<jsp:param value="black" name="menuBtnColor"/>
+			<jsp:param value="white" name="menuBtnColor"/>
 			<jsp:param value="rgba(55,55,55,.5)" name="bgScrollColor"/>
 	</jsp:include>
 	<!-- 애니메이션 outer -->

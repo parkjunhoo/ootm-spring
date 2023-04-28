@@ -1,0 +1,11 @@
+package kr.team3.ootm.service.cart;
+
+import kr.team3.ootm.dao.cart.CartDTO;
+
+public interface CartService {
+	public int insertProduct(ProductDTO product);
+	public CartDTO readProduct(int cart_id);
+	public int deleteProduct(int id);
+	
+	
+}

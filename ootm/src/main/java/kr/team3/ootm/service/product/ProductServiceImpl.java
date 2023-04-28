@@ -2,17 +2,19 @@ package kr.team3.ootm.service.product;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.team3.ootm.dao.product.ProductDAO;
 import kr.team3.ootm.dao.product.ProductDAOImpl;
 import kr.team3.ootm.dao.product.ProductDTO;
 
-public class ProductServiceImpl implements ProductService{
 
+@Service
+public class ProductServiceImpl implements ProductService{
+	@Autowired
 	private ProductDAO dao;
 	
-	public ProductServiceImpl() {
-		this.dao = new ProductDAOImpl();
-	}
 	
 	@Override
 	public int insertProduct(ProductDTO product) {

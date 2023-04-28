@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="cartDAO" class="kr.team3.ootm.dao.cart.CartDAOImpl"/>
+	<bean id="headerMenuDAO" class="kr.team3.ootm.dao.header.HeaderMenuDAOImpl"/>
+	<bean id="memberDAO" class="kr.team3.ootm.dao.member.MemberDAOImpl"/>
+	<bean id="productDAO" class="kr.team3.ootm.dao.product.ProductDAOImpl"/>
+	
+	<bean id="productService" class="kr.team3.ootm.service.product.ProductServiceImpl">
+		<constructor-arg ref="productDAO"></constructor-arg>
+	</bean>
+	
+	<bean id="cartService" class="kr.team3.ootm.service.cart.CartServiceImpl"/>
+	
+</beans>

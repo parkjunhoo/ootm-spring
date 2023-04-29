@@ -46,6 +46,7 @@
 				<a href="/signup/term" class="login-channeling-naver">N</a> <a
 					href="/signup/term" class="login-channeling-kakao">K</a> <a
 					href="/signup/term" class="login-channeling-google">G</a>
+					<a href="/find">찾기페이지</a>
 			</div>
 		</div>
 	</div>

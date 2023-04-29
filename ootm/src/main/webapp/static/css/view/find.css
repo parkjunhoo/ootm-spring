@@ -41,21 +41,37 @@
 	.container .find-sub h4{
 		margin-bottom:10px;
 	}
-	.container .find-sub #name{
+	.container .find-sub #name-id{
 		width:70%;
 		height:40px;
 		margin-bottom:20px;
 	}
-	.container .find-sub #id{
+	.container .find-sub #email-id{
 		width:70%;
 		height:40px;
 		margin-bottom:20px;
 	}
-	.container .find-sub #email{
+	.container .find-sub #phone-id{
 		width:70%;
 		height:40px;
 		margin-bottom:20px;
 	}
+	.container .find-sub #name-pass{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	.container .find-sub #email-pass{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	.container .find-sub #phone-pass{
+		width:70%;
+		height:40px;
+		margin-bottom:20px;
+	}
+	
 	.container .find-sub #find-id{
 		width:69%;
 		height:40px;

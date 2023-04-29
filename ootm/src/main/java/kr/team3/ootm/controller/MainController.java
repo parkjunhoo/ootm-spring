@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.team3.ootm.service.product.ProductService;
-import kr.team3.ootm.service.product.ProductServiceImpl;
 
 @Controller
 public class MainController {
@@ -21,7 +20,15 @@ public class MainController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("bestProductList", service.selectBestProduct(14));
 		model.put("newProductList", service.selectNewProduct(10));
-		
+		ModelAndView mav = new ModelAndView("main/index", model);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/dbtest")
+	public ModelAndView maintest() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("bestProductList", service.selectBestProduct(14));
+		model.put("newProductList", service.selectNewProduct(10));
 		ModelAndView mav = new ModelAndView("main/index", model);
 		return mav;
 	}

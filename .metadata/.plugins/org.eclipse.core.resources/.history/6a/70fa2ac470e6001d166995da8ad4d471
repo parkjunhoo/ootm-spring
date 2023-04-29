@@ -1,0 +1,37 @@
+package kr.team3.ootm.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.team3.ootm.dao.product.ProductDTO;
+import kr.team3.ootm.service.product.ProductService;
+
+@Controller
+public class ProductController {
+	@Autowired
+	ProductService service;
+	
+	@RequestMapping(value = "/product/insert.do")
+	public String insertProduct() {
+		service.insertProduct(new ProductDTO(1,1,"테스트제품",3333,0,"테스트제품컨텐츠",
+				"https://picsum.photos/250/250","https://picsum.photos/250/250",5,1000,"#랜덤"));
+		return "main/index"; // 임시 메인페이지로 forward 
+	}
+	
+	@RequestMapping(value = "/product/selectall.do")
+	public String selectAllProduct() {
+		List<ProductDTO> list = service.selectAllProduct();
+		System.out.println(list);
+		/*
+		 * 여기서는 테스트용으로 여기서 끝냈지만
+		 * 페이지로 넘길땐
+		 * ModelAndView mav = new ModelAndView("넘길path (ex:main/index)");
+		 * mav.addObject("어트리뷰트명마음대로",list);
+		 * 
+		 */
+		return "main/index"; // 임시 메인페이지로 forward 
+	}
+}

@@ -1,0 +1,16 @@
+package kr.team3.ootm.service.product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.team3.ootm.dao.product.ProductDTO;
+
+public interface ProductService {
+	public int insertProduct(ProductDTO product);
+	public ProductDTO readProduct(int id , String state);
+	public int deleteProduct(int id);
+	
+	public List<ProductDTO> selectAllProduct();
+	public ArrayList<ProductDTO> selectBestProduct(int amount);
+	public ArrayList<ProductDTO> selectNewProduct(int amount);
+}

@@ -64,7 +64,7 @@ public class TestController {
 	/////////////////////////////////////////////
 	@RequestMapping(value = "/find")
 	public String find() {
-		return "find";
+		return "find/find";
 	}
 
 	@RequestMapping(value = "/login")
@@ -74,7 +74,7 @@ public class TestController {
 
 	@RequestMapping(value = "/product")
 	public String product() {
-		return "product";
+		return "product/product";
 	}
 
 	////////////////////////////////////////////////

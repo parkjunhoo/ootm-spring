@@ -1,0 +1,19 @@
+package kr.team3.ootm.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class MainController {
+	@RequestMapping(value = "/")
+	public String main(Model model, HttpServletRequest req, HttpServletResponse res) {
+		
+		System.out.println(model.containsAttribute("bestProductList"));
+		System.out.println(model.containsAttribute("newProductList"));
+		return "main/index";
+	}
+}

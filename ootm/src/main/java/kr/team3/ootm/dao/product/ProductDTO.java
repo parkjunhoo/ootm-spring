@@ -43,7 +43,7 @@ public class ProductDTO {
 	// insert 용
 	public ProductDTO(int product_category_id, int product_sub_category_id, String product_name, int product_price,
 			int product_discount_rate, String product_content, String product_image, String product_image2,
-			int product_quantity, String product_tag) {
+			int product_quantity,int product_sale_rate, String product_tag) {
 		this.product_category_id = product_category_id;
 		this.product_sub_category_id = product_sub_category_id;
 		this.product_name = product_name;
@@ -53,8 +53,10 @@ public class ProductDTO {
 		this.product_image = product_image;
 		this.product_image2 = product_image2;
 		this.product_quantity = product_quantity;
+		this.product_sale_rate = product_sale_rate;
 		this.product_tag = product_tag;
 	}
+
 
 	public int getProduct_id() {
 		return product_id;
@@ -158,6 +160,14 @@ public class ProductDTO {
 
 	public void setProduct_tag(String product_tag) {
 		this.product_tag = product_tag;
+	}
+
+	public int getProduct_sale_rate() {
+		return product_sale_rate;
+	}
+
+	public void setProduct_sale_rate(int product_sale_rate) {
+		this.product_sale_rate = product_sale_rate;
 	}
 
 	@Override

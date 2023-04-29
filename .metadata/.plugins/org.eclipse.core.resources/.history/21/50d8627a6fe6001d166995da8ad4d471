@@ -1,0 +1,32 @@
+package kr.team3.ootm.dao.product;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+//쿼리메소드 내부에서 DB에서 조회한 레코드를 어떤 객체에 매핑시켜야 하는지 정보를 담고 있는 객체
+//where (){}, if(){}안에서 처리해야 할 내용을 정의
+public class ProductRowMapper implements RowMapper<ProductDTO>{
+
+	@Override
+	public ProductDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		ProductDTO product = new ProductDTO(
+				rs.getInt(1),
+				rs.getInt(2),
+				rs.getInt(3),
+				rs.getString(4),
+				rs.getInt(5),
+				rs.getInt(6),
+				rs.getString(7),
+				rs.getString(8),
+				rs.getString(9),
+				rs.getString(10),
+				rs.getDate(11),
+				rs.getInt(12),
+				rs.getInt(13),
+				rs.getString(14)
+				);
+		return null;
+	}
+	
+}

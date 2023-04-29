@@ -104,3 +104,14 @@
 		justify-content:center;
   		align-items:center;
 	}
+	.login-box .find{
+		padding-top:20px;
+	}
+	.login-box .find .find-pass:visited,.login-box .find .find-pass:link{
+		text-decoration: none;
+		color:black;
+	}
+	.login-box .find .find-pass:hover{
+		text-decoration: underline;
+	}
+	

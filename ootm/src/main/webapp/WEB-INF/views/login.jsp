@@ -24,7 +24,7 @@
 </head>
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="../layout/header.jsp">
+	<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
 		<jsp:param value="black" name="mTextColor" />
@@ -46,12 +46,14 @@
 				<a href="/signup/term" class="login-channeling-naver">N</a> <a
 					href="/signup/term" class="login-channeling-kakao">K</a> <a
 					href="/signup/term" class="login-channeling-google">G</a>
-					<a href="/find">찾기페이지</a>
+			</div>
+			<div class="find">
+				<a class="find-pass" href="find">비밀번호 찾기</a>
 			</div>
 		</div>
 	</div>
 	<!-- 푸터 -->
-	<jsp:include page="../layout/footer.jsp"/>
+	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 
 </body>
 </html>

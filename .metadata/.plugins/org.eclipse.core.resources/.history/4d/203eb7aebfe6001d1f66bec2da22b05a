@@ -1,0 +1,7 @@
+package kr.team3.ootm.service.headerSubMenu;
+
+public interface HeaderSubMenuService {
+	public List<HeaderSubMenuDTO> selectALL(){
+		
+	}
+}

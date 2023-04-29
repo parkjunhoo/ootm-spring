@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.header;
+
+import java.util.List;
+
+public interface HeaderSubMenuDAO {
+	public List<HeaderMenuDTO> selectAll();
+}

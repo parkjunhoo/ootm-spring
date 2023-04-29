@@ -38,6 +38,18 @@
 		<beans:constructor-arg ref="ds"/>
 	</beans:bean>
 	
+	<!-- HeaderMenuInterceptor 설정 -->
+	<beans:bean id="HeaderMenuInterceptor" class="kr.team3.ootm.interceptor.headerMenu.HeaderMenuInterceptor"/>	
+	<!-- interceptor 등록 , 설정 -->
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/"/>
+			<exclude-mapping path="/*.do"/>
+			<!-- <exclude-mapping path="/api/*"/> 제외시킬 경로는 exclude로 추가-->
+			<beans:ref bean="HeaderMenuInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 	<context:component-scan base-package="kr.team3.ootm" />

@@ -1,24 +1,16 @@
-<%@page import="kr.team3.ootm.dao.header.HeaderSubMenuDTO"%>
-<%@page import="kr.team3.ootm.dao.header.HeaderMenuDTO"%>
-<%@page import="kr.team3.ootm.dao.header.HeaderMenuDAOImpl"%>
+<%@page import="kr.team3.ootm.dao.headerMenu.HeaderMenuDAOImpl"%>
+<%@page import="kr.team3.ootm.service.headerMenu.HeaderMenuService"%>
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+<%@page import="kr.team3.ootm.dao.headerSubMenu.HeaderSubMenuDTO"%>
+<%@page import="kr.team3.ootm.service.headerMenu.HeaderMenuServiceImpl"%>
+<%@page import="kr.team3.ootm.dao.headerMenu.HeaderMenuDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%
-//ArrayList<HeaderMenuDTO> menuList = new HeaderMenuDAOImpl().select();
-
-//without db 임시
-ArrayList<HeaderMenuDTO> menuList = new ArrayList<HeaderMenuDTO>();
-for(int x=0; x<8; x++){
-	ArrayList<HeaderSubMenuDTO> subL = new ArrayList<HeaderSubMenuDTO>();
-	for(int y=0; y<5; y++){
-		HeaderSubMenuDTO subDTO = new HeaderSubMenuDTO(y,x,"subMenu"+y,y,y==0,"서브메뉴"+y);
-		subL.add(subDTO);
-	}
-	HeaderMenuDTO hmDTO = new HeaderMenuDTO(x,"Menu"+x,x,subL);
-	menuList.add(hmDTO);
-}
+ArrayList<HeaderMenuDTO> menuList = (ArrayList<HeaderMenuDTO>)session.getAttribute("headerMenuList");
+ArrayList<HeaderSubMenuDTO> subMenuList = (ArrayList<HeaderSubMenuDTO>)session.getAttribute("headerSubMenuList");
 
 String mTextColor =  request.getParameter("mTextColor");
 String smTextColor = request.getParameter("smTextColor");
@@ -90,18 +82,20 @@ String logoDarkPath = "/images/logoDark.png";
 							</div>
 						</div>
 						<ul class="dropList">
-							<%for (HeaderSubMenuDTO hsmd : hmd.getSubMenu()) {%>
-							<li onclick ="window.location.href='/product?category=<%=hsmd.getName() %>'" 
-								onmouseover="changeText(this , '<%= hsmd.getKorName()%>')" 
-								onmouseleave="changeText(this , '<%= hsmd.getName()%>')">
-								<p
-									<%if (hsmd.getHighlight()) {%> style="color: red;"
-									<%}else if(smTextColor!=null){%>style="color:<%=smTextColor %>;"
-									<%}%>
-									>
-									<%=hsmd.getName()%>
-								</p>
-							</li>
+							<%for (HeaderSubMenuDTO hsmd : subMenuList) {%>
+								<%if(hsmd.getMenuId() == hmd.getId()){ %>
+								<li onclick ="window.location.href='/product?category=<%=hsmd.getName() %>'" 
+									onmouseover="changeText(this , '<%= hsmd.getKorName()%>')" 
+									onmouseleave="changeText(this , '<%= hsmd.getName()%>')">
+									<p
+										<%if (hsmd.getHighlight()) {%> style="color: red;"
+										<%}else if(smTextColor!=null){%>style="color:<%=smTextColor %>;"
+										<%}%>
+										>
+										<%=hsmd.getName()%>
+									</p>
+								</li>
+								<%} %>
 							<%}%>
 						</ul>
 					</li>

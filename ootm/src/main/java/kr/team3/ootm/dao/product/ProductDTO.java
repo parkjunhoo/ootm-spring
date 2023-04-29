@@ -1,7 +1,6 @@
 package kr.team3.ootm.dao.product;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class ProductDTO {
 	private int product_id;

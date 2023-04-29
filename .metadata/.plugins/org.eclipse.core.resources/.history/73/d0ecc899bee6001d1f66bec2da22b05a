@@ -1,0 +1,18 @@
+package kr.team3.ootm.dao.header;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class HeaderSubMenuDAOImpl implements HeaderSubMenuDAO{
+
+	@Autowired
+	JdbcTemplate template;
+	
+	@Override
+	public List<HeaderMenuDTO> selectAll() {
+		
+		return null;
+	}
+
+}

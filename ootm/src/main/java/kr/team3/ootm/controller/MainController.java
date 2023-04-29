@@ -23,13 +23,4 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("main/index", model);
 		return mav;
 	}
-	
-	@RequestMapping(value = "/dbtest")
-	public ModelAndView maintest() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("bestProductList", service.selectBestProduct(14));
-		model.put("newProductList", service.selectNewProduct(10));
-		ModelAndView mav = new ModelAndView("main/index", model);
-		return mav;
-	}
 }

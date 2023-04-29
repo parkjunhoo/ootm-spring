@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.header;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class HeaderMenuRowMapper implements RowMapper<HeaderMenuDTO>{
+	
+}

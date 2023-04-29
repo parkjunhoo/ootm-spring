@@ -1,0 +1,20 @@
+package kr.team3.ootm.service.headerMenu;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import kr.team3.ootm.dao.header.HeaderMenuDAO;
+import kr.team3.ootm.dao.header.HeaderMenuDTO;
+
+public class HeaderMenuServiceImpl implements HeaderMenuService{
+
+	@Autowired
+	HeaderMenuDAO dao;
+	
+	@Override
+	public List<HeaderMenuDTO> selectALL() {
+		return dao.selectAll();
+	}
+	
+}

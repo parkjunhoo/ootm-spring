@@ -1,0 +1,5 @@
+package kr.team3.ootm.service.headerMenu;
+
+public class HeaderMenuServiceImpl implements HeaderMenuService{
+	
+}

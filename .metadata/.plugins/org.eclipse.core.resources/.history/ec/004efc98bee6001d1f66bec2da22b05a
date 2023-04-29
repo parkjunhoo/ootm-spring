@@ -1,0 +1,13 @@
+package kr.team3.ootm.dao.header;
+
+import java.util.List;
+
+public class HeaderSubMenuDAOImpl implements HeaderSubMenuDAO{
+
+	@Override
+	public List<HeaderMenuDTO> selectAll() {
+		
+		return null;
+	}
+
+}

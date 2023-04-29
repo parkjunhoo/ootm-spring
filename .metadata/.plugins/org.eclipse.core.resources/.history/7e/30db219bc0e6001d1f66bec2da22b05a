@@ -1,0 +1,10 @@
+package kr.team3.ootm.dao.headerSubMenu;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.header.HeaderMenuDTO;
+
+public interface HeaderSubMenuDAO {
+	public List<HeaderSubMenuDTO> read(int header_sub_menu_id);
+	public List<HeaderSubMenuDTO> selectAll();
+}

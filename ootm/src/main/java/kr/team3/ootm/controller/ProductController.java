@@ -18,7 +18,7 @@ public class ProductController {
 	public String insertProduct() {
 		service.insertProduct(new ProductDTO(1, 1, "테스트제품", 3333, 0, "테스트제품컨텐츠", "https://picsum.photos/250/250",
 				"https://picsum.photos/250/250", 5, 1000, "#랜덤"));
-		return "main/index"; // 임시 메인페이지로 forward
+		return "/login"; // 임시 메인페이지로 forward
 	}
 
 	@RequestMapping(value = "/product/selectall.do")
@@ -35,7 +35,7 @@ public class ProductController {
 		 * 
 		 * 로 받아와서 쓰면된다.
 		 */
-		return "main/index"; // 임시 메인페이지로 forward
+		return "/login"; // 임시 메인페이지로 forward
 	}
 
 	@RequestMapping(value = "/product/read.do")
@@ -66,7 +66,7 @@ public class ProductController {
 			// veiw = "/update";
 		}
 		// mav.setViewName(view); => return mav;
-		return "main/index"; // 임시 메인페이지로 forward
+		return "/login"; // 임시 메인페이지로 forward
 	}
 
 }

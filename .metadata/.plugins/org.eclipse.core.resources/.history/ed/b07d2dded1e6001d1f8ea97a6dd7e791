@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+
+.helpdeskOuter{
+	margin-top:160px;
+	width:97%;	
+}

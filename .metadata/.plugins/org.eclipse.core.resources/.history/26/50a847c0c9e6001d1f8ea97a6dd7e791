@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OOTM : Help Desk</title>
+</head>
+<body>
+	<jsp:include page="../../layout/header.jsp">
+		<jsp:param value="true" name="logoDark" />
+		<jsp:param value="true" name="logoHoverDark" />
+		<jsp:param value="black" name="mTextColor" />
+		<jsp:param value="black" name="menuBtnColor" />
+		<jsp:param value="#F9F9F9" name="bgHoverColor" />
+		<jsp:param value="white" name="bgScrollColor"/>
+	</jsp:include>
+	
+	
+	<jsp:include page="../../layout/footer.jsp" />
+</body>
+</html>

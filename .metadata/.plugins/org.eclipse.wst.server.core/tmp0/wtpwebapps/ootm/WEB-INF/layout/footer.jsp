@@ -20,13 +20,13 @@
 						</p>
 					</div>
 					<div class="deskLinkDiv">
-						<a href="/">개인정보취급방침
+						<a href="/helpdesk?desk=qna">개인정보취급방침
 							<div class="footerTextUnderline"></div>
-						</a><a href="/">약관
+						</a><a href="/helpdesk?desk=qna">약관
 							<div class="footerTextUnderline"></div>
-						</a><a href="/">자주묻는질문
+						</a><a href="/helpdesk?desk=qna">자주묻는질문
 							<div class="footerTextUnderline"></div>
-						</a><a href="/">문의게시판
+						</a><a href="/helpdesk?desk=inquiry">문의게시판
 							<div class="footerTextUnderline"></div>
 						</a>
 					</div>

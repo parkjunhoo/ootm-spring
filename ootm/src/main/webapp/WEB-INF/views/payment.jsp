@@ -16,14 +16,14 @@
         
 	</head>
 	<body>
-		<jsp:include page="../layout/header.jsp">
-			<jsp:param value="true" name="logoDark" />
-			<jsp:param value="true" name="logoHoverDark" />
-			<jsp:param value="black" name="mTextColor" />
-			<jsp:param value="black" name="menuBtnColor" />
-			<jsp:param value="#F9F9F9" name="bgHoverColor" />
-			<jsp:param value="white" name="bgScrollColor"/>
-		</jsp:include>
+	<jsp:include page="/WEB-INF/layout/header.jsp">
+		<jsp:param value="true" name="logoDark" />
+		<jsp:param value="true" name="logoHoverDark" />
+		<jsp:param value="black" name="mTextColor" />
+		<jsp:param value="black" name="menuBtnColor" />
+		<jsp:param value="#F9F9F9" name="bgHoverColor" />
+		<jsp:param value="white" name="bgScrollColor"/>
+	</jsp:include>
 		<h1 class="checkout">Checkout</h1>
 		<hr class="line1"/>
 		<form>
@@ -240,6 +240,6 @@
 				<button class="payment_button"><a href="javascript:send();" class="button primary">결제하기</a></button>
 			</div>
 		</form>
-	<jsp:include page="../layout/footer.jsp" />
+	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 	</body>		
 </html>

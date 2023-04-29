@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+
+.helpdeskOuter{
+	width:94%;	
+	margin:160px auto 0 auto;
+}
+
+.helpdeskViewDiv{
+	display:flex;
+}
+
+#helpdeskAside{
+	width:30%;
+}
+
+.helpdeskContentDiv{
+	width:70%;
+}

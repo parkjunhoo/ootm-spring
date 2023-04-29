@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="helpdeskContentDiv">
+	<div class="deskTitle">
+		<h3>공지사항</h3>
+		<h4>OOTM의 최신 소식을 확인해보세요!</h4>
+	</div>
+	
+	<div class="helpTable">
+		<div class="helpTableHead">
+			<span class="boardNo">번호</span>
+			<span class="title">제목</span>
+			<span class="regdate">작성일자</span>
+		</div>
+		
+		<ul class="helpTableBody">
+			<span class="boardNo">번호</span>
+			<span class="title">제목</span>
+			<span class="regdate">작성일자</span>
+		</ul>
+	</div>
+	
+</div>

@@ -1,0 +1,19 @@
+package kr.team3.ootm.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelpDeskController {
+	
+	@RequestMapping(value = "/helpdesk")
+	public String helpdesk(HttpServletRequest req) {
+		if(req.getParameter("desk") == null) {
+			req.setAttribute("desk", "faq");
+		}
+		req.setAttribute("desk", "faq");
+		return "helpdesk/helpdesk";
+	}
+}

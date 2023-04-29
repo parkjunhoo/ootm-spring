@@ -89,7 +89,7 @@ h4 {
 </style>
 </head>
 <body>
-	<jsp:include page="../../layout/header.jsp">
+	<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
 		<jsp:param value="black" name="mTextColor" />
@@ -134,7 +134,7 @@ h4 {
 
 
 	<div class="footer">
-		<jsp:include page="../../layout/footer.jsp"/>
+		<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 	</div>
 </body>
 </html>

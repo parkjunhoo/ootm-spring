@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<jsp:include page="../layout/header.jsp">
+	<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
 		<jsp:param value="black" name="mTextColor" />
@@ -104,6 +104,6 @@
 		</div>
 	</section>
 
-	<jsp:include page="../layout/footer.jsp" />
+	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 </body>
 </html>

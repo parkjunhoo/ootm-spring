@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="helpdeskContentDiv">
+	<div class="deskTitle">
+		<h3>공지사항</h3>
+		<h4>OOTM의 최신 소식을 확인해보세요!</h4>
+	</div>
+	
+	<div class="qnaTable">
+		<div class="qnaTableHead">
+			<a>번호</a>
+			<a>제목</a>
+			<a>작성일자</a>
+		</div>
+		
+		<ul class="qnaTableBody">
+			<li>
+				<h5>상품</h5>
+				<h6>구매 전 확인해야 할 것들은 무엇이 있나요?</h6>
+			</li>
+		</ul>
+	</div>
+	
+</div>

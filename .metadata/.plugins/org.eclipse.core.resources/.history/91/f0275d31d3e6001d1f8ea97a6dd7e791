@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+#helpdeskSection{
+	width:94%;	
+	margin:160px auto 0 auto;
+}
+#helpdeskSection h1{
+	font-size: 46px;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+}
+
+.helpdeskViewDiv{
+	margin-top : 80px;
+	display:flex;
+}
+
+#helpdeskAside{
+	width:30%;
+}
+
+.helpdeskContentDiv{
+	width:70%;
+}

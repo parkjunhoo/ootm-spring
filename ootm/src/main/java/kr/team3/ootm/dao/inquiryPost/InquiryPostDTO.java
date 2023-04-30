@@ -6,6 +6,7 @@ public class InquiryPostDTO {
 	private int inquiry_post_id;
 	private int product_id;
 	private String inquiry_post_title;
+	private String inquiry_post_content;
 	private String inquiry_post_author;
 	private String inquiry_post_pass;
 	private Timestamp inquiry_post_regdate;
@@ -13,22 +14,24 @@ public class InquiryPostDTO {
 	
 	
 	//insert용
-	public InquiryPostDTO(int product_id, String inquiry_post_title, String inquiry_post_author,
+	public InquiryPostDTO(int product_id, String inquiry_post_title,String inquiry_post_content, String inquiry_post_author,
 			String inquiry_post_pass) {
 		this.product_id = product_id;
 		this.inquiry_post_title = inquiry_post_title;
+		this.inquiry_post_content = inquiry_post_content;
 		this.inquiry_post_author = inquiry_post_author;
 		this.inquiry_post_pass = inquiry_post_pass;
 	}
 	
 	
 	//select read 용
-	public InquiryPostDTO(int inquiry_post_id, int product_id, String inquiry_post_title, String inquiry_post_author,
+	public InquiryPostDTO(int inquiry_post_id, int product_id, String inquiry_post_title,String inquiry_post_content, String inquiry_post_author,
 			String inquiry_post_pass, Timestamp inquiry_post_regdate) {
 		super();
 		this.inquiry_post_id = inquiry_post_id;
 		this.product_id = product_id;
 		this.inquiry_post_title = inquiry_post_title;
+		this.inquiry_post_content = inquiry_post_content;
 		this.inquiry_post_author = inquiry_post_author;
 		this.inquiry_post_pass = inquiry_post_pass;
 		this.inquiry_post_regdate = inquiry_post_regdate;
@@ -92,6 +95,16 @@ public class InquiryPostDTO {
 
 	public void setInquiry_post_regdate(Timestamp inquiry_post_regdate) {
 		this.inquiry_post_regdate = inquiry_post_regdate;
+	}
+
+
+	public String getInquiry_post_content() {
+		return inquiry_post_content;
+	}
+
+
+	public void setInquiry_post_content(String inquiry_post_content) {
+		this.inquiry_post_content = inquiry_post_content;
 	}
 	
 	

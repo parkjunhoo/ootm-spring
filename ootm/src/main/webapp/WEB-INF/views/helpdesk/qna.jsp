@@ -18,10 +18,8 @@ $(document).ready(function(){
 });
 </script>
 <style>
-a{
-    color: #222;
-}
-    .hide{display:none;}
+
+    
 </style>
 </head>
 <div class="helpdeskContentDiv">

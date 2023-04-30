@@ -16,9 +16,10 @@ public class InquiryPostDAOImpl implements InquiryPostDAO {
 	
 	@Override
 	public int insert(InquiryPostDTO inquiryPost) {
-		return template.update("insert into inquiry_post values(null,?,?,?,?,now())",
+		return template.update("insert into inquiry_post values(null,?,?,?,?,?,now())",
 				inquiryPost.getProduct_id(),
 				inquiryPost.getInquiry_post_title(),
+				inquiryPost.getInquiry_post_content(),
 				inquiryPost.getInquiry_post_author(),
 				inquiryPost.getInquiry_post_pass()
 				);

@@ -15,7 +15,8 @@ public class InquiryPostRowMapper implements RowMapper<InquiryPostDTO>{
 				rs.getString(3),
 				rs.getString(4),
 				rs.getString(5),
-				rs.getTimestamp(6)
+				rs.getString(6),
+				rs.getTimestamp(7)
 				);
 		return inquiryPost;
 	}

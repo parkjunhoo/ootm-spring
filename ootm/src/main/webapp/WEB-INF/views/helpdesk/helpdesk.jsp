@@ -51,6 +51,9 @@
 			<% if(desk.equals("inquiry")){%>
 			<jsp:include page="./inquiry.jsp"/>
 			<%}%>
+			<% if(desk.equals("write")){%>
+			<jsp:include page="./write.jsp"/>
+			<%}%>
 		</div>
 	</section>
 	

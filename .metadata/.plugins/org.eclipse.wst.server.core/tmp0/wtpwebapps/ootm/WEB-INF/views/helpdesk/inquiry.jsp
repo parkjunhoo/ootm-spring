@@ -3,8 +3,15 @@
 <div class="helpdeskContentDiv">
 
 	<div class="deskTitle">
-		<h3>문의게시판</h3>
-		<h4>문의게시판은 본인이 작성한 글만 확인하실 수 있습니다.</h4>
+		<div class="inquiryTitleDiv">
+			<div>
+				<h3>문의게시판</h3>
+				<h4>문의게시판은 본인이 작성한 글만 확인하실 수 있습니다.</h4>
+			</div>
+			<div onclick="location.href='/helpdesk?desk=write'" class="inquiryWriteBtn">
+				<p>문의하기</p>
+			</div>
+		</div>
 	</div>
 	
 	<div class="helpTable">

@@ -124,8 +124,59 @@
 	padding: 20px 0 20px 0;
 	border-top:1px solid #dcdcdc;
 }
-.qnaTableBody li *:first-child{
-	width:100px;
+.qnaTableBody li h5{
+	width:10%;
+}
+
+.qnaQuestion{
+	width:100%;
+}
+
+.qnaAnswer{
+	line-height: 0%;
+	height:0;
+	overflow:hidden;
+	opacity: 0;
+	font-size:14px;
+	font-weight: 400;
+	font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+
+
+.qnaOpen{
+	animation: qnaOpen .3s forwards;
+}
+.qnaClose{
+	animation: qnaClose .3s forwards;
+}
+@keyframes qnaOpen{
+	0%{
+		line-height:100%;
+		height:0%;
+		opacity:0;
+	}
+	50%{
+		opacity:1;
+	}
+	100%{
+		line-height:100%;
+		height:100%;
+		opacity:1;
+	}
+}
+@keyframes qnaClose{
+	0%{
+		line-height:100%;
+		height:100%;
+		opacity:1;
+	}
+	50%{
+		opacity:0;
+	}
+	100%{
+		line-height:0%;
+		height:0%;
+	}
 }
 
 

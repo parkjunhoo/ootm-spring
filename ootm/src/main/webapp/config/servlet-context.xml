@@ -39,7 +39,7 @@
 	</beans:bean>
 	
 	<!-- HeaderMenuInterceptor 설정 -->
-	<beans:bean id="HeaderMenuInterceptor" class="kr.team3.ootm.interceptor.headerMenu.HeaderMenuInterceptor"/>	
+	<beans:bean id="headermenuinterceptor" class="kr.team3.ootm.interceptor.headerMenu.HeaderMenuInterceptor"/>	
 	<!-- interceptor 등록 , 설정 -->
 	
 	<interceptors>
@@ -47,7 +47,7 @@
 			<mapping path="/*"/>
 			<exclude-mapping path="/*.do"/>
 			<!-- <exclude-mapping path="/api/*"/> 제외시킬 경로는 exclude로 추가-->
-			<beans:ref bean="HeaderMenuInterceptor"/>
+			<beans:ref bean="headermenuinterceptor"/>
 		</interceptor>
 	</interceptors>
 	

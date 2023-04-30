@@ -1,0 +1,17 @@
+package kr.team3.ootm.dao.inquiryPost;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public interface InquiryPostDAO {
+	public int insert(InquiryPostDTO product);
+	
+	public InquiryPostDTO read(int inquiry_post_id);
+	
+	public int delete(int product_id);
+	
+	public List<ProductDTO> selectAllProduct();
+	public ArrayList<ProductDTO> selectBestProduct(int amount);
+	public ArrayList<ProductDTO> selectNewProduct(int amount);
+}

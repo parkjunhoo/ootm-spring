@@ -1,0 +1,75 @@
+package kr.team3.ootm.dao.inquiryPost;
+
+import java.sql.Timestamp;
+
+public class InquiryPostDTO {
+	private int inquiry_post_id;
+	private int product_id;
+	private String inquiry_post_title;
+	private String inquiry_post_author;
+	private String inquiry_post_pass;
+	private Timestamp inquiry_post_regdate;
+	
+	//insert용
+	public InquiryPostDTO(int product_id, String inquiry_title, String inquiry_author,
+			String inquiry_pass) {
+		this.product_id = product_id;
+		this.inquiry_title = inquiry_title;
+		this.inquiry_author = inquiry_author;
+		this.inquiry_pass = inquiry_pass;
+		this.inquiry_regdate = new Timestamp(System.currentTimeMillis());
+	}
+	
+	
+	//read , select 용
+	public InquiryPostDTO(int inquiry_post_id, int product_id, String inquiry_title, String inquiry_author,
+			String inquiry_pass, Timestamp inquiry_regdate) {
+		super();
+		this.inquiry_post_id = inquiry_post_id;
+		this.product_id = product_id;
+		this.inquiry_title = inquiry_title;
+		this.inquiry_author = inquiry_author;
+		this.inquiry_pass = inquiry_pass;
+		this.inquiry_regdate = inquiry_regdate;
+	}
+
+
+
+
+	public void setInquiry_post_id(int inquiry_post_id) {
+		this.inquiry_post_id = inquiry_post_id;
+	}
+	public int getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+	public String getInquiry_title() {
+		return inquiry_title;
+	}
+	public void setInquiry_title(String inquiry_title) {
+		this.inquiry_title = inquiry_title;
+	}
+	public String getInquiry_author() {
+		return inquiry_author;
+	}
+	public void setInquiry_author(String inquiry_author) {
+		this.inquiry_author = inquiry_author;
+	}
+	public String getInquiry_pass() {
+		return inquiry_pass;
+	}
+	public void setInquiry_pass(String inquiry_pass) {
+		this.inquiry_pass = inquiry_pass;
+	}
+	public Timestamp getInquiry_regdate() {
+		return inquiry_regdate;
+	}
+	public void setInquiry_regdate(Timestamp inquiry_regdate) {
+		this.inquiry_regdate = inquiry_regdate;
+	}
+	
+	
+	
+}

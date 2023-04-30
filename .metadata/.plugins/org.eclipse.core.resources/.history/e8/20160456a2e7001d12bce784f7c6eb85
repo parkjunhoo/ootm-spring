@@ -1,0 +1,41 @@
+package kr.team3.ootm.service.inquiryPost;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.team3.ootm.dao.inquiryPost.InquiryPostDTO;
+
+@Service
+public class InquiryPostServiceImpl implements InquiryPostService {
+
+	@Autowired
+	InquiryPostDAO dao;
+	
+	@Override
+	public int insert(InquiryPostDTO inquiryPost) {
+		return ;
+	}
+
+	@Override
+	public InquiryPostDTO read(int inquiry_post_id) {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPost() {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByProductId(int product_id) {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author) {
+		return null;
+	}
+
+}

@@ -1,0 +1,50 @@
+package kr.team3.ootm.dao.inquiryPost;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public class InquiryPostDAOImpl implements InquiryPostDAO {
+
+	@Autowired
+	JdbcTemplate template;
+	
+	
+	@Override
+	public int insert(InquiryPostDTO inquiryPost) {
+		return template.update("insert into inquiry_post values(null,?,?,?,?,now())",
+				inquiryPost.getProduct_id(),
+				inquiryPost.getInquiry_post_title(),
+				inquiryPost.getInquiry_post_author(),
+				inquiryPost.getInquiry_post_pass()
+				);
+	}
+
+	@Override
+	public InquiryPostDTO read(int inquiry_post_id) {
+		return template.queryForObject("select * from product where inquiry_post_id =?", null);
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByProductId(int product_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,12 @@
+package kr.team3.ootm.service.inquiryPost;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.headerMenu.HeaderMenuDTO;
+import kr.team3.ootm.dao.inquiryPost.InquiryPostDTO;
+
+public interface InquiryPostService {
+	public int insert(InquiryPostDTO inquiryPost);
+	
+	
+}

@@ -1,0 +1,9 @@
+package kr.team3.ootm.service.inquiryPost;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.headerMenu.HeaderMenuDTO;
+
+public interface InquiryPostService {
+	public List<HeaderMenuDTO> selectALL();
+}

@@ -34,7 +34,7 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public ProductDTO read(int product_id) {
-		return template.queryForObject("select * from product where id = ?", 
+		return template.queryForObject("select * from product where product_id = ?", 
 				new Object[] {product_id}, new ProductRowMapper());
 	}
 	
@@ -54,7 +54,7 @@ public class ProductDAOImpl implements ProductDAO{
 		//spring jdbc를 연동한다면
 		//dao상위하위서비스상위하위 arrayList 들어간부분 list로 바구고
 		//sql = "select * from product order by product_sale_rate desc limit ?";
-		//return template.queryForObject(sql, 
+		//return template.query(sql, 
 		//new Object[] {amount}, new ProductRowMapper());
 		//밑에 잇는 new도 비슷한방법으로 order by regdate
 		//아직 프로덕트에 의미잇는ㄷ ㅔ이터들이 없기에 

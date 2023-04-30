@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.inquiryPost;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class InquiryPostRowMapper implements RowMapper<InquiryPostDTO>{
+
+}

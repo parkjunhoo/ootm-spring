@@ -1,0 +1,34 @@
+package kr.team3.ootm.service.inquiryPost;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.inquiryPost.InquiryPostDTO;
+
+public class InquiryPostServiceImpl implements InquiryPostService {
+
+	@Override
+	public int insert(InquiryPostDTO inquiryPost) {
+		return 0;
+	}
+
+	@Override
+	public InquiryPostDTO read(int inquiry_post_id) {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPost() {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByProductId(int product_id) {
+		return null;
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author) {
+		return null;
+	}
+
+}

@@ -1,6 +1,7 @@
 package kr.team3.ootm.dao.product;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -72,7 +73,7 @@ public class ProductDAOImpl implements ProductDAO{
 			result.add(new ProductDTO(i,categoryMax,1,i+"번 베스트상품",price,5,"멋진옷입니다.",
 				"http://www.everfree.co.kr/shopimages/manish/0140030005522.jpg?1651031042",
 				"http://www.everfree.co.kr/shopimages/manish/014003000552.jpg?1651030706",
-				"y", new Date(System.currentTimeMillis()),
+				"y", new Timestamp(System.currentTimeMillis()),
 				300,saleRate,"#멋진옷#멋잘알"));
 		}
 		//
@@ -92,7 +93,7 @@ public class ProductDAOImpl implements ProductDAO{
 			result.add(new ProductDTO(i,categoryMax,1,i+"번 신상품",price,5,"멋진옷입니다.",
 				"http://www.everfree.co.kr/shopimages/manish/0140030005522.jpg?1651031042",
 				"http://www.everfree.co.kr/shopimages/manish/014003000552.jpg?1651030706",
-				"y", new Date(System.currentTimeMillis()),
+				"y", new Timestamp(System.currentTimeMillis()),
 				300,saleRate,"#멋진옷#멋잘알"));
 		}
 		//

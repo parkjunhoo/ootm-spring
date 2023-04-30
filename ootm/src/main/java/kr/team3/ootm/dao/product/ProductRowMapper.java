@@ -21,7 +21,7 @@ public class ProductRowMapper implements RowMapper<ProductDTO>{
 				rs.getString(8),	// product_image
 				rs.getString(9),	// product_image2
 				rs.getString(10),	// product_useyn
-				rs.getDate(11),		// product_regdate
+				rs.getTimestamp(11),		// product_regdate
 				rs.getInt(12),		// product_quantity
 				rs.getInt(13),		// product_sale_rate
 				rs.getString(14)	// product_tag

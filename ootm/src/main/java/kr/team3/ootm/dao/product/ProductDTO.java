@@ -1,6 +1,7 @@
 package kr.team3.ootm.dao.product;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ProductDTO {
 	private int product_id;
@@ -13,7 +14,7 @@ public class ProductDTO {
 	private String product_image;
 	private String product_image2;
 	private String product_useyn;
-	private Date product_regdate;
+	private Timestamp product_regdate;
 	private int product_quantity;
 	private int product_sale_rate;
 	private String product_tag;
@@ -21,7 +22,7 @@ public class ProductDTO {
 	// select 조회용
 	public ProductDTO(int product_id, int product_category_id, int product_sub_category_id, String product_name,
 			int product_price, int product_discount_rate, String product_content, String product_image,
-			String product_image2, String product_useyn, Date product_regdate, int product_quantity, int product_sale_rate,
+			String product_image2, String product_useyn, Timestamp product_regdate, int product_quantity, int product_sale_rate,
 			String product_tag) {
 		this.product_id = product_id;
 		this.product_category_id = product_category_id;
@@ -137,11 +138,11 @@ public class ProductDTO {
 		this.product_useyn = product_useyn;
 	}
 
-	public Date getProduct_regdate() {
+	public Timestamp getProduct_regdate() {
 		return product_regdate;
 	}
 
-	public void setProduct_regdate(Date product_regdate) {
+	public void setProduct_regdate(Timestamp product_regdate) {
 		this.product_regdate = product_regdate;
 	}
 

@@ -29,6 +29,7 @@ public class HeaderMenuInterceptor implements HandlerInterceptor{
 		HttpSession session = req.getSession();
 		
 		if(session.getAttribute("headerMenuList") == null || session.getAttribute("headerSubMenuList") == null){
+			System.out.println("ㅇㅅㅇ");
 			session.setAttribute("headerMenuList", (ArrayList<HeaderMenuDTO>)(service.selectALL()));
 			session.setAttribute("headerSubMenuList", (ArrayList<HeaderSubMenuDTO>)(service2.selectALL()));
 		}

@@ -1,6 +1,8 @@
 package kr.team3.ootm.dao.headerSubMenu;
 
-public class HeaderSubMenuDTO {
+import java.io.Serializable;
+
+public class HeaderSubMenuDTO implements Serializable{
 
 	private int id;
 	private int menuId;

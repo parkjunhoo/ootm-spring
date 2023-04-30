@@ -1,10 +1,11 @@
 package kr.team3.ootm.dao.headerMenu;
 
+import java.io.Serializable;
 import java.util.List;
 
 import kr.team3.ootm.dao.headerSubMenu.HeaderSubMenuDTO;
 
-public class HeaderMenuDTO {
+public class HeaderMenuDTO implements Serializable{
 	private int id;
 	private String name;
 	private int idx;

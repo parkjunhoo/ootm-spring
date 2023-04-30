@@ -120,6 +120,7 @@
 
 .qnaTableBody li{
 	display: flex;
+	flex-wrap: wrap;
 	margin-top:20px;
 	padding: 20px 0 20px 0;
 	border-top:1px solid #dcdcdc;
@@ -127,8 +128,17 @@
 .qnaTableBody li h5{
 	width:10%;
 }
-
-.qnaQuestion{
+.qnaTableBody li h6{
+	width:90%;
+}
+.qnaTableBody .hide{
+	width:100%;
+    padding: 25px 10%;
+	font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 400;        
+}
+/* .qnaQuestion{
 	width:100%;
 }
 
@@ -177,7 +187,7 @@
 		line-height:0%;
 		height:0%;
 	}
-}
+} */
 
 
 

@@ -8,7 +8,7 @@ a{
 	display:none;
 }
 #helpdeskSection{
-	width:80%;	
+	width:85%;	
 	margin:160px auto 0 auto;
 }
 #helpdeskSection .hLine{
@@ -92,13 +92,13 @@ a{
 }
 
 #helpdeskAside{
-	width:15%;
+	width:20%;
 }
 #helpdeskAside ul{
 	margin-top: 70px;
 }
 #helpdeskAside li{
-	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 #helpdeskAside .hoverUnderline{

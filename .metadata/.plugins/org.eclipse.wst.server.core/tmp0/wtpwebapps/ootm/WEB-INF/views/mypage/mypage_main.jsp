@@ -1,5 +1,13 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+if(session.getAttribute("loginUser") != null)
+{
+	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser");
+	System.out.println("비밀번호:"+loginUser.getMember_password());
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -25,13 +25,18 @@
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.headerSubMenu.HeaderSubMenuDTO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletRequest"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiryPost.InquiryPostDTO"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiryPost.InquiryPostRowMapper"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
+    <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberDTO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberDAO"/>
+    <fullyQualifiedTypeName name="kr.team3.ootm.service.member.MemberService"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberRowMapper"/>
 </qualifiedTypeNameHistroy>

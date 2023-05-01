@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="helpTable"/>
+		<item key="selection" value="???"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="???"/>
 			<item value="helpTable"/>
 			<item value="help"/>
 			<item value="under"/>
@@ -22,7 +23,6 @@
 			<item value="headerMemeberBtn"/>
 			<item value="member"/>
 			<item value="location"/>
-			<item value="menuListUnderline"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/product-detail"/>

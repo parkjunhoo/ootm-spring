@@ -1,5 +1,20 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="kr.team3.ootm.dao.cart.CartDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("myCartList");
+ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("myCartProductList");
+
+DecimalFormat priceFormat = new DecimalFormat("###,###");
+
+int allPrice = 0;
+int shippingPrice = 2500;
+int resultPrice = 0;
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,8 +34,6 @@
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/css/view/basket.css" />
-<link rel="stylesheet" type="text/css"
-	href="/component/hoverbox/hoverbox.css" />
 </head>
 
 <body>
@@ -38,63 +51,69 @@
 			<div class="basketTitleDiv">
 				<h1>Shopping Bag</h1>
 			</div>
-			<div class="basketForm">
-				<div class="basketDeleteDiv">
-					<span>✖</span>
+			
+			<%int count = cartList.size();
+			for(int i=0; i<count; i++){ 
+			CartDTO cart = cartList.get(i);
+			ProductDTO product = productList.get(i);
+			int price = cart.getCart_quantity() * product.getProduct_price();
+			int disRate = product.getProduct_discount_rate();
+			double disPrice = disRate==0? price : price * ( (double)(100-product.getProduct_discount_rate())/100);
+			disPrice= Math.ceil(disPrice);
+			
+			int sumPrice = (int)disPrice;
+			%>
+				<div class="basketForm">
+					<div class="basketDeleteDiv">
+						<span onclick="cartDelete(<%=cart.getCart_id()%>)">✖</span>
+					</div>
+					<div class="basketItemImgDiv">
+						<img
+							src="<%=product.getProduct_image2()%>">
+					</div>
+					<div class="basketItemDescDiv">
+						<h1><%=product.getProduct_name()%></h1>
+						<h3>컬러:<%=cart.getColor()%> / 사이즈:<%=cart.getSize()%></h3>
+					</div>
+					<div class="basketItemAmount">
+						<div onclick="cartUpdate(<%=cart.getCart_id()%>,<%=cart.getCart_quantity()-1 %>)" 
+						class="amountMinusBtn amountBtn">-</div>
+						<input type="number" name="amount" value=<%=cart.getCart_quantity()%>>
+						<div onclick="cartUpdate(<%=cart.getCart_id() %>, <%=cart.getCart_quantity()+1 %>)" 
+						class="amountPlusBtn amountBtn">+</div>
+					</div>
+					<div class="basketItemPriceDiv">
+						<h1><%=priceFormat.format(sumPrice) %>원</h1>
+					</div>
 				</div>
-				<div class="basketItemImgDiv">
-					<img
-						src="http://www.everfree.co.kr/shopimages/manish/014003000506.jpg?1609143478">
-				</div>
-				<div class="basketItemDescDiv">
-					<h1>지퍼조거 팬츠 9077</h1>
-					<h3>컬러: 블랙, 사이즈:L</h3>
-				</div>
-				<div class="basketItemAmount">
-					<div class="amountMinusBtn amountBtn">-</div>
-					<input type="number" name="amount">
-					<div class="amountPlusBtn amountBtn">+</div>
-				</div>
-				<div class="basketItemPriceDiv">
-					<h1>70000원</h1>
-				</div>
-			</div>
-			<div class="basketForm">
-				<div class="basketDeleteDiv">
-					<span>✖</span>
-				</div>
-				<div class="basketItemImgDiv">
-					<img
-						src="http://www.everfree.co.kr/shopimages/manish/007001000519.jpg?1647490141">
-				</div>
-				<div class="basketItemDescDiv">
-					<h1>조지아 나염 무드 맨투맨</h1>
-					<h3>컬러: 버건디, 사이즈:Free</h3>
-				</div>
-				<div class="basketItemAmount">
-					<div class="amountMinusBtn amountBtn">-</div>
-					<input type="number" name="amount">
-					<div class="amountPlusBtn amountBtn">+</div>
-				</div>
-				<div class="basketItemPriceDiv">
-					<h1>37000원</h1>
-				</div>
-			</div>
+				<%allPrice += sumPrice;%>
+			<%}
+				if(allPrice >= 50000){
+					shippingPrice = 0;
+				}
+				resultPrice = allPrice + shippingPrice;
+			%>
+			
+			
 			<div id="basketSummaryDiv">
 				<p class="infoP">5만원 이상 구매시 무료배송</p>
 				<div id="basketSummaryListDiv">
 					<div id="basketSubTotalDiv" class="summaryList">
 						<p class="label">주문 금액</p>
-						<p class="value">107000원</p>
+						<p class="value"><%=priceFormat.format(allPrice)%>원</p>
 					</div>
 					<div id="basketShippingDiv" class="summaryList">
 						<p class="label">배송비</p>
-						<p class="value">무료</p>
+						<%if(shippingPrice == 0){%>
+							<p class="value">무료 배송</p>
+						<%}else{%>
+						<p class="value"><%=shippingPrice %></p>
+						<%}%>
 					</div>
 					<hr noshade="true">
 					<div id="basketTotalDiv" class="summaryList">
 						<h1 id="totalLabel" class="label">합계</h1>
-						<h1 id="totalValue" class="value">107000원</h1>
+						<h1 id="totalValue" class="value"><%=priceFormat.format(resultPrice)%>원</h1>
 					</div>
 					<div onclick="location.href='/payment'" id="basketCheckOutBtn">
 						<span>CHECK OUT</span>
@@ -105,5 +124,49 @@
 	</section>
 
 	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
+	
+	<script type="text/javascript">
+		function cartDelete(id){
+			
+			let req = new XMLHttpRequest();
+			
+			req.open("POST" , "/cart/delete.do", false);
+				
+	 		let form = document.createElement("form");
+		    form.setAttribute("action", "/cart/delete.do");
+			form.setAttribute("method", "post");
+		    document.charset = "UTF-8";
+		    
+		    let input = document.createElement("input");
+		    input.setAttribute("type", "hidden");
+		    input.setAttribute("name", "cart_id");
+		    input.setAttribute("value", id);
+		    form.appendChild(input);
+		    
+		    document.body.appendChild(form);
+		    form.submit();
+		}
+		function cartUpdate(id,num){
+			let form = document.createElement("form");
+		    form.setAttribute("action", "/cart/update.do");
+			form.setAttribute("method", "post");
+		    document.charset = "UTF-8";
+		    
+		    let input = document.createElement("input");
+		    input.setAttribute("type", "hidden");
+		    input.setAttribute("name", "cart_id");
+		    input.setAttribute("value", id);
+		    form.appendChild(input);
+		    
+		    let input2 = document.createElement("input");
+		    input2.setAttribute("type", "hidden");
+		    input2.setAttribute("name", "cart_quantity");
+		    input2.setAttribute("value", num);
+		    form.appendChild(input2);
+		    
+		    document.body.appendChild(form);
+		    form.submit(); 
+		}
+	</script>
 </body>
 </html>

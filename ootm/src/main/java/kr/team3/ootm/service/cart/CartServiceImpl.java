@@ -1,42 +1,39 @@
 package kr.team3.ootm.service.cart;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.team3.ootm.dao.cart.CartDAO;
-import kr.team3.ootm.dao.cart.CartDAOImpl;
 import kr.team3.ootm.dao.cart.CartDTO;
 
 
 @Service
 public class CartServiceImpl implements CartService{
+
 	@Autowired
-	private CartDAO dao;
+	CartDAO dao;
 	
-
 	@Override
-	public int insertProduct(CartDTO cart) {
-		
-		return dao.insert(0, 0);
+	public int insert(CartDTO cart) {
+		return dao.insert(cart);
 	}
 
 	@Override
-	public CartDTO readProduct(int cart_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public int delete(int cart_id) {
+		return dao.delete(cart_id);
 	}
 
 	@Override
-	public int deleteProduct(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(CartDTO cart) {
+		return dao.update(cart);
 	}
 
 	@Override
-	public ArrayList<CartDTO> selectMyCart(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	} 
+	public List<CartDTO> selectByMemberId(String member_id) {
+		return dao.selectByMemberId(member_id);
+	}
+	
+	
 }

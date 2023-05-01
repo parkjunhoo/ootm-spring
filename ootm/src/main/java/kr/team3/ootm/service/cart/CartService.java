@@ -1,13 +1,13 @@
 package kr.team3.ootm.service.cart;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import kr.team3.ootm.dao.cart.CartDTO;
 
 public interface CartService {
-	public int insertProduct(CartDTO cart);
-	public CartDTO readProduct(int cart_id);
-	public int deleteProduct(int id);
+	public int insert(CartDTO cart);
+	public int delete(int cart_id);
+	public int update(CartDTO cart);
 	
-	public ArrayList<CartDTO> selectMyCart(String id);
+	public List<CartDTO> selectByMemberId(String member_id);
 }

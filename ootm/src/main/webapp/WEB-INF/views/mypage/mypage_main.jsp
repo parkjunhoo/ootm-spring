@@ -204,7 +204,7 @@ h4 {
 				<div class="section-title">
 					<h4>???님 안녕하세요!</h4>
 					<div class="account-menu">
-						<a href="">회원정보수정</a> <a href="">로그아웃</a>
+						<a href="">회원탈퇴</a> <a href="">로그아웃</a>
 					</div>
 				</div>
 				<div class="section">

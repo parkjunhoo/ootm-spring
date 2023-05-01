@@ -1,0 +1,8 @@
+package kr.team3.ootm.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CartController {
+	
+}

@@ -1,11 +1,11 @@
 package kr.team3.ootm.dao.cart;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CartDAO {
-	public int insert(int product_id, int cart_quantity);
-	public CartDTO read(int cart_id);
+	public int insert(CartDTO cart);
 	public int delete(int cart_id);
+	public int update(CartDTO cart);
 	
-	public ArrayList<CartDTO> selectMyCart(String id);
+	public List<CartDTO> selectByMemberId(String member_id);
 }

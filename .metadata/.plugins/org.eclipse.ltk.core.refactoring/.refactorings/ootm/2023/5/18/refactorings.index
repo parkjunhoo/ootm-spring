@@ -1,1 +1,26 @@
 1682899988118	Delete element
+1682908577799	Rename type 'CartDRowMapping'
+1682908597623	Rename type 'CartRowMapping'
+1682914309481	Copy package
+1682914312863	Rename package 'kr.team3.ootm.dao.productInquiryPost.copy'
+1682914324883	Rename type 'InquiryPostDAO'
+1682914328101	Rename type 'InquiryPostDAOImpl'
+1682914331425	Rename type 'InquiryPostDTO'
+1682914334151	Rename type 'InquiryPostRowMapper'
+1682914344155	Rename package 'kr.team3.ootm.service.inquiryPost'
+1682914350283	Rename type 'InquiryPostService'
+1682914353305	Rename type 'InquiryPostServiceImpl'
+1682914371478	Copy package
+1682914401942	Rename package 'kr.team3.ootm.service.InquiryPost.copy'
+1682914428539	Rename package 'kr.team3.ootm.dao.headerMenu'
+1682914434331	Rename package 'kr.team3.ootm.dao.headerSubMenu'
+1682914437627	Rename package 'kr.team3.ootm.dao.inquiryPost'
+1682914443932	Rename package 'kr.team3.ootm.dao.productInquiryPost'
+1682914447849	Rename package 'kr.team3.ootm.interceptor.headerMenu'
+1682914452338	Rename package 'kr.team3.ootm.service.headerMenu'
+1682914457327	Rename package 'kr.team3.ootm.service.headerSubMenu'
+1682914471076	Rename package 'kr.team3.ootm.service.InquiryPost'
+1682914479264	Rename package 'kr.team3.ootm.service.proudctInquiryPost'
+1682915505039	Rename type 'ProductInquiryPostService'
+1682915510710	Rename type 'ProductInquiryPostServiceImpl'
+1682920259831	Copy file

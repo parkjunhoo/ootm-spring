@@ -1,0 +1,5 @@
+package kr.team3.ootm.dao.cart;
+
+public class CartDRowMapping {
+
+}

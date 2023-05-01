@@ -21,13 +21,13 @@
 						</p>
 					</div>
 					<div class="deskLinkDiv">
-						<a href="/helpdesk?desk=qna">개인정보취급방침
+						<a href="/helpdesk/qna">개인정보취급방침
 							<div class="footerTextUnderline"></div>
 						</a><a href="/helpdesk?desk=qna">약관
 							<div class="footerTextUnderline"></div>
-						</a><a href="/helpdesk?desk=qna">자주묻는질문
+						</a><a href="/helpdesk/qna">자주묻는질문
 							<div class="footerTextUnderline"></div>
-						</a><a href="/helpdesk?desk=inquiry">문의게시판
+						</a><a href="/helpdesk/inquiry">문의게시판
 							<div class="footerTextUnderline"></div>
 						</a>
 					</div>
@@ -45,7 +45,7 @@
 					</div>
 					<div class="footerMenuDiv">
 						<h5>Shipping &amp; Returns</h5>
-						<a href="/">문의게시판</a><a href="/">교환반품안내</a><a href="/">CJ대한통운
+						<a href="/helpdesk/inquiry">문의게시판</a><a href="/">교환반품안내</a><a href="/">CJ대한통운
 							택배 반품접수</a>
 					</div>
 					<div class="footerIconMenu">

@@ -1,0 +1,48 @@
+package kr.team3.ootm.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.team3.ootm.service.inquiry_post.InquiryPostService;
+
+@Controller
+public class HelpDeskController {
+
+	@Autowired
+	InquiryPostService InquiryService;
+
+	@RequestMapping(value = "/helpdesk")
+	public ModelAndView helpdesk(@RequestParam("desk") String desk , HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("helpdesk/helpdesk");
+		if (desk == null) {
+			req.setAttribute("desk", "qna");
+		}
+		switch (desk) {
+		case "qna":
+			break;
+
+		case "inquiry":
+			mav.addObject("inquiryPostList", InquiryService.selectAllInquiryPost());
+			break;
+
+		default:
+			
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/helpdesk")
+	public ModelAndView helpdesk(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("helpdesk/helpdesk");
+		
+		req.setAttribute("desk", "qna");
+		
+		return mav;
+	}
+}

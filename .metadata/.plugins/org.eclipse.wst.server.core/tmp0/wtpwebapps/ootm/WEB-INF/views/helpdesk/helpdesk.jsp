@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String desk = request.getParameter("desk");
+	String desk = (String)request.getAttribute("desk");
 	if(desk == null) desk = "qna";
 %>
 <!DOCTYPE html>
@@ -53,6 +53,9 @@
 			<%}%>
 			<% if(desk.equals("write")){%>
 			<jsp:include page="./write.jsp"/>
+			<%}%>
+			<% if(desk.equals("read")){%>
+			<jsp:include page="./read.jsp"/>
 			<%}%>
 		</div>
 	</section>

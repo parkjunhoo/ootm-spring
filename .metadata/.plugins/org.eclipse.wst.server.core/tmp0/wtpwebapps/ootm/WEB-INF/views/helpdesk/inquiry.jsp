@@ -1,5 +1,10 @@
+<%@page import="kr.team3.ootm.dao.inquiry_post.InquiryPostDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<InquiryPostDTO> postList =(ArrayList<InquiryPostDTO>)request.getAttribute("inquiryPostList");
+%>
 <div class="helpdeskContentDiv">
 
 	<div class="deskTitle">
@@ -8,7 +13,7 @@
 				<h3>문의게시판</h3>
 				<h4>문의게시판은 본인이 작성한 글만 확인하실 수 있습니다.</h4>
 			</div>
-			<div onclick="location.href='/helpdesk?desk=write'" class="inquiryWriteBtn">
+			<div onclick="location.href='/helpdesk/write'" class="inquiryWriteBtn">
 				<p>문의하기</p>
 			</div>
 		</div>
@@ -32,12 +37,13 @@
 				<span class="title">무통장 주문시 안내사항</span>
 				<span class="regdate"></span>
 			</div>
-			
+			<%for(InquiryPostDTO dto :postList){ %>
 			<div class="helpTableBody">
-				<span class="boardNo">1</span>
-				<span class="title">티셔츠 디자인이 사진과 다르게 구리네요 반품해주세요 ㅡㅡ</span>
-				<span class="regdate">곽두팔</span>
+				<span class="boardNo"><%=dto.getInquiry_post_id() %></span>
+				<span class="title"><%=dto.getInquiry_post_title() %></span>
+				<span class="regdate"><%=dto.getInquiry_post_author()%></span>
 			</div>
+			<%} %>
 	</div>
 	
 </div>

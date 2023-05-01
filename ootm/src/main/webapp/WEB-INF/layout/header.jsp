@@ -1,9 +1,9 @@
-<%@page import="kr.team3.ootm.dao.headerMenu.HeaderMenuDAOImpl"%>
-<%@page import="kr.team3.ootm.service.headerMenu.HeaderMenuService"%>
+<%@page import="kr.team3.ootm.dao.header_menu.HeaderMenuDAOImpl"%>
+<%@page import="kr.team3.ootm.service.header_menu.HeaderMenuService"%>
 <%@page import="org.springframework.beans.factory.annotation.Autowired"%>
-<%@page import="kr.team3.ootm.dao.headerSubMenu.HeaderSubMenuDTO"%>
-<%@page import="kr.team3.ootm.service.headerMenu.HeaderMenuServiceImpl"%>
-<%@page import="kr.team3.ootm.dao.headerMenu.HeaderMenuDTO"%>
+<%@page import="kr.team3.ootm.dao.header_sub_menu.HeaderSubMenuDTO"%>
+<%@page import="kr.team3.ootm.service.header_menu.HeaderMenuServiceImpl"%>
+<%@page import="kr.team3.ootm.dao.header_menu.HeaderMenuDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

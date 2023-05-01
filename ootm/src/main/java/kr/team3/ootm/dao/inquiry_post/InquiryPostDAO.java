@@ -1,0 +1,15 @@
+package kr.team3.ootm.dao.inquiry_post;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public interface InquiryPostDAO {
+	
+	public int insert(InquiryPostDTO inquiryPost);
+	public int insertNonProduct(InquiryPostDTO inquiryPost);
+	
+	public InquiryPostDTO read(int inquiry_post_id);
+	public List<InquiryPostDTO> selectAllInquiryPost();
+	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author);
+}

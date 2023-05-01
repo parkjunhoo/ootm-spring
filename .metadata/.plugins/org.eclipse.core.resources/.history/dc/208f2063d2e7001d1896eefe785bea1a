@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="helpdeskContentDiv">
+
+	<div class="deskTitle">
+		<div class="inquiryTitleDiv">
+			<div>
+				<h3 onclick="location.href='/helpdesk?desk=inquiry'" style="cursor:pointer;">&lt 문의게시판</h3>
+			</div>
+		</div>
+	</div>
+	
+	<form method="post" action="/inquirypost/insert.do" id="inquiryWriteForm" name="inquiryWriteForm">
+		<div class="writeFormRowHalf">
+			<p class="writeFormLabel">이름</p>
+			<input class="InquirytextInput" type="text" name="inquiry_author"/>
+		</div>
+		<div class="writeFormRowHalf">
+			<p class="writeFormLabel">글 비밀번호</p>
+			<input class="InquirytextInput" type="text" name="inquiry_pass"/>
+		</div>
+		
+		<div class="writeFormRow">
+			<p class="writeFormLabel">제목</p>
+			<selection class="InquirytextInput" type="text" name="inquiry_title">
+				<option value="입금/결제관련 문의"></option>
+				<option value="배송관련 문의"></option>
+				<option value="교환/반품 문의"></option>
+				<option value="상품관련 문의"></option>
+				<option value="기타 문의"></option>
+			</selection>
+		</div>
+		
+		<div class="writeFormRow">
+			<p class="writeFormLabel">내용</p>
+			<textarea class="InquirytextArea" form="inquiryWriteForm" name="inquiry_content"></textarea>
+		</div>
+<!-- 	<div class="writeFormRow">
+			<p class="writeFormLabel">파일 첨부</p>
+			<input class="InquirytextInput" type="text" name="file"/>
+		</div> -->
+		
+		<div style="display:flex;" class="writeFormRow">
+			<input type="submit" value="문의하기" id="inquirySubmit" name="inquirySubmit"/>
+		</div>
+	</form>
+	
+	
+	
+</div>

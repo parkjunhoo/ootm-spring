@@ -39,7 +39,7 @@
 	</beans:bean>
 	
 	<!-- HeaderMenuInterceptor 설정 -->
-	<beans:bean id="headermenuinterceptor" class="kr.team3.ootm.interceptor.headerMenu.HeaderMenuInterceptor"/>	
+	<beans:bean id="headermenuinterceptor" class="kr.team3.ootm.interceptor.header_menu.HeaderMenuInterceptor"/>	
 	<!-- interceptor 등록 , 설정 -->
 	
 	<interceptors>

@@ -147,6 +147,10 @@ int resultPrice = 0;
 		    form.submit();
 		}
 		function cartUpdate(id,num){
+			if(num<=0){
+				cartDelete(id);
+				return;
+			}
 			let form = document.createElement("form");
 		    form.setAttribute("action", "/cart/update.do");
 			form.setAttribute("method", "post");

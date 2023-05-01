@@ -37,7 +37,6 @@ public class LoginController {
 			session.setAttribute("loginUser", loginUser);
 			mav.addObject("name", loginUser.getMember_name()); // View에 전달할 데이터 추가
 			mav.setViewName("redirect:/mypage");
-			System.out.println(loginUser.getMember_name()+"로그인 완료.");
 		} else { // 로그인 실패
 			System.out.println("해당 아이디비번으로 조회된 정보없음");
 			mav.addObject("message", "아이디 또는 비밀번호가 일치하지 않습니다."); // View에 전달할 데이터 추가

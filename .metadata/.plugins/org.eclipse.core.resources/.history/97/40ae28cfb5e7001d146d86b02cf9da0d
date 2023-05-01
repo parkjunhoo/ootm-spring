@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.member;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class MemberRowMapper implements RowMapper<MemberDTO>{
+	
+}

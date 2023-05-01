@@ -11,7 +11,9 @@ public class InquiryPostDTO {
 	private String inquiry_post_pass;
 	private Timestamp inquiry_post_regdate;
 
-	
+	public InquiryPostDTO() {
+		
+	}
 	
 	//insert용
 	public InquiryPostDTO(int product_id, String inquiry_post_title,String inquiry_post_content, String inquiry_post_author,

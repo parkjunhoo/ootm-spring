@@ -1,0 +1,27 @@
+package kr.team3.ootm.service.member;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.member.MemberDTO;
+
+public class MemberServiceImpl implements MemberService{
+
+	@Override
+	public int insert(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public MemberDTO read(int member_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemberDTO> selectAllMember() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

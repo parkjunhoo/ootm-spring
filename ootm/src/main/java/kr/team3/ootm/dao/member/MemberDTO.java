@@ -1,6 +1,7 @@
 package kr.team3.ootm.dao.member;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class MemberDTO {
 	private String 	member_id;
@@ -13,15 +14,18 @@ public class MemberDTO {
 	private String 	member_telnum;
 	private String 	member_opt; // 마켓팅 수신동의 0=동의 , 1=비동의 , 2= sms동의 mail비동의 3=sms비동의 mail=동의 , 4= sms,mail=동의
 	private String 	member_status; // 0= 가입 , 1=탈퇴 default = 0
-	private Date	member_regdate; // default = now();
+	private Timestamp	member_regdate; // default = now();
 	private String 	member_grade; // b=브론즈 s=실버 g=골드
 	private int		member_point; // 적립금
 	
+	public MemberDTO() {
+		
+	}
 	
 	//조회용
 	public MemberDTO(String member_id, String member_name, String member_email, String member_password,
 			Date member_birth, String member_zipcode, String member_address, String member_telnum, String member_opt,
-			String member_status, Date member_regdate, String member_grade, int member_point) {
+			String member_status, Timestamp member_regdate, String member_grade, int member_point) {
 		this.member_id = member_id;
 		this.member_name = member_name;
 		this.member_email = member_email;
@@ -119,10 +123,10 @@ public class MemberDTO {
 	public void setMember_status(String member_status) {
 		this.member_status = member_status;
 	}
-	public Date getMember_regdate() {
+	public Timestamp getMember_regdate() {
 		return member_regdate;
 	}
-	public void setMember_regdate(Date member_regdate) {
+	public void setMember_regdate(Timestamp member_regdate) {
 		this.member_regdate = member_regdate;
 	}
 	public String getMember_grade() {

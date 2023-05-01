@@ -38,10 +38,11 @@
 	<div class="login-box">
 		<p class="login-sign">Sign In</p>
 		<div class="login-table">
-			<input type="text" class="sub1" name="id" placeholder="아이디"><br />
-			<input type="password" class="sub1" name="pass" placeholder="비밀번호"><br />
-			<input onclick="location.href='/mypage'" type="submit"
-				id="sign-in" value="sign in">
+			<form method="post" action="/login.do">
+				<input type="text" class="sub1" name="member_id" placeholder="아이디"><br />
+				<input type="password" class="sub1" name="member_password" placeholder="비밀번호"><br />
+				<input type="submit" id="sign-in" value="sign in">
+			</form>
 			<div class="login-channeling">
 				<a href="/signup/term" class="login-channeling-naver">N</a> <a
 					href="/signup/term" class="login-channeling-kakao">K</a> <a

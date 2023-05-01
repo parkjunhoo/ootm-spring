@@ -9,6 +9,9 @@ public class CartDTO {
 	private int cart_quantity;
 	private Date cart_regdate;
 	
+	public CartDTO() {
+		
+	}
 	
 	public CartDTO(int cart_id, int product_id, int member_id, int cart_quantity, Date cart_regdate) {
 		this.cart_id = cart_id;

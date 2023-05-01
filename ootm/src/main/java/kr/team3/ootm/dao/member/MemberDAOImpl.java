@@ -5,12 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import util.DBUtil;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
+
+	@Autowired
+	JdbcTemplate template;
 
 	@Override
 	// id , name , email , password , birth , zipcode , address , telnum , opt
@@ -59,27 +65,26 @@ public class MemberDAOImpl implements MemberDAO {
 		try {
 			con = DBUtil.getConnect();
 			ptmt = con.prepareStatement(sql);
-			
+
 			ptmt.setString(1, member_id);
 			rs = ptmt.executeQuery();
 			rs.next();
-			
-			result = new MemberDTO(
-						rs.getString(1), //id
-						rs.getString(2), //name
-						rs.getString(3), //email
-						rs.getString(4), //password
-						rs.getDate	(5), //birth
-						rs.getString(6), //zipcode
-						rs.getString(7), //address
-						rs.getString(8), //telnum
-						rs.getString(9), //opt
-						rs.getString(10),//status
-						rs.getDate	(11), //regdate
-						rs.getString(12), //grade
-						rs.getInt	(13) //point
-					);
-			
+
+			result = new MemberDTO(rs.getString(1), // id
+					rs.getString(2), // name
+					rs.getString(3), // email
+					rs.getString(4), // password
+					rs.getDate(5), // birth
+					rs.getString(6), // zipcode
+					rs.getString(7), // address
+					rs.getString(8), // telnum
+					rs.getString(9), // opt
+					rs.getString(10), // status
+					rs.getTimestamp(11), // regdate
+					rs.getString(12), // grade
+					rs.getInt(13) // point
+			);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -92,72 +97,39 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int delete(String member_id) {
 		String sql = "delete from member where membder_id=?";
-		
+
 		int result = 0;
 		Connection con = null;
 		PreparedStatement ptmt = null;
-		
+
 		try {
 			con = DBUtil.getConnect();
 			ptmt = con.prepareStatement(sql);
-			
+
 			ptmt.setString(1, member_id);
 			result = ptmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(ptmt, con);
 		}
-		
-		
+
 		return result;
 	}
 
 	@Override
 	public MemberDTO login(MemberDTO member) {
-		String sql = "select * from member where member_id = ? and member_password = ?";
-		
-		MemberDTO result = null;
-		Connection con = null;
-		PreparedStatement ptmt = null;
-		ResultSet rs = null;
-		
+		MemberDTO loginMember = null;
 		try {
-			con = DBUtil.getConnect();
-			ptmt = con.prepareStatement(sql);
-			ptmt.setString(1, member.getMember_id());
-			ptmt.setString(2, member.getMember_password());
-			
-			rs = ptmt.executeQuery();
-			if(rs.next()) {
-				result = new MemberDTO(
-						rs.getString(1), //id
-						rs.getString(2), //name
-						rs.getString(3), //email
-						rs.getString(4), //password
-						rs.getDate	(5), //birth
-						rs.getString(6), //zipcode
-						rs.getString(7), //address
-						rs.getString(8), //telnum
-						rs.getString(9), //opt
-						rs.getString(10),//status
-						rs.getDate	(11), //regdate
-						rs.getString(12), //grade
-						rs.getInt	(13) //point
-					);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(rs, ptmt , con);
+			loginMember = template.queryForObject("select * from ootm_member where member_id=? AND member_password=?",
+					new Object[] { member.getMember_id(), member.getMember_password() }, new MemberRowMapper());
+		}catch(EmptyResultDataAccessException e){
+			return null;
 		}
 		
-		
-		
-		
-		return result;
+
+		return loginMember;
 	}
 
 }

@@ -1,0 +1,16 @@
+package kr.team3.ootm.dao.member;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class MemberRowMapper implements RowMapper<MemberDTO>{
+
+	@Override
+	public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

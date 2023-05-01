@@ -1,11 +1,11 @@
 package kr.team3.ootm.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.team3.ootm.service.inquiry_post.InquiryPostService;
@@ -46,8 +46,17 @@ public class HelpDeskController {
 	}
 
 	@RequestMapping(value = "/helpdesk/write")
-	public ModelAndView write() {
-		ModelAndView mav = new ModelAndView("helpdesk/helpdesk");
+	public ModelAndView write(HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(session.getAttribute("loginUser") == null) {
+			mav.setViewName("/login");
+			session.setAttribute("sendMe", "/helpdesk/write");
+		}else {
+			mav.setViewName("helpdesk/helpdesk");
+		}
+		
 		mav.addObject("desk", "write");
 		return mav;
 	}

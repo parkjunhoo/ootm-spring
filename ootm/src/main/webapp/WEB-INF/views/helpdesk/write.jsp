@@ -11,14 +11,14 @@
 	</div>
 	
 	<form method="post" action="/inquirypost/insert.do" id="inquiryWriteForm" name="inquiryWriteForm">
-		<div class="writeFormRowHalf">
+<!-- 		<div class="writeFormRowHalf">
 			<p class="writeFormLabel">이름</p>
 			<input class="InquirytextInput" type="text" name="inquiry_post_author"/>
 		</div>
 		<div class="writeFormRowHalf">
 			<p class="writeFormLabel">글 비밀번호</p>
 			<input class="InquirytextInput" type="text" name="inquiry_post_pass"/>
-		</div>
+		</div> -->
 		
 		<div class="writeFormRow">
 			<p class="writeFormLabel">제목</p>

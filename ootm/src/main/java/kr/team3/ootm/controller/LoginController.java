@@ -26,17 +26,24 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute MemberDTO member, HttpServletRequest request, Model model) {
+	public ModelAndView login(@ModelAttribute MemberDTO member, HttpSession session, Model model) {
 		
 		MemberDTO loginUser = service.login(member);
 
 		ModelAndView mav = new ModelAndView();
 
 		if (loginUser != null) { // 로그인 성공
-			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
-			mav.addObject("name", loginUser.getMember_name()); // View에 전달할 데이터 추가
-			mav.setViewName("redirect:/mypage");
+			
+			String sendMe = (String)session.getAttribute("sendMe");
+			
+			if(sendMe != null) {
+				mav.setViewName("redirect:"+(String)sendMe);
+				session.removeAttribute("sendMe");
+			}else {
+				mav.setViewName("redirect:/mypage");
+			}
+			
 			System.out.println(loginUser.getMember_name()+"로그인 완료.");
 		} else { // 로그인 실패
 			System.out.println("해당 아이디비번으로 조회된 정보없음");

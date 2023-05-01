@@ -19,6 +19,15 @@ public class CartController {
 	@Autowired
 	CartService service;
 
+	@RequestMapping(value = "/cart/insert.do" , method = RequestMethod.POST)
+	public ModelAndView cartInsert(@ModelAttribute CartDTO cart ,HttpServletRequest req) {
+		service.insert(cart);
+		//view 어디로 갈지는 일단 basket으로 해뒀지만
+		//호출한 곳이 어디냐에 따라서 여기서 분기처리해서 달라질수도있을것같ㅊ습니다,
+		ModelAndView mav = new ModelAndView("redirect:/basket");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/cart/delete.do" , method = RequestMethod.POST)
 	public ModelAndView cartDelete(@RequestParam String cart_id ,HttpServletRequest req) {
 		service.delete(Integer.parseInt(cart_id));

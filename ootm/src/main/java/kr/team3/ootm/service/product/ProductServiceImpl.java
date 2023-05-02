@@ -37,13 +37,43 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public ArrayList<ProductDTO> selectBestProduct(int amount) {
+	public List<ProductDTO> selectBestProduct(int amount) {
 		return dao.selectBestProduct(amount);
 	}
 	
 	@Override
-	public ArrayList<ProductDTO> selectNewProduct(int amount) {
+	public List<ProductDTO> selectNewProduct(int amount) {
 		return dao.selectNewProduct(amount);
+	}
+
+	@Override
+	public int countByCategory(int product_category_id) {
+		return dao.countByCategory(product_category_id);
+	}
+
+	@Override
+	public int countBySubCategory(int product_sub_category_id) {
+		return dao.countBySubCategory(product_sub_category_id);
+	}
+
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByBestLimit(int product_category_id, int min, int max) {
+		return dao.selectByCategoryOrderByBestLimit(product_category_id, min, max);
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByBestLimit(int product_sub_category_id, int min, int max) {
+		return dao.selectBySubCategoryOrderByBestLimit(product_sub_category_id, min, max);
+	}
+
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByPriceLimit(int product_category_id, int min, int max) {
+		return dao.selectByCategoryOrderByPriceLimit(product_category_id, min, max);
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByPriceDescLimit(int product_sub_category_id, int min, int max) {
+		return dao.selectBySubCategoryOrderByPriceDescLimit(product_sub_category_id, min, max);
 	}
 
 }

@@ -28,19 +28,23 @@
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiryPost.InquiryPostRowMapper"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberDAO"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.service.member.MemberService"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.member.MemberRowMapper"/>
-    <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiryPost.InquiryPostDAO"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.service.inquiryPost.InquiryPostService"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.cart.CartRowMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
+    <fullyQualifiedTypeName name="util.LoginUtil"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiry_post.InquiryPostDTO"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="util.LoginManager"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>

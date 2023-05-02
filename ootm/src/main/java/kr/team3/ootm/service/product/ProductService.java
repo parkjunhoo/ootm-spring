@@ -11,6 +11,16 @@ public interface ProductService {
 	public int deleteProduct(int id);
 	
 	public List<ProductDTO> selectAllProduct();
-	public ArrayList<ProductDTO> selectBestProduct(int amount);
-	public ArrayList<ProductDTO> selectNewProduct(int amount);
+	public List<ProductDTO> selectBestProduct(int amount);
+	public List<ProductDTO> selectNewProduct(int amount);
+	
+	public int countByCategory(int product_category_id);
+	public int countBySubCategory(int product_sub_category_id);
+	
+	public List<ProductDTO> selectByCategoryOrderByBestLimit(int product_category_id , int min, int max);
+	public List<ProductDTO> selectBySubCategoryOrderByBestLimit(int product_sub_category_id, int min , int max);
+	
+	public List<ProductDTO> selectByCategoryOrderByPriceLimit(int product_category_id , int min, int max);
+	public List<ProductDTO> selectBySubCategoryOrderByPriceDescLimit(int product_sub_category_id, int min , int max);
+	
 }

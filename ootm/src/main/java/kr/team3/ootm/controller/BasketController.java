@@ -49,6 +49,12 @@ public class BasketController {
 			mav.setViewName("/basket");
 		}
 		
+		Object ts = req.getAttribute("tempScroll");
+		System.out.println((String)ts);
+		if(ts!= null) {
+			mav.addObject("tempScroll" , ts);
+		}
+		
 		return mav;
 	}
 }

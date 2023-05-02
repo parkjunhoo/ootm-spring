@@ -8,6 +8,12 @@
 <%
 ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("myCartList");
 ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("myCartProductList");
+Object ts = request.getAttribute("tempScroll");
+String scroll = "0";
+if(ts != null){
+	scroll = (String)ts;
+	System.out.println((String)ts);
+}
 
 DecimalFormat priceFormat = new DecimalFormat("###,###");
 
@@ -78,7 +84,7 @@ int resultPrice = 0;
 					<div class="basketItemAmount">
 						<div onclick="cartUpdate(<%=cart.getCart_id()%>,<%=cart.getCart_quantity()-1 %>)" 
 						class="amountMinusBtn amountBtn">-</div>
-						<input type="number" name="amount" value=<%=cart.getCart_quantity()%>>
+						<input readonly type="number" name="amount" value=<%=cart.getCart_quantity()%>>
 						<div onclick="cartUpdate(<%=cart.getCart_id() %>, <%=cart.getCart_quantity()+1 %>)" 
 						class="amountPlusBtn amountBtn">+</div>
 					</div>
@@ -126,6 +132,10 @@ int resultPrice = 0;
 	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 	
 	<script type="text/javascript">
+		console.log(<%=scroll%>);
+		window.scrollTo(0,<%=scroll %>);
+
+	
 		function cartDelete(id){
 	 		let form = document.createElement("form");
 		    form.setAttribute("action", "/cart/delete.do");
@@ -137,6 +147,12 @@ int resultPrice = 0;
 		    input.setAttribute("name", "cart_id");
 		    input.setAttribute("value", id);
 		    form.appendChild(input);
+		    
+		    let input2 = document.createElement("input");
+		    input2.setAttribute("type", "hidden");
+		    input2.setAttribute("name", "tempScroll");
+		    input2.setAttribute("value", window.scrollY);
+		    form.appendChild(input2);
 		    
 		    document.body.appendChild(form);
 		    form.submit();
@@ -163,6 +179,12 @@ int resultPrice = 0;
 		    input2.setAttribute("name", "cart_quantity");
 		    input2.setAttribute("value", num);
 		    form.appendChild(input2);
+		    
+		    let input3 = document.createElement("input");
+		    input3.setAttribute("type", "hidden");
+		    input3.setAttribute("name", "tempScroll");
+		    input3.setAttribute("value", window.scrollY);
+		    form.appendChild(input3);
 		    
 		    document.body.appendChild(form);
 		    form.submit(); 

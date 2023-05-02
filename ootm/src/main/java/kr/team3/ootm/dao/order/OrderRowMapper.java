@@ -9,7 +9,12 @@ public class OrderRowMapper implements RowMapper<OrderDTO>{
 
 	@Override
 	public OrderDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		OrderDTO order = new OrderDTO(
+				rs.getInt(1),
+				rs.getTimestamp(2)
+				);
 		return null;
 	}
+
 	
 }

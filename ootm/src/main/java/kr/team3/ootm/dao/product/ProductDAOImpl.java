@@ -50,54 +50,99 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public ArrayList<ProductDTO> selectBestProduct(int amount) {
-		//spring jdbc를 연동한다면
-		//dao상위하위서비스상위하위 arrayList 들어간부분 list로 바구고
-		//sql = "select * from product order by product_sale_rate desc limit ?";
-		//return template.query(sql, 
-		//new Object[] {amount}, new ProductRowMapper());
-		//밑에 잇는 new도 비슷한방법으로 order by regdate
-		//아직 프로덕트에 의미잇는ㄷ ㅔ이터들이 없기에 
-		//대충 포문으로 랜덤으로 넣어서 리턴중.,
+	public List<ProductDTO> selectBestProduct(int amount) {
+		String sql = "select * from product order by product_sale_rate desc limit ?";
 		
+		List<ProductDTO> result = template.query(sql, 
+		new Object[] {amount}, new ProductRowMapper());
 		
-		
-		// db연동 없이 일단 리스트 amount개
-		ArrayList<ProductDTO> result = new ArrayList<ProductDTO>();
-		Random r = new Random();
-		
-		for(int i=0; i<amount; i++) {
-			int price = r.nextInt(95001)+5000; // 5000~100000
-			int categoryMax = r.nextInt(8)+1; // 1~8
-			int saleRate = r.nextInt(4000); // 0~4000
-			result.add(new ProductDTO(i,categoryMax,1,i+"번 베스트상품",price,5,"멋진옷입니다.",
-				"http://www.everfree.co.kr/shopimages/manish/0140030005522.jpg?1651031042",
-				"http://www.everfree.co.kr/shopimages/manish/014003000552.jpg?1651030706",
-				"y", new Timestamp(System.currentTimeMillis()),
-				300,saleRate,"#멋진옷#멋잘알"));
-		}
-		//
 		return result;
 	}
 	
 	@Override
-	public ArrayList<ProductDTO> selectNewProduct(int amount) {
-		// db연동 없이 일단 리스트 amount개
-		ArrayList<ProductDTO> result = new ArrayList<ProductDTO>();
-		Random r = new Random();
+	public List<ProductDTO> selectNewProduct(int amount) {
+		String sql = "select * from product order by product_regdate desc limit ?";
 		
-		for(int i=0; i<amount; i++) {
-			int price = r.nextInt(95001)+5000; // 5000~100000
-			int categoryMax = r.nextInt(8)+1; // 1~8
-			int saleRate = r.nextInt(4000); // 0~4000
-			result.add(new ProductDTO(i,categoryMax,1,i+"번 신상품",price,5,"멋진옷입니다.",
-				"http://www.everfree.co.kr/shopimages/manish/0140030005522.jpg?1651031042",
-				"http://www.everfree.co.kr/shopimages/manish/014003000552.jpg?1651030706",
-				"y", new Timestamp(System.currentTimeMillis()),
-				300,saleRate,"#멋진옷#멋잘알"));
-		}
-		//
+		List<ProductDTO> result = template.query(sql, 
+		new Object[] {amount}, new ProductRowMapper());
+		
 		return result;
 	}
+
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByNew(int product_category_id) {
+		String sql = "select * from product where product_category_id = ? order by product_regdate desc";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_category_id} , new ProductRowMapper());
+		
+		return result;
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByNew(int product_sub_category_id) {
+		String sql = "select * from product where product_sub_category_id = ? order by product_regdate desc";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_sub_category_id} , new ProductRowMapper());
+		
+		return result;
+	}
+	
+	
+	
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByBestLimit(int product_category_id , int min, int max) {
+		String sql = "select * from product where product_category_id = ? order by product_regdate desc limit ?, ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_category_id , min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByBestLimit(int product_sub_category_id, int min , int max) {
+		String sql = "select * from product where product_sub_category_id = ? order by product_regdate desc limit ? , ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_sub_category_id, min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByPriceLimit(int product_category_id, int min, int max) {
+		String sql = "select * from product where product_category_id = ? order by product_price limit ?, ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_category_id , min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByPriceDescLimit(int product_sub_category_id, int min, int max) {
+		String sql = "select * from product where product_sub_category_id = ? order by product_price desc limit ? , ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_sub_category_id, min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+
+	
+	///////페이지네이션을 쓸때 사용해야할것같습니다
+	//												 min  max
+	//ex:) 해당 카테고리 상품의 갯수를 받아온뒤 1페이지에 limit 0 , 10 , 2페이지에 10, 20 ...
+	@Override
+	public int countByCategory(int product_category_id) {
+		String sql = "select count(*) from product where product_category_id = ?";
+		int count = template.queryForObject(sql,Integer.class);
+		return count;
+	}
+	
+	///////페이지네이션을 쓸때 사용해야할것같습니다
+	@Override
+	public int countBySubCategory(int product_sub_category_id) {
+		String sql = "select count(*) from product where product_sub_category_id = ?";
+		int count = template.queryForObject(sql,Integer.class);
+		return count;
+	}
+
+
 	
 }

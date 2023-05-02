@@ -1,5 +1,7 @@
 package kr.team3.ootm.service.review;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public ReviewDTO read(int product_id) {
-		
+	public List<ReviewDTO> read(int product_id) {
 		return dao.read(product_id);
 	}
 

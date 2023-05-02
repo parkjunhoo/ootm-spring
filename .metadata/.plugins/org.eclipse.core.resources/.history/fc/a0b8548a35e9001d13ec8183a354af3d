@@ -1,0 +1,49 @@
+package kr.team3.ootm.service.product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.team3.ootm.dao.product.ProductDAO;
+import kr.team3.ootm.dao.product.ProductDTO;
+
+
+@Service
+public class ProductServiceImpl implements ProductService{
+	@Autowired
+	private ProductDAO dao;
+	
+	
+	@Override
+	public int insertProduct(ProductDTO product) {
+		return dao.insert(product);
+	}
+
+	@Override
+	public ProductDTO readProduct(int id) {
+		return dao.read(id);
+	}
+
+	@Override
+	public int deleteProduct(int id) {
+		return dao.delete(id);
+	}
+
+	@Override
+	public List<ProductDTO> selectAllProduct() {
+		return dao.selectAllProduct();
+	}
+
+	@Override
+	public ArrayList<ProductDTO> selectBestProduct(int amount) {
+		return dao.selectBestProduct(amount);
+	}
+	
+	@Override
+	public ArrayList<ProductDTO> selectNewProduct(int amount) {
+		return dao.selectNewProduct(amount);
+	}
+
+}

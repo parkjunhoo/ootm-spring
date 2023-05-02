@@ -1,57 +1,35 @@
 package kr.team3.ootm.dao.order;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 @Repository
-public class OrderDAOImpl implements OrderDAO {
+public class OrderDAOImpl implements OrderDAO{
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate template;
 
-    private static final String INSERT_ORDER = "INSERT INTO ootm_order (null, order_date) VALUES (?, ?)";
-    private static final String SELECT_ORDER = "SELECT * FROM ootm_order WHERE order_number = ?";
-    private static final String SELECT_ALL_ORDERS = "SELECT * FROM ootm_order";
-    private static final String UPDATE_ORDER = "UPDATE ootm_order SET order_date = ? WHERE order_number = ?";
-    private static final String DELETE_ORDER = "DELETE FROM ootm_order WHERE order_number = ?";
-
-    @Override
-    public void insertOrder(OrderDTO order) {
-        jdbcTemplate.update(INSERT_ORDER, order.getOrder_date());
-    }
+    private static final String INSERT_ORDER = "INSERT INTO ootm_order VALUES (null, ?)"; //insert 
+    private static final String SELECT_ORDER = "SELECT * FROM ootm_order WHERE order_number = ?"; //read 
+    private static final String SELECT_ALL_ORDERS = "SELECT * FROM ootm_order"; // select ALL
+    private static final String UPDATE_ORDER = "UPDATE ootm_order SET order_date = ? WHERE order_number = ?"; 
+    private static final String DELETE_ORDER = "DELETE FROM ootm_order WHERE order_number = ?"; // delete
 
     @Override
-    public OrderDTO getOrder(int orderNumber) {
-        return jdbcTemplate.queryForObject(SELECT_ORDER, new Object[]{orderNumber}, new OrderRowMapper());
+    public void insert(OrderDTO order) {
+        template.update(INSERT_ORDER, order.getOrder_date(),
+        		order.getOrder_date());
     }
 
-    @Override
-    public List<OrderDTO> getAllOrders() {
-        return jdbcTemplate.query(SELECT_ALL_ORDERS, new OrderRowMapper());
-    }
-
-    @Override
-    public void updateOrder(OrderDTO order) {
-        //jdbcTemplate.update(UPDATE_ORDER, order.getOrderDate(), order.getOrderNumber());
-    }
-
-    @Override
-    public void deleteOrder(int orderNumber) {
-        jdbcTemplate.update(DELETE_ORDER, orderNumber);
-    }
-
-    private static final class OrderRowMapper implements RowMapper<OrderDTO> {
-        public OrderDTO mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-            OrderDTO order = new OrderDTO();
-            order.setOrderNumber(resultSet.getInt("order_number"));
-            //order.setGuestOrderId(resultSet.getInt("guest_order_id"));
-            //order.setOrderDate(resultSet.getDate("order_date"));
-            return order;
-        }
-    }
+	@Override
+	public OrderDTO read(int orderNumber) {
+		
+		OrderDTO order = template.queryForObject(SELECT_ORDER,
+				new Object[] {orderNumber},new OrderRowMapper());
+		
+		return order;
+	}
 }
 

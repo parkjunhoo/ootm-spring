@@ -1,5 +1,7 @@
 package kr.team3.ootm.dao.review;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -20,9 +22,9 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 
 	@Override
-	public ReviewDTO read(int product_id) {
-		return template.queryForObject("select * from review where product_id =?",
-						new Object[] {product_id}, new ReviewRowMapper());
+	public List<ReviewDTO> read(int product_id) {
+		return template.query("select * from review where product_id =?",new Object[] {product_id}, new ReviewRowMapper());
 	}
+
 	
 }

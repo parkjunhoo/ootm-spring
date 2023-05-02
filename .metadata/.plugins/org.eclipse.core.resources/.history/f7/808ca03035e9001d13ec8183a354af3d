@@ -1,0 +1,14 @@
+package kr.team3.ootm.dao.product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public interface ProductDAO {
+	public int insert(ProductDTO product);
+	public ProductDTO read(int product_id);
+	public int delete(int product_id);
+	
+	public List<ProductDTO> selectAllProduct();
+	public ArrayList<ProductDTO> selectBestProduct(int amount);
+	public ArrayList<ProductDTO> selectNewProduct(int amount);
+}

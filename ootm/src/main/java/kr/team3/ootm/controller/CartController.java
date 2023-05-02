@@ -1,6 +1,11 @@
 package kr.team3.ootm.controller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,10 +41,17 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/cart/update.do" , method = RequestMethod.POST)
-	public ModelAndView cartUpdate(@ModelAttribute CartDTO cart ,HttpServletRequest req) {
+	public void cartUpdate(@ModelAttribute CartDTO cart ,HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException {
 		service.update(cart);
-		ModelAndView mav = new ModelAndView("redirect:/basket");
-		return mav;
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/basket");
+		
+		Object ts = req.getParameter("tempScroll");
+		if(ts!= null) {
+			req.setAttribute("tempScroll" , ts);
+		}
+		
+		rd.forward(req, res);
 	}
 
 }

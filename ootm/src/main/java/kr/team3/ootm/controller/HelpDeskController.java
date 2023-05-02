@@ -1,5 +1,6 @@
 package kr.team3.ootm.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.team3.ootm.dao.inquiry_post.InquiryPostDTO;
 import kr.team3.ootm.dao.member.MemberDTO;
 import kr.team3.ootm.service.inquiry_post.InquiryPostService;
 import util.LoginManager;
@@ -16,6 +18,13 @@ public class HelpDeskController {
 
 	@Autowired
 	InquiryPostService InquiryService;
+	
+	@RequestMapping(value = "/helpdesk")
+	public ModelAndView helpdesk() {
+		ModelAndView mav = new ModelAndView("helpdesk/helpdesk");
+		mav.addObject("desk", "qna");
+		return mav;
+	}
 
 	@RequestMapping(value = "/helpdesk/qna")
 	public ModelAndView qna() {
@@ -64,14 +73,34 @@ public class HelpDeskController {
 		return mav;
 	}
 	@RequestMapping(value = "/helpdesk/read")
-	public ModelAndView read(HttpSession session) {
-		MemberDTO member = LoginManager.getLoginUserDTO(session);
+	public ModelAndView read(HttpServletRequest req ,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		String id = req.getParameter("id");
+		
+		
+		MemberDTO member = LoginManager.getLoginUserDTO(session);
 		if(member == null) {
-			
+			LoginManager.setSendAfterLogin(session, "/helpdesk/read?id="+id);
+			mav.setViewName("/login");
+			return mav;
 		}
 		
-		mav.addObject("desk", "read");
+		int postId = Integer.parseInt(id);
+		
+		InquiryPostDTO post = InquiryService.read(postId);
+		
+		if(post.getMember_id().equals(member.getMember_id())) {
+			mav.addObject("post",post);
+			mav.addObject("pass",true);
+			mav.addObject("desk", "read");
+			mav.setViewName("helpdesk/helpdesk");
+		}else {
+			mav.addObject("pass",false);
+			mav.addObject("desk", "read");
+			mav.setViewName("helpdesk/helpdesk");
+		}
+		
 		return mav;
 	}
 

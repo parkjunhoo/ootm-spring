@@ -40,7 +40,7 @@
 			<%for(InquiryPostDTO dto :postList){ %>
 			<div class="helpTableBody">
 				<span class="boardNo"><%=dto.getInquiry_post_id() %></span>
-				<span class="title"><%=dto.getInquiry_post_title() %></span>
+				<a href="/helpdesk/read?id=<%=dto.getInquiry_post_id()%>" class="title"><%=dto.getInquiry_post_title() %></a>
 				<span class="regdate"><%=dto.getMember_id()%></span>
 			</div>
 			<%} %>

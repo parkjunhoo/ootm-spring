@@ -16,6 +16,7 @@ import kr.team3.ootm.dao.member.MemberDTO;
 import kr.team3.ootm.dao.product.ProductDTO;
 import kr.team3.ootm.service.cart.CartService;
 import kr.team3.ootm.service.product.ProductService;
+import util.LoginManager;
 
 @Controller
 public class BasketController {
@@ -30,13 +31,12 @@ public class BasketController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = req.getSession();
 		
+		MemberDTO loginUser = LoginManager.getLoginUserDTO(session);
 		
-		
-		if(session.getAttribute("loginUser") == null) {
+		if(loginUser == null) {
 			mav.setViewName("/login");
+			LoginManager.setSendAfterLogin(session, "/basket");
 		}else {
-			MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser");
-			
 			List<CartDTO> cartList = cartService.selectByMemberId(loginUser.getMember_id());
 			List<ProductDTO> productList = new ArrayList<ProductDTO>();
 			

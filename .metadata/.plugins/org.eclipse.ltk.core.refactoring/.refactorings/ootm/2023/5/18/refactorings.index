@@ -24,3 +24,6 @@
 1682915505039	Rename type 'ProductInquiryPostService'
 1682915510710	Rename type 'ProductInquiryPostServiceImpl'
 1682920259831	Copy file
+1682987234647	Rename type 'Order'
+1682989084325	Delete element
+1682992902670	Rename type 'LoginUtil'

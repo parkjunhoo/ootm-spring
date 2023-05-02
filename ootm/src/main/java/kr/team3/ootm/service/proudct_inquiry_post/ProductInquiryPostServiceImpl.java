@@ -31,9 +31,8 @@ public class ProductInquiryPostServiceImpl implements ProductInquiryPostService 
 
 
 	@Override
-	public List<ProductInquiryPostDTO> selectAllInquiryPostByAuthor(String product_inquiry_author) {
-		System.out.println(dao.selectAllInquiryPostByAuthor(product_inquiry_author));
-		return dao.selectAllInquiryPostByAuthor(product_inquiry_author);
+	public List<ProductInquiryPostDTO> selectAllInquiryPostByMemberId(String member_id) {
+		return dao.selectAllInquiryPostByMemberId(member_id);
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.team3.ootm.dao.member.MemberDTO;
 import kr.team3.ootm.service.member.MemberService;
+import util.LoginManager;
 
 @Controller
 public class LoginController {
@@ -35,11 +36,10 @@ public class LoginController {
 		if (loginUser != null) { // 로그인 성공
 			session.setAttribute("loginUser", loginUser);
 			
-			String sendMe = (String)session.getAttribute("sendMe");
-			
-			if(sendMe != null) {
-				mav.setViewName("redirect:"+(String)sendMe);
-				session.removeAttribute("sendMe");
+			String sendAfterLogin = LoginManager.getSendAfterLogin(session);
+			if(sendAfterLogin != null) {
+				mav.setViewName(sendAfterLogin);
+				session.removeAttribute("sendAfterLogin");
 			}else {
 				mav.setViewName("redirect:/mypage");
 			}

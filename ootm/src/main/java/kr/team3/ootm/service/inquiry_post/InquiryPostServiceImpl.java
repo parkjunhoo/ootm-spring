@@ -30,8 +30,8 @@ public class InquiryPostServiceImpl implements InquiryPostService {
 	}
 
 	@Override
-	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author) {
-		return dao.selectAllInquiryPostByAuthor(inquiry_author);
+	public List<InquiryPostDTO> selectAllInquiryPostByMemberId(String member_id) {
+		return dao.selectAllInquiryPostByMemberId(member_id);
 	}
 
 

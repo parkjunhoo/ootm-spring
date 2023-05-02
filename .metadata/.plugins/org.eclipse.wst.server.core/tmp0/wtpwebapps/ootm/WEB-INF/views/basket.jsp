@@ -127,11 +127,6 @@ int resultPrice = 0;
 	
 	<script type="text/javascript">
 		function cartDelete(id){
-			
-			let req = new XMLHttpRequest();
-			
-			req.open("POST" , "/cart/delete.do", false);
-				
 	 		let form = document.createElement("form");
 		    form.setAttribute("action", "/cart/delete.do");
 			form.setAttribute("method", "post");

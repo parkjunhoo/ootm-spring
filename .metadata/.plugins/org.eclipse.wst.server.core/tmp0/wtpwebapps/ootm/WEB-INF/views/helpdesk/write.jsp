@@ -1,5 +1,10 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+if(member==null) response.sendRedirect("/helpdesk/write");
+%>
 <div class="helpdeskContentDiv">
 
 	<div class="deskTitle">
@@ -19,7 +24,7 @@
 			<p class="writeFormLabel">글 비밀번호</p>
 			<input class="InquirytextInput" type="text" name="inquiry_post_pass"/>
 		</div> -->
-		
+		<input type="hidden" name="member_id"  value="<%=member.getMember_id() %>"/>
 		<div class="writeFormRow">
 			<p class="writeFormLabel">제목</p>
 			<select form="inquiryWriteForm" id="inquiry_post_title" class="InquirytextInput" name="inquiry_post_title">

@@ -41,7 +41,7 @@
 			<div class="helpTableBody">
 				<span class="boardNo"><%=dto.getInquiry_post_id() %></span>
 				<span class="title"><%=dto.getInquiry_post_title() %></span>
-				<span class="regdate"><%=dto.getInquiry_post_author()%></span>
+				<span class="regdate"><%=dto.getMember_id()%></span>
 			</div>
 			<%} %>
 	</div>

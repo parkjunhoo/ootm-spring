@@ -10,12 +10,11 @@ public class InquiryPostRowMapper implements RowMapper<InquiryPostDTO>{
 	@Override
 	public InquiryPostDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		InquiryPostDTO inquiryPost = new InquiryPostDTO(
-				rs.getInt(1),
-				rs.getString(2),
-				rs.getString(3),
-				rs.getString(4),
-				rs.getString(5),
-				rs.getTimestamp(6)
+				rs.getInt(1), //pk 
+				rs.getString(2), // member_id
+				rs.getString(3), // title
+				rs.getString(4), // content
+				rs.getTimestamp(5) // regdate
 				);
 		return inquiryPost;
 	}

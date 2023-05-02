@@ -4,11 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.team3.ootm.dao.member.MemberDTO;
 import kr.team3.ootm.service.inquiry_post.InquiryPostService;
+import util.LoginManager;
 
 @Controller
 public class HelpDeskController {
@@ -50,9 +51,11 @@ public class HelpDeskController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		if(session.getAttribute("loginUser") == null) {
+		MemberDTO loginUser = LoginManager.getLoginUserDTO(session);
+		
+		if(loginUser == null) {
 			mav.setViewName("/login");
-			session.setAttribute("sendMe", "/helpdesk/write");
+			LoginManager.setSendAfterLogin(session, "/helpdesk/write");
 		}else {
 			mav.setViewName("helpdesk/helpdesk");
 		}
@@ -61,8 +64,13 @@ public class HelpDeskController {
 		return mav;
 	}
 	@RequestMapping(value = "/helpdesk/read")
-	public ModelAndView read() {
-		ModelAndView mav = new ModelAndView("helpdesk/helpdesk");
+	public ModelAndView read(HttpSession session) {
+		MemberDTO member = LoginManager.getLoginUserDTO(session);
+		ModelAndView mav = new ModelAndView();
+		if(member == null) {
+			
+		}
+		
 		mav.addObject("desk", "read");
 		return mav;
 	}

@@ -8,6 +8,6 @@ public interface InquiryPostService {
 	public int insert(InquiryPostDTO inquiryPost);
 	public InquiryPostDTO read(int inquiry_post_id);
 	public List<InquiryPostDTO> selectAllInquiryPost();
-	public List<InquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author);
+	public List<InquiryPostDTO> selectAllInquiryPostByMemberId(String member_id);
 	
 }

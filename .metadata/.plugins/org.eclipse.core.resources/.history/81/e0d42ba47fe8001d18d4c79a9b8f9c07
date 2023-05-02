@@ -1,0 +1,36 @@
+package kr.team3.ootm.dao.order;
+
+
+
+import java.util.Date;
+
+public class Order {
+    private int order_number;
+    private Date order_date;
+
+    // Getters and Setters
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public Integer getGuestOrderId() {
+        return guestOrderId;
+    }
+
+    public void setGuestOrderId(Integer guestOrderId) {
+        this.guestOrderId = guestOrderId;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+}
+

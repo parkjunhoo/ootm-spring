@@ -1,0 +1,39 @@
+package util;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.team3.ootm.dao.member.MemberDTO;
+import kr.team3.ootm.service.member.MemberService;
+
+public class LoginUtil {
+	@Autowired
+	MemberService service;
+	
+	public static MemberDTO getLoginUserDTO(HttpSession session) {
+		MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+		if(member != null) {
+			session.removeAttribute("sendAfterLogin");
+		}
+		return member;
+	}
+	
+	public static boolean isLoggedIn(HttpSession session) {
+		return session.getAttribute("loginUser")
+	}
+	
+	public static boolean isLoggedInDBCheck(HttpSession session) {
+		
+	}
+	
+	//default가 rediret
+	public static void setSendAfterLogin(HttpSession session, String path) {
+		session.setAttribute("sendAfterLogin", ("redirect:"+path));
+	}
+	
+	public static String getSendAfterLogin(HttpSession session) {
+		return (String)session.getAttribute("sendAfterLogin");
+	}
+}

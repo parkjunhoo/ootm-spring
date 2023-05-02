@@ -1,0 +1,18 @@
+package kr.team3.ootm.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class TestTestController {
+	
+	@RequestMapping(value = "/signup/1")
+	public ModelAndView testt() {
+		ModelAndView mav = new ModelAndView("");
+		return mav;
+	}
+	@RequestMapping(value = "/signup/2")
+	public String ModelAndView() {
+		return "signup/signup_term";
+	}
+}

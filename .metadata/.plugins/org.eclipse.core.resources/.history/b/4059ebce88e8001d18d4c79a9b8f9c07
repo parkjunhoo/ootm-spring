@@ -1,0 +1,7 @@
+package kr.team3.ootm.dao.order;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class OrderRowMapper implements RowMapper<OrderDTO>{
+	
+}

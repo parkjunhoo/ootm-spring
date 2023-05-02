@@ -17,12 +17,11 @@ public class ProductInquiryPostDAOImpl implements ProductInquiryPostDAO {
 	@Override
 	public int insert(ProductInquiryPostDTO inquiryPost) {
 		
-		return template.update("insert into inquiry_post values(null,?,?,?,?,?,now())",
+		return template.update("insert into inquiry_post values(null,?,?,?,?,now())",
 				inquiryPost.getProduct_id(),
+				inquiryPost.getMember_id(),
 				inquiryPost.getInquiry_post_title(),
-				inquiryPost.getInquiry_post_content(),
-				inquiryPost.getInquiry_post_author(),
-				inquiryPost.getInquiry_post_pass()
+				inquiryPost.getInquiry_post_content()
 				);
 	}
 
@@ -45,9 +44,9 @@ public class ProductInquiryPostDAOImpl implements ProductInquiryPostDAO {
 	
 
 	@Override
-	public List<ProductInquiryPostDTO> selectAllInquiryPostByAuthor(String inquiry_author) {
+	public List<ProductInquiryPostDTO> selectAllInquiryPostByMemberId(String member_id) {
 		return template.query("select * from inquiry_post where inquiry_author =?",
-				new Object[] {inquiry_author} ,  new ProductInquiryPostRowMapper());
+				new Object[] {member_id} ,  new ProductInquiryPostRowMapper());
 	}
 
 }

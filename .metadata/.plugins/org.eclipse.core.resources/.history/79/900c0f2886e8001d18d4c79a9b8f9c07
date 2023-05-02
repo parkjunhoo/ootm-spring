@@ -1,0 +1,9 @@
+package util;
+
+import javax.servlet.http.HttpSession;
+
+public class LoginUtil {
+	public static UserDTO getLoginUser(HttpSession session) {
+		
+	}
+}

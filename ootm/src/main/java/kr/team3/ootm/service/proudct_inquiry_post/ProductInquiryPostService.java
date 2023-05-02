@@ -9,6 +9,6 @@ public interface ProductInquiryPostService {
 	public ProductInquiryPostDTO read(int product_inquiry_post_id);
 	public List<ProductInquiryPostDTO> selectAllInquiryPost();
 	public List<ProductInquiryPostDTO> selectAllInquiryPostByProductId(int product_id);
-	public List<ProductInquiryPostDTO> selectAllInquiryPostByAuthor(String product_inquiry_author);
+	public List<ProductInquiryPostDTO> selectAllInquiryPostByMemberId(String member_id);
 	
 }

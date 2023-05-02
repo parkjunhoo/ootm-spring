@@ -1,0 +1,24 @@
+package kr.team3.ootm.service.review;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.team3.ootm.dao.review.ReviewDAO;
+import kr.team3.ootm.dao.review.ReviewDTO;
+@Service
+public class ReviewServiceImpl implements ReviewService{
+	@Autowired
+	ReviewDAO dao;
+	@Override
+	public int insert(ReviewDTO review) {
+		
+		return dao.insert(review);
+	}
+
+	@Override
+	public ReviewDTO read(int product_id) {
+		
+		return dao.read(product_id);
+	}
+
+}

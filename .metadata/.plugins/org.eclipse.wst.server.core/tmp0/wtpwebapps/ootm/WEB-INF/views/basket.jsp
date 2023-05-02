@@ -141,6 +141,7 @@ int resultPrice = 0;
 		    document.body.appendChild(form);
 		    form.submit();
 		}
+		
 		function cartUpdate(id,num){
 			if(num<=0){
 				cartDelete(id);

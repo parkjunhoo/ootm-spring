@@ -51,11 +51,20 @@
 	padding: 0px 0px 30px 20px; /* 좌우상하 여백 */
 }
 
-p {
+.terms p {
 	opacity: 0.6;
 	color: black;
 	font-size: 10pt;
 	line-height: 180%; /* 줄간격 */
+	margin-top: 20px;
+}
+
+.privacy p {
+	opacity: 0.6;
+	color: black;
+	font-size: 10pt;
+	line-height: 180%; /* 줄간격 */
+	margin-top: 20px;
 }
 
 #agree_content {

@@ -1,0 +1,54 @@
+package kr.team3.ootm.dao.inquiry_post;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public class InquiryPostDAOImpl implements InquiryPostDAO {
+
+	@Autowired
+	JdbcTemplate template;
+	
+	
+	@Override
+	public int insert(InquiryPostDTO inquiryPost) {
+		
+		return template.update("insert into inquiry_post values(null,?,?,?,now())",
+				inquiryPost.getMember_id(),
+				inquiryPost.getInquiry_post_title(),
+				inquiryPost.getInquiry_post_content()
+				);
+	}
+	
+	@Override
+	//update cart set cart_quantity=? where cart_id=?
+	public int update(InquiryPostDTO inquiryPost) {
+		String sql = "update inquiry_post set  where inquiry_post_id= ? ";
+		return 1;
+	}
+
+	@Override
+	public InquiryPostDTO read(int inquiry_post_id) {
+		return template.queryForObject("select * from inquiry_post where inquiry_post_id =?",
+				new Object[] {inquiry_post_id} , new InquiryPostRowMapper());
+	}
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPost() {
+		return template.query("select * from inquiry_post order by inquiry_post_regdate desc", new InquiryPostRowMapper());
+	}
+
+
+	@Override
+	public List<InquiryPostDTO> selectAllInquiryPostByMemberId(String member_id) {
+		return template.query("select * from inquiry_post where inquiry_author =?",
+				new Object[] {member_id} ,  new InquiryPostRowMapper());
+	}
+
+	
+
+}

@@ -54,4 +54,8 @@ public class LoginManager {
 		return (String)session.getAttribute("sendAfterLogin");
 	}
 	
+	public static void removeLoginUser(HttpSession session) {
+		session.removeAttribute("loginUser");
+	}
+	
 }

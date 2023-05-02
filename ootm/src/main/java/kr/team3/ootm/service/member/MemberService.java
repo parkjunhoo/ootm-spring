@@ -5,9 +5,8 @@ import java.util.List;
 import kr.team3.ootm.dao.member.MemberDTO;
 
 public interface MemberService {
-	public int insert(MemberDTO member);
-	public MemberDTO read(int member_id);
-	public List<MemberDTO> selectAllMember();
+	public int register(MemberDTO member); //
 	
 	public MemberDTO login(MemberDTO member);
+	public int withdraw(String member_id);
 }

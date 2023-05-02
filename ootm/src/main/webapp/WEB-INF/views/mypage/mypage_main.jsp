@@ -168,6 +168,13 @@ h4 {
 </style>
 </head>
 <body>
+
+	<!-- 세션에서 아이디 받아오기 -->
+	<% 
+	MemberDTO member=(MemberDTO)session.getAttribute("loginUser");
+	String member_id=member.getMember_id();
+	%>
+	
 	<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
@@ -202,9 +209,9 @@ h4 {
 			<div class="page-content">
 				<!-- 첫번째 박스 -->
 				<div class="section-title">
-					<h4>???님 안녕하세요!</h4>
+					<h4><%=member.getMember_name() %>님 안녕하세요!</h4>
 					<div class="account-menu">
-						<a href="">회원탈퇴</a> <a href="">로그아웃</a>
+						<a href="/delete/member?member_id=<%=member_id %>">회원탈퇴</a> <a href="">로그아웃</a>
 					</div>
 				</div>
 				<div class="section">

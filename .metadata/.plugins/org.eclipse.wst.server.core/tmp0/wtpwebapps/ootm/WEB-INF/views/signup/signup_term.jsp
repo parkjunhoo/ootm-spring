@@ -17,6 +17,28 @@
 <link rel="stylesheet" type="text/css" href="/css/view/signup_style.css" />
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+$( document ).ready( function() {
+    $("input[type='checkbox']").change(function(){
+    var member_opt
+    if($("#email").prop("checked") && $("#SMS").prop("checked")){
+        member_opt="y"
+    } else if($("#email").prop("checked")){
+        member_opt="M"
+    } else if($("#SMS").prop("checked")){
+        member_opt="S"
+    } else{
+        member_opt="n"
+    }
+    $("#opt").val(member_opt)
+    })
+})
+
+</script>
 </head>
 <body>
 	<jsp:include page="../../layout/header.jsp">
@@ -114,7 +136,9 @@
 
 		</div>
 	</form>
-	<form action="/signup/insert">
+	
+	<form action="/signup/insert" method="POST">
+		<input type="hidden" value="" name="member_opt" id="opt">
 		<button class="my-button">CONTINUE</button>
 	</form>
 

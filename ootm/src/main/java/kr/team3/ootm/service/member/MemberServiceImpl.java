@@ -13,27 +13,20 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	MemberDAO dao;
+
+	@Override
+	public int register(MemberDTO member) {
+		return dao.register(member);
+	}
 	
-	@Override
-	public int insert(MemberDTO member) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public MemberDTO read(int member_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<MemberDTO> selectAllMember() {
-		return null;
-	}
-
 	@Override
 	public MemberDTO login(MemberDTO member) {
 		return dao.login(member);
 	}
 	
+	@Override
+	public int withdraw(String member_id) {
+		
+		return dao.withdraw(member_id);
+	}
 }

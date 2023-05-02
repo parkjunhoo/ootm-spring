@@ -1,10 +1,5 @@
 package kr.team3.ootm.dao.member;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,31 +16,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	// id , name , email , password , birth , zipcode , address , telnum , opt
 	public int register(MemberDTO member) {
-
-		String sql = "insert into ootm_member(member_id, member_name, member_email, member_password, member_birth, "
-				+ "member_zipcode , member_address , member_telnum, member_opt) " + "values(?,?,?,?,?,?,?,?,?)";
-
-		int result = template.update(sql,
-				member.getMember_id(),
-				member.getMember_name(),
-				member.getMember_email(),
-				member.getMember_password(),
-				member.getMember_birth(),
-				member.getMember_zipcode(),
-				member.getMember_address(),
-				member.getMember_telnum(),
-				member.getMember_opt()
-				);
-
+		System.out.println("<확인3>member값: "+member.getMember_address());
+		String sql = "insert into ootm_member (member_id, member_name, member_email, member_password, member_birth,member_zipcode , member_address , member_telnum, member_opt) values(?,?,?,?,?,?,?,?,?)";
+		//(member_id, member_name, member_email, member_password, member_birth, "+ "member_zipcode , member_address , member_telnum, member_opt)
+		int result=template.update(sql,member.getMember_id(),member.getMember_name(),member.getMember_email(),member.getMember_password(),member.getMember_birth(),member.getMember_zipcode(),member.getMember_address(),member.getMember_telnum(),member.getMember_opt());
 		return result;
-	}
 
-	@Override
-	public MemberDTO read(String member_id) {
-		String sql = "select * from ootm_member where member_id = ?";
-		
-		return template.queryForObject(sql,
-				new Object[] {member_id} , new MemberRowMapper());
 	}
 
 
@@ -61,5 +37,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return loginMember;
 	}
-
+	public int withdraw(String member_id) {
+		String sql="update ootm_member set member_status = 1 where member_id= ? ";
+		int result = template.update(sql,member_id);
+		return result;
+	}
 }

@@ -268,32 +268,31 @@ input[type="radio"] {
 		</div>
 
 		<div class="signup form-group">
-			<form name="form1" method="post" id="join_form"
-				action="/shop/idinfo.html">
+			<form name="form1" method="POST" id="join_form"
+				action="/register.do">
 				<div class="section-title">
 					<h4>회원 정보</h4>
 				</div>
 				<div class="form-element">
-					<label class="form-label">이름</label> <input type="text"
-						name="hname" id="hname" value="" class="MS_input_txt form-textbox"
+					<label class="form-label">*이름</label> <input type="text"
+						name="member_name" id="hname" value="" class="MS_input_txt form-textbox"
 						size="15" maxlength="30" />
 				</div>
 				<div class="form-element" id="id-element">
-					<label class="form-label">아이디</label> <input type="text" name="id"
+					<label class="form-label">*아이디</label> <input type="text" name="member_id"
 						id="id" value="" class="form-textbox" size="10" maxlength="12">
 					<a href="javascript:;" class="textbox-button"
 						onclick="checkDuplicateId();">중복확인</a>
 				</div>
 				<div class="form-element email" id="email-element">
-					<label class="form-label">이메일주소</label> <input type="hidden"
-						name="oldemail" value=""> <input type="text" name="email"
-						id="email" class="MS_input_txt MS_input_txt06" size="20"
+					<label class="form-label">*이메일주소</label> <input type="text" name="member_email"
+						id="member_email" class="MS_input_txt MS_input_txt06" size="20"
 						maxlength="35"> <a href="javascript:;"
 						class="textbox-button" onclick="checkDuplicateEmail();">중복확인</a>
 				</div>
 				<div class="form-element">
-					<label class="form-label">비밀번호</label> <input type="password"
-						name="password1" id="password1" class="MS_input_txt form-textbox"
+					<label class="form-label">*비밀번호</label> <input type="password"
+						name="member_password" id="password1" class="MS_input_txt form-textbox"
 						value="" size="15" maxlength="20">
 				</div>
 				<div class="form-element" id="pass-confirm">
@@ -302,11 +301,9 @@ input[type="radio"] {
 						value="" size="15" maxlength="20" onchange="confirmPassword();">
 				</div>
 				<div class="form-element date-of-birth">
-					<label class="form-label">생일/성별</label> <input type="tel"
-						name="birthyear" class="MS_input_txt" size="6" maxlength="4">년
-					<input type="tel" name="birthmonth" class="MS_input_txt" size="4"
-						maxlength="2">월 <input type="tel" name="birthdate"
-						class="MS_input_txt" size="4" maxlength="2">일&nbsp;&nbsp;<label><input
+					<label class="form-label">*생년월일(yyyy/mm/dd)</label>  <input type="tel"
+						name="member_birth" class="MS_input_txt form-textbox" size="15" maxlength="10">
+					&nbsp;&nbsp;<label><input
 						type="radio" name="sex" value="-" class="input-radio MS_radio">
 						선택안함</label> &nbsp;<label><input type="radio" name="sex" value="1"
 						checked="checked" class="MS_radio MS_radio">남</label> <label><input
@@ -319,17 +316,17 @@ input[type="radio"] {
 					<h4>기본 배송지</h4>
 				</div>
 				<div class="form-element zipcode">
-					<label class="form-label">주소</label> <input type="text"
-						name="hpost" form="join_form" id="hpost" class="MS_input_txt"
+					<label class="form-label">*주소</label> <input type="text"
+						name="member_zipcode" form="join_form" id="hpost" class="MS_input_txt"
 						value="" size="7" maxlength="15" readonly="readonly"> <a
 						href='javascript:;' class="textbox-button" onclick="goPopup();">우편번호
 						검색</a>
 				</div>
 				<div class="form-element addresses">
-					<input type="text" name="haddress1" form="join_form" id="haddress1"
+					<input type="text" name="member_address" form="join_form" id="haddress1"
 						class="MS_input_txt form-textbox" value="" size="40"
 						maxlength="100" readonly="readonly"> <input type="text"
-						name="haddress2" form="join_form" id="haddress2"
+						name="address2" form="join_form" id="haddress2"
 						class="MS_input_txt form-textbox" placeholder="나머지 주소 입력">
 				</div>
 				<div class="form-element">
@@ -339,8 +336,8 @@ input[type="radio"] {
 						value="">
 				</div>
 				<div class="form-element">
-					<label class="form-label">휴대폰</label> <input type="text"
-						name="etcphone" form="join_form" id="etcphone"
+					<label class="form-label">*휴대폰</label> <input type="text"
+						name="member_telnum" form="join_form" id="etcphone"
 						class="MS_input_tel form-textbox" size="15" maxlength="30">
 				</div>
 
@@ -354,6 +351,11 @@ input[type="radio"] {
 						name="recommand_id" id="recommand_id" class="form-textbox"
 						size="15" maxlength="12"> <a href="#"
 						class="textbox-button">아이디 확인</a>
+				</div>
+				<% String member_opt=(String)request.getAttribute("member_opt"); %>
+				<div class="form-element">
+					 <input type="hidden"
+						name="member_opt" value="<%=member_opt %>"> 
 				</div>
 				<div class="signup-button">
 					<input type="submit" value="가입하기" class="sub_button" />

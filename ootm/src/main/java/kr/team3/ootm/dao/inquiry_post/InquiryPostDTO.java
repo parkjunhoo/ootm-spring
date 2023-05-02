@@ -30,6 +30,13 @@ public class InquiryPostDTO {
 		this.inquiry_post_content = inquiry_post_content;
 		this.inquiry_post_regdate = inquiry_post_regdate;
 	}
+	
+	// update 용
+	public InquiryPostDTO(int inquiry_post_id, String inquiry_post_title, String inquiry_post_content) {
+		this.inquiry_post_id = inquiry_post_id;
+		this.inquiry_post_title = inquiry_post_title;
+		this.inquiry_post_content = inquiry_post_content;
+	}
 
 	public int getInquiry_post_id() {
 		return inquiry_post_id;

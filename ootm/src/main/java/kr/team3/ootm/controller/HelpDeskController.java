@@ -103,5 +103,37 @@ public class HelpDeskController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value = "/helpdesk/edit")
+	public ModelAndView edit(HttpServletRequest req ,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		String id = req.getParameter("id");
+		
+		
+		MemberDTO member = LoginManager.getLoginUserDTO(session);
+		if(member == null) {
+			LoginManager.setSendAfterLogin(session, "/helpdesk/edit?id="+id);
+			mav.setViewName("/login");
+			return mav;
+		}
+		
+		int postId = Integer.parseInt(id);
+		
+		InquiryPostDTO post = InquiryService.read(postId);
+		System.out.println(post.getInquiry_post_content());
+		if(post.getMember_id().equals(member.getMember_id())) {
+			mav.addObject("post",post);
+			mav.addObject("pass",true);
+			mav.addObject("desk", "edit");
+			mav.setViewName("helpdesk/helpdesk");
+		}else {
+			mav.addObject("pass",false);
+			mav.addObject("desk", "edit");
+			mav.setViewName("helpdesk/helpdesk");
+		}
+		
+		return mav;
+	}
 
 }

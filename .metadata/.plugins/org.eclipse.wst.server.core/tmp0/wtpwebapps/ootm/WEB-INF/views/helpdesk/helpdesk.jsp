@@ -57,6 +57,9 @@
 			<% if(desk.equals("read")){%>
 			<jsp:include page="./read.jsp"/>
 			<%}%>
+			<% if(desk.equals("edit")){%>
+			<jsp:include page="./edit.jsp"/>
+			<%}%>
 		</div>
 	</section>
 	

@@ -55,5 +55,4 @@ if(session.getAttribute("loginUser") != null)
         <script type="text/javascript" src="/web-component/hoverbox/hoverbox.js"></script>
     </body>
 
-
 </html>

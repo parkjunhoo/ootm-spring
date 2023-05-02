@@ -45,7 +45,7 @@ public class ProductInquiryPostDAOImpl implements ProductInquiryPostDAO {
 
 	@Override
 	public List<ProductInquiryPostDTO> selectAllInquiryPostByMemberId(String member_id) {
-		return template.query("select * from inquiry_post where inquiry_author =?",
+		return template.query("select * from inquiry_post where member_id =?",
 				new Object[] {member_id} ,  new ProductInquiryPostRowMapper());
 	}
 

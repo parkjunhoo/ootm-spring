@@ -18,6 +18,11 @@ public class InquiryPostServiceImpl implements InquiryPostService {
 	public int insert(InquiryPostDTO inquiryPost) {
 		return dao.insert(inquiryPost);
 	}
+	
+	@Override
+	public int update(InquiryPostDTO inquiryPost) {
+		return dao.update(inquiryPost);
+	}
 
 	@Override
 	public InquiryPostDTO read(int inquiry_post_id) {

@@ -9,21 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-	@RequestMapping(value = "/signup/term")
-	public String signup_term() {
-		return "signup/signup_term";
-	}
-
-	@RequestMapping(value = "/signup/insert")
-	public String signup_insert() {
-		return "signup/signup_insert";
-	}
-
-	@RequestMapping(value = "/signup/addr.popup")
-	public String signup_addr() {
-		return "signup/jusoPopup";
-	}
-
 	///////////////////////////////////////////
 
 	@RequestMapping(value = "/mypage/coupon")
@@ -76,7 +61,7 @@ public class TestController {
 	////////////////////////////////////////////////
 	@RequestMapping(value = "/product-detail")
 	public String product_detail() {
-		return "product_detail";
+		return "product_detail/product_detail";
 	}
 	/////////////////////////////////////////////////
 

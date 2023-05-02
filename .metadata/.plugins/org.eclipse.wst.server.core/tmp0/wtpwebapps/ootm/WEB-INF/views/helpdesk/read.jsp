@@ -26,7 +26,10 @@
 		</div>
 	</div>
 	<%if(pass){ %>
-	<h3><%=post.getInquiry_post_title()%></h3>
+	<div>
+		<h3><%=post.getInquiry_post_title()%></h3>
+		<div onclick="location.href='/helpdesk/edit?id=<%=post.getInquiry_post_id()%>'" class="editBtn">수정하기</div>
+	</div>
 	<h5 style="margin: 30px 0">by <%=post.getMember_id()%> · <%=post.getInquiry_post_regdate()%></h5>
 	
 	<hr style="margin: 30px 0">
@@ -36,3 +39,7 @@
 		<h1>작성자만 게시글을 볼 수 있습니다.</h1>
 	<%} %>
 </div>
+
+<script type="text/javascript">
+	
+</script>

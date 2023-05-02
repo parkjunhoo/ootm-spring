@@ -17,10 +17,10 @@ public enum ProductCategory{
 
     public int getValue() { return value; }
     
-    public static ProductCategory getName(int value) {
+    public static String getName(int value) {
         for (ProductCategory c : ProductCategory.values()) {
             if (c.getValue() == value) {
-                return c;
+                return c.toString();
             }
         }
         return null;

@@ -26,10 +26,10 @@ public enum ProductSubCategory {
 
     public int getValue() { return value; }
     
-    public static ProductSubCategory getName(int value) {
+    public static String getName(int value) {
         for (ProductSubCategory c : ProductSubCategory.values()) {
             if (c.getValue() == value) {
-                return c;
+            	return c.toString().replace("_", " ");
             }
         }
         return null;

@@ -1,0 +1,13 @@
+package util.define;
+
+public enum ProductCategory{
+	OUTER(1),
+	TOP(2);
+	
+	
+    private final int value;
+
+    Rainbow(int value) { this.value = value; }
+
+    public int getValue() { return value; }
+}

@@ -1,0 +1,13 @@
+package util;
+
+public class Define {
+	public static enum ProductCategory{
+		OUTER(1),
+		TOP(2);
+		
+	}
+	
+	public static enum ProductSubCategory{
+		
+	}
+}

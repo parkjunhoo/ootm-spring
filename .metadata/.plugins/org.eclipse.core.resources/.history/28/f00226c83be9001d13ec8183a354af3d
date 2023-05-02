@@ -1,0 +1,18 @@
+package util.define;
+
+//ENUM 사용법
+//ProductCategory.ACCESSORY.getValue()
+enum ProductCategory{
+	
+	OUTER(1),
+	TOP(2),
+	BOTTOM(3),
+	ACCESSORIES(4),
+	SUIT(5);
+
+    private final int value;
+
+    ProductCategory(int value) { this.value = value; }
+
+    public int getValue() { return value; }
+}

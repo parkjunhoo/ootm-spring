@@ -1,0 +1,17 @@
+package util.define;
+
+enum ProductCategory{
+   
+
+	 
+
+    private final int value;
+
+    ProductCategory(int i) {
+    	
+	}
+
+    ProductCategory(int value) { this.value = value; }
+
+    public int getValue() { return value; }
+}

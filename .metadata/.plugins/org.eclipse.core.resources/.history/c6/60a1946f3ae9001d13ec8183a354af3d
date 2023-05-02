@@ -1,0 +1,11 @@
+package util;
+
+public class Define {
+	public static enum ProductCategory{
+		
+	}
+	
+	public static enum ProductSubCategory{
+		
+	}
+}

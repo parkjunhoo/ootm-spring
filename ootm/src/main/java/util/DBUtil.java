@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import util.define.ProductSubCategory;
+
 /*
  * 커넥션관리 자원반납 모든 DB관련 메소드에서 공통으로 처리하는 부분을 구현
  * 

@@ -20,7 +20,7 @@ public enum ProductCategory{
     public static String getName(int value) {
         for (ProductCategory c : ProductCategory.values()) {
             if (c.getValue() == value) {
-                return c.toString();
+                return c.toString().replace("_", " ");
             }
         }
         return null;

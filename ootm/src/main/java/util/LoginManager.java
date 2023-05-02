@@ -3,10 +3,10 @@ package util;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import kr.team3.ootm.dao.member.MemberDTO;
 import kr.team3.ootm.service.member.MemberService;
+import util.define.ProductSubCategory;
 
 public class LoginManager {
 	@Autowired
@@ -22,6 +22,7 @@ public class LoginManager {
 		if(member != null) {
 			session.removeAttribute("sendAfterLogin");
 		}
+		
 		return member;
 	}
 	

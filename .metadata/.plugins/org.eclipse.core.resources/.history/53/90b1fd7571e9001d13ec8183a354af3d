@@ -1,0 +1,45 @@
+let list = document.getElementsByClassName("carouselItem");
+this.addEventListener('scroll',()=>{
+    for(i =0; i<list.length; i++){
+        list[i].style.transform = `translateY(${window.scrollY/2}px)`;
+    }
+});
+
+
+let element = document.getElementById('carouselVideo');
+
+let options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0
+};
+
+function callback(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    	element.style.zIndex ="-1";
+    	console.log("카러셀 on");
+    }else {
+    	element.style.zIndex ="-20";
+    	console.log("카러셀 off");
+    }
+  });
+}
+
+
+let element2 = document.getElementById('videoSection1');
+
+function callback2(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    	element.firstElementChild.style.zIndex ="-1";
+    	console.log("2번째 on");
+    } else {
+    	element.firstElementChild.style.zIndex ="-20";
+    	console.log("2번째 off");
+    }
+  });
+}
+
+let observer = new IntersectionObserver(callback2, options);
+observer.observe(element2);

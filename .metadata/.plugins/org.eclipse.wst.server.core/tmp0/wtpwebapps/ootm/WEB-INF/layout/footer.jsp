@@ -21,10 +21,10 @@
 						</p>
 					</div>
 					<div class="deskLinkDiv">
-						<a href="/helpdesk/qna">개인정보취급방침
+						<!-- <a href="/helpdesk/qna">개인정보취급방침
 							<div class="footerTextUnderline"></div>
 						</a><a href="/helpdesk?desk=qna">약관
-							<div class="footerTextUnderline"></div>
+							<div class="footerTextUnderline"></div> -->
 						</a><a href="/helpdesk/qna">자주묻는질문
 							<div class="footerTextUnderline"></div>
 						</a><a href="/helpdesk/inquiry">문의게시판
@@ -41,15 +41,19 @@
 					</div>
 					<div class="footerMenuDiv">
 						<h5>My Account</h5>
-						<a href="/">마이페이지</a><a href="/">주문내역</a><a href="/">회원등급 및 혜택</a>
+						<a href="/mypage">마이페이지</a>
+						<a href="/mypage/orderlist">주문내역</a>
 					</div>
 					<div class="footerMenuDiv">
 						<h5>Shipping &amp; Returns</h5>
-						<a href="/helpdesk/inquiry">문의게시판</a><a href="/">교환반품안내</a><a href="/">CJ대한통운
+						<a href="/helpdesk/inquiry">문의게시판</a>
+						<a href="/helpdesk/returns">교환반품안내</a>
+						<a href="https://www.cjlogistics.com/ko/tool/parcel/reservation-return">CJ대한통운
 							택배 반품접수</a>
 					</div>
-					<div class="footerIconMenu">
-						<a href="/">facebook</a><a href="/">instagram</a>
+					<div style="display:flex; flex-direction: column; " class="footerIconMenu">
+						<a href="https://ko-kr.facebook.com/">facebook</a>
+						<a href="https://www.instagram.com/">instagram</a>
 					</div>
 				</div>
 			</div>

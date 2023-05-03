@@ -1,0 +1,12 @@
+package kr.team3.ootm.dao.order_details;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class OrderDetailsRowMapper implements RowMapper<OrderDetailsDTO>{
+
+	
+	
+}

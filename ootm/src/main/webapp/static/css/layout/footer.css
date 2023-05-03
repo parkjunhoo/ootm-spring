@@ -139,4 +139,11 @@ footer p{
     margin-inline-end: 0px;
 }
 
-
+footer .companyDescDiv a{
+	text-decoration: none;
+	color: black;
+}
+footer .companyDescDiv a:visited{
+	text-decoration: none;
+	color: black;
+}

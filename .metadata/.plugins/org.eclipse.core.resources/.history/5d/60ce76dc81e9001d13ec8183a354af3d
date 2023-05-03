@@ -1,0 +1,9 @@
+package kr.team3.ootm.dao.order;
+
+import java.util.List;
+
+public interface OrderDAO {
+	public void insert(OrderDTO order); // insert
+    public OrderDTO read(int orderNumber); // read
+	
+}

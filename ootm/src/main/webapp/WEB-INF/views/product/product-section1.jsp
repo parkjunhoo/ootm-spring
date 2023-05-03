@@ -4,6 +4,6 @@
 <%
 String cateName = (String)request.getAttribute("cateName");
 %>
-<section style="position: relative;">
+<section id="titleSection" style="position: relative;">
 		<h1 id="testID" class="pic_text"><%=cateName %></h1>
 </section>

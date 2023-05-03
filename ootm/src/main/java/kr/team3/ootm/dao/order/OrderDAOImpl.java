@@ -18,9 +18,10 @@ public class OrderDAOImpl implements OrderDAO{
     private static final String DELETE_ORDER = "DELETE FROM ootm_order WHERE order_number = ?"; // delete
 
     @Override
-    public void insert(OrderDTO order) {
-        template.update(INSERT_ORDER, order.getOrder_date(),
+    public int insert(OrderDTO order) {
+       int result = template.update(INSERT_ORDER, order.getOrder_date(),
         		order.getOrder_date());
+       return result;
     }
 
 	@Override
@@ -30,6 +31,14 @@ public class OrderDAOImpl implements OrderDAO{
 				new Object[] {orderNumber},new OrderRowMapper());
 		
 		return order;
+	}
+
+	@Override
+	public List<OrderDTO> selectAllByMemberId(String member_id) {
+		String sql = "select * from ootm_order where member_id = ?";
+		List<OrderDTO> result = template.query(sql,
+				new Object[] {member_id} , new OrderRowMapper());
+		return result;
 	}
 }
 

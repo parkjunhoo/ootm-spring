@@ -219,3 +219,14 @@ section {
 	z-index: -10;
 	object-fit:cover;
 }
+
+
+.carouselItem video {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100%;
+	z-index: -2;
+	object-fit:cover;
+}

@@ -93,4 +93,9 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		LoginManager.removeLoginUser(session);
+		return "redirect:/login";
+	}
 }

@@ -6,13 +6,13 @@
 	left: 0;
 	right: 0;
 }
-
+@media (min-width: 768px) {
 .checkout {
 	margin-top: 150px;
 	margin-left: 50px;
 	font-size: 40pt;
 }
-
+}
 /* 진한 선 */
 .line1 {
 	height: 2px;
@@ -113,12 +113,12 @@ h3 {
 	margin-left: 50px;
 	margin-top: 50px;
 }
-
+@media (min-width: 768px) {
 .user_order_info1 {
 	margin-left: 50px;
 	margin-top: 50px;
 }
-
+}
 .user_order_info1 #name {
 	width: 500px;
 	height: 20px;
@@ -288,16 +288,19 @@ h3 {
 	margin-top: 20px;
 }
 
+@media (min-width: 768px) {
 .user_order_info2 {
 	margin-left: 50px;
 	margin-top: 30px;
 }
+}
 
+@media (min-width: 768px) {
 .user_order_info3 {
 	margin-left: 50px;
 	margin-top: 30px;
 }
-
+}
 .user_order_info4 {
 	margin-left: 50px;
 	margin-top: 30px;

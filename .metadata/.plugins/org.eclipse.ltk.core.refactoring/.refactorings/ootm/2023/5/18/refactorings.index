@@ -43,3 +43,6 @@
 1683078353226	Delete element
 1683078496423	Delete element
 1683078507273	Move files
+1683097635295	Rename type 'OrderDAO'
+1683097647348	Rename type 'OrderDTO'
+1683097656813	Rename type 'OrderRowMapper'

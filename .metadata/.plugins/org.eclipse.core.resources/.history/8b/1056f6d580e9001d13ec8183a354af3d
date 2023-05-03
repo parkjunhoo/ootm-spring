@@ -1,0 +1,12 @@
+package kr.team3.ootm.dao.order_details;
+
+public class OrderDTO {
+	private int order_detail_no;
+	private int order_nuber;
+	private int product_id;
+	private String member_id;
+	private int quantity;
+	private int price;
+	private String order_addr;
+	private String result;
+}

@@ -1,0 +1,11 @@
+package kr.team3.ootm.dao.order_details;
+
+import java.util.List;
+
+import kr.team3.ootm.dao.order.OrderDTO;
+
+public interface OrderDetailsDAO {
+	public void insert(OrderDetailsDTO order); // insert
+    public OrderDetailsDTO read(int orderNumber); // read
+    public List<OrderDetailsDTO> selectAllByMemberId(String member_id); // select By memberID
+}

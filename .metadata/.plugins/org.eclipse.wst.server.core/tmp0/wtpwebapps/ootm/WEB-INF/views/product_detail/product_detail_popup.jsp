@@ -1,9 +1,27 @@
+<%@page import="java.util.List"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDAO"%>
 <%@page import="kr.team3.ootm.dao.review.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-ReviewDTO review = (ReviewDTO) request.getAttribute("review");
+/* List<ProductDTO> listAll = (List<ProductDTO>) request.getAttribute("listAll"); */
+ProductDTO product = (ProductDTO) request.getAttribute("product");
+System.out.println(product);
+/* System.out.println(listAll); */
+List<ReviewDTO> review = (List<ReviewDTO>) request.getAttribute("review");
+int size = review.size();	
+
+
+/* List<ProductDTO> productlist = (List<ProductDTO>) request.getAttribute("listall"); */
+
 %>
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
 	aria-labelledby="reviewModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -40,15 +58,21 @@ ReviewDTO review = (ReviewDTO) request.getAttribute("review");
 					<hr>
 					<hr>
 					<!-- <form id="reviewForm"> -->
+					
 					<div class="form-group">
-						<label for="reviewerName">상품</label> <input type="text"
-							class="form-control" id="ProductName" name="product_id"
-							placeholder="상품을 입력하세요">
+						<div class="center">
+							<label for="reviewerName">상품</label> <input type="hidden"  
+								class="form-control" id="ProductId" name="product_id" 
+								value="<%=product.getProduct_id()%>">
+								<input type="text" readonly style="text-align:center" 
+								class="form-control" id="ProductName"
+								value="<%=product.getProduct_name()%>">
+						</div>
 					</div>
 					<div class="form-group">
-							<label for="reviewerHeight">이름</label> <input type="text"
-								class="form-control" id="reviewerName" name="review_author_id"
-								placeholder="이름을 입력하세요">
+						<label for="reviewerHeight">이름</label> <input type="text"
+							class="form-control" id="reviewerName" name="review_author_id"
+							placeholder="이름을 입력하세요">
 					</div>
 					<div class="form-group">
 						<label for="reviewText">리뷰 내용</label>
@@ -65,7 +89,7 @@ ReviewDTO review = (ReviewDTO) request.getAttribute("review");
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
-<!-- 					<button type="button" class="btn btn-primary"
+					<!-- 					<button type="button" class="btn btn-primary"
 						onclick="submitReview()">리뷰 작성하기</button> -->
 					<div class="col-sm-3 col-sm-offset-2">
 						<input type="submit" value="등록하기" class="btn btn-success" />

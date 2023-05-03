@@ -1,13 +1,6 @@
 <%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-if(session.getAttribute("loginUser") != null)
-{
-	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser");
-	System.out.println("비밀번호:"+loginUser.getMember_password());
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,7 +204,7 @@ h4 {
 				<div class="section-title">
 					<h4><%=member.getMember_name() %>님 안녕하세요!</h4>
 					<div class="account-menu">
-						<a href="/delete/member?member_id=<%=member_id %>">회원탈퇴</a> <a href="">로그아웃</a>
+						<a href="/delete/member?member_id=<%=member_id %>">회원탈퇴</a> <a href="/logout.do?session<%=session%>">로그아웃</a>
 					</div>
 				</div>
 				<div class="section">

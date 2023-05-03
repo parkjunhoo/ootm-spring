@@ -1,11 +1,26 @@
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.team3.ootm.dao.review.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+/* List<ProductDTO> listAll = (List<ProductDTO>) request.getAttribute("listAll"); */
+ProductDTO product = (ProductDTO) request.getAttribute("product");
+System.out.println(product);
+/* System.out.println(listAll); */
+List<ReviewDTO> review = (List<ReviewDTO>) request.getAttribute("review");
+int size = review.size();	
 
+
+/* List<ProductDTO> productlist = (List<ProductDTO>) request.getAttribute("listall"); */
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -25,6 +40,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap.bundle.js"></script>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -127,8 +143,8 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" onclick="cartInsert()">ADD TO BAG</button>
-						<button type="button" class="btn btn-primary" >BUY NOW</button>
+						<button type="button" class="btn btn-primary">ADD TO BAG</button>
+						<button type="button" class="btn btn-primary">BUY NOW</button>
 					</div>
 				</div>
 			</div>
@@ -143,69 +159,109 @@
 				style="display: block; margin: 0 auto;">
 		</section>
 		<!-- 섹션 3: 리뷰 -->
-		<section>
-			<h1 class="testh1">Reviews</h1>
-			<button class="review_button" data-toggle="modal"
-				data-target="#reviewModal">리뷰 작성하기</button>
-			<ul>리뷰 작성 시 텍스트 리뷰 500원, 포토리뷰 + 텍스트 리뷰는 1,000원, 착용샷 + 텍스트는
-				2,000원의 적립금을 드립니다.
-			</ul>
+      <section>
+         <h1 class="testh1">Reviews</h1>
+         <button class="review_button" data-toggle="modal"
+            data-target="#reviewModal">리뷰 작성하기</button>
+         <ul>리뷰 작성 시 텍스트 리뷰 500원, 포토리뷰 + 텍스트 리뷰는 1,000원, 착용샷 + 텍스트는
+            2,000원의 적립금을 드립니다.
+         </ul>
+         <div class="review-display">
+          <% 
+          for(int i=0;i<size;i++){ 
+            ReviewDTO re = review.get(i);
+            int starsize = re.getReview_star();
+         %>
+             <h3>상품 리뷰</h3>
+             <p>작성자: <%=re.getReview_author_id()%></p>
+             <p>리뷰 내용: <%=re.getReview_content()%></p>
+             <p>별점: <%for(int j=1;j<=starsize;j++){%>
+                   <span><img src="/images/star.png"></span>
+                   <%} %>
+             </p>
+             <hr/>
+         <%} %>
+         </div>
 		</section>
 		<!-- 팝업 리뷰 작성 폼 -->
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
-	aria-labelledby="reviewModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="reviewModalLabel">제품 이름</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<h3>리뷰를 남겨주세요</h3>
+		<jsp:include page="./product_detail_popup.jsp"></jsp:include>
+		<!-- <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+			aria-labelledby="reviewModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="reviewModalLabel">제품 이름</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h3>리뷰를 남겨주세요</h3>
 
-				<div id="rating">
-					<!-- 별점 입력 부분 -->
-					<fieldset class="rating">
-						<input type="radio" id="star5" name="rating" value="5" /><label
-							for="star5" title="5점">5 stars</label> <input type="radio"
-							id="star4" name="rating" value="4" /><label for="star4"
-							title="4점">4 stars</label> <input type="radio" id="star3"
-							name="rating" value="3" /><label for="star3" title="3점">3
-							stars</label> <input type="radio" id="star2" name="rating" value="2" /><label
-							for="star2" title="2점">2 stars</label> <input type="radio"
-							id="star1" name="rating" value="1" /><label for="star1"
-							title="1점">1 star</label>
-					</fieldset>
+						<div id="rating">
+							별점 입력 부분
+
+							<fieldset class="rating">
+								<input type="radio" id="star5" name="rating" value="5" /><label
+									for="star5" title="5점">5 stars</label> <input type="radio"
+									id="star4" name="rating" value="4" /><label for="star4"
+									title="4점">4 stars</label> <input type="radio" id="star3"
+									name="rating" value="3" /><label for="star3" title="3점">3
+									stars</label> <input type="radio" id="star2" name="rating" value="2" /><label
+									for="star2" title="2점">2 stars</label> <input type="radio"
+									id="star1" name="rating" value="1" /><label for="star1"
+									title="1점">1 star</label>
+							</fieldset>
+
+						</div>
+						<hr>
+						<hr>
+						<hr>
+						<form id="reviewForm">
+							<div class="form-group">
+								<label for="reviewerName">이름</label> <input type="text"
+									class="form-control" id="reviewerName" placeholder="이름을 입력하세요">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label for="reviewerHeight">키</label> <input type="number"
+										class="form-control" id="reviewerHeight"
+										placeholder="키를 입력하세요">
+								</div>
+								<div class="form-group col-md-4">
+									<label for="reviewerWeight">체중</label> <input type="number"
+										class="form-control" id="reviewerWeight"
+										placeholder="체중을 입력하세요">
+								</div>
+								<div class="form-group col-md-4">
+									<label for="productSize">상품 사이즈</label> <input type="text"
+										class="form-control" id="productSize"
+										placeholder="상품 사이즈를 입력하세요">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="reviewText">리뷰 내용</label>
+								<textarea class="form-control" id="reviewText" rows="3"
+									placeholder="리뷰 내용을 입력하세요"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="imageUpload">이미지 업로드</label> <input type="file"
+									class="form-control-file" id="imageUpload">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-primary"
+							onclick="submitReview()">리뷰 작성하기</button>
+					</div>
 				</div>
-				<form id="reviewForm">
-					<div class="form-group">
-						<label for="reviewerName">이름</label> <input type="text"
-							class="form-control" id="reviewerName" placeholder="이름을 입력하세요">
-					</div>
-					<div class="form-group">
-						<label for="reviewText">리뷰 내용</label>
-						<textarea class="form-control" id="reviewText" rows="3"
-							placeholder="리뷰 내용을 입력하세요"></textarea>
-					</div>
-					<div class="form-group">
-						<label for="imageUpload">이미지 업로드</label> <input type="file"
-							class="form-control-file" id="imageUpload">
-					</div>
-				</form>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary"
-					onclick="submitReview()">리뷰 작성하기</button>
-			</div>
-		</div>
-	</div>
-</div>
-		
+		</div> -->
+
+
 		<!-- 섹션 4: Q&A -->
 		<section>
 			<h1 class="testh1">Q&A</h1>
@@ -233,8 +289,11 @@
 								<label for="inquirerName">이름</label> <input type="text"
 									class="form-control" id="inquirerName" required>
 							</div>
-							
-						
+							<div class="form-group">
+								<label for="inquirerPassword">비밀번호</label> <input
+									type="password" class="form-control" id="inquirerPassword"
+									required>
+							</div>
 							<div class="form-group">
 								<label for="inquiryTitle">제목</label> <input type="text"
 									class="form-control" id="inquiryTitle" required>
@@ -400,68 +459,7 @@
 					heartIcon.classList.add("fa-heart-o");
 				}
 			}
-		
-
-			
-			
-		
-			
-			function cartInsert() {
-			    let productId = 1;
-			    let memberId = "test";
-
-			    let selectedColor = document.querySelector('.color-btn.selected');
-			    let color = selectedColor ? selectedColor.textContent : "";
-			    let selectedSize = document.querySelector('.size-btn.selected');
-			    let size = selectedSize ? selectedSize.textContent : "";
-			    let quantityInput = document.getElementById('quantity');
-			    let quantity = parseInt(quantityInput.value);
-
-			    orderForm = document.getElementById("orderForm");
-			    
-			     let form = document.createElement("form");
-			     form.setAttribute("action", "/cart/insert.do");
-			    form.setAttribute("method", "post");
-			     document.charset = "UTF-8";
-			     
-			     let input = document.createElement("input");
-			     input.setAttribute("type", "hidden");
-			     input.setAttribute("name", "product_id");
-			     input.setAttribute("value", productId);
-			     form.appendChild(input);
-			     
-			     let input2 = document.createElement("input");
-			     input2.setAttribute("type", "hidden");
-			     input2.setAttribute("name", "member_id");
-			     input2.setAttribute("value", memberId);
-			     form.appendChild(input2);
-			     
-			     let input3 = document.createElement("input");
-			     input3.setAttribute("type", "hidden");
-			     input3.setAttribute("name", "cart_quantity");
-			     input3.setAttribute("value", quantity);
-			     form.appendChild(input3);
-			     
-			     let input4 = document.createElement("input");
-			     input4.setAttribute("type", "hidden");
-			     input4.setAttribute("name", "color");
-			     input4.setAttribute("value", color);
-			     form.appendChild(input4);
-			     
-			     let input5 = document.createElement("input");
-			     input5.setAttribute("type", "hidden");
-			     input5.setAttribute("name", "size");
-			     input5.setAttribute("value", size);
-			     form.appendChild(input5);
-			     
-			     document.body.appendChild(form);
-			     form.submit();
-			     
-			     alert("장바구니 추가완료");
-			 }
-			
-
-			</script>
+		</script>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

@@ -1,6 +1,15 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.team3.ootm.dao.cart.CartDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("CartList");
+ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("CartProductList");
 
+MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,12 +22,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- css -->
-		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_style.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_for_window_style.css"/>
         <!-- 우편번호 검색 팝업-->
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <!-- javascript -->
-        <script type="text/javascript" src="/js/payment_members_js.js"></script>
-       
+        
+       <style type="text/css">
+       </style>
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/layout/header.jsp">
@@ -36,7 +46,7 @@
 			<div class="user_order_info1">
 				<h3 >주문정보</h3>
 				<label id="title_name" for="name">이름</label>
-				<input type="text" id="user_name" name="user_name"><br/>
+				<input type="text" id="user_name" name="user_name" value="<%=member.getMember_name() %>"><br/>
 				
 				<label id="title_phone_number" for="phone_number">연락처</label>
 				<input type="text" id="phone_number1" name="phone_number1" maxlength="3">
@@ -176,7 +186,7 @@
 				<h3>주문요약 및 결제</h3>
 				<ul>
 					<li class="image">
-						<img src="/ootm/images/pants.jpg"> <!-- DB에서 받아오기 -->
+						<img src="/images/pants.jpg"> <!-- DB에서 받아오기 -->
 					</li>
 					<li class="product_info">
 						<h4>8036 버뮤다 카펜터 반밴딩 x 1</h4> 
@@ -232,5 +242,8 @@
 			</div>
 		</form>
 		<jsp:include page="/WEB-INF/layout/footer.jsp"/>
+		
+		
+		<script type="text/javascript" src="/js/payment_members_js.js"></script>
 	</body>		
 </html>

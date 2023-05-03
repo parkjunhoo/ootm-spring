@@ -152,8 +152,7 @@
 			</ul>
 		</section>
 		<!-- 팝업 리뷰 작성 폼 -->
-		<jsp:include page="./product_detail_popup.jsp"></jsp:include>
-<!-- <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
 	aria-labelledby="reviewModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -168,7 +167,7 @@
 				<h3>리뷰를 남겨주세요</h3>
 
 				<div id="rating">
-					별점 입력 부분
+					<!-- 별점 입력 부분 -->
 					<fieldset class="rating">
 						<input type="radio" id="star5" name="rating" value="5" /><label
 							for="star5" title="5점">5 stars</label> <input type="radio"
@@ -205,7 +204,7 @@
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
 		
 		<!-- 섹션 4: Q&A -->
 		<section>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,11 +13,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- css -->
-		<link rel="stylesheet" type="text/css" href="/css/view/payment_non_members_for_window_style.css"/>
-        
+		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_style.css"/>
+        <!-- 우편번호 검색 팝업-->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <!-- javascript -->
+        <script type="text/javascript" src="/js/payment_members_js.js"></script>
+       
 	</head>
 	<body>
-	<jsp:include page="/WEB-INF/layout/header.jsp">
+		<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
 		<jsp:param value="black" name="mTextColor" />
@@ -24,56 +29,68 @@
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
 		<jsp:param value="white" name="bgScrollColor"/>
 	</jsp:include>
+
 		<h1 class="checkout">Checkout</h1>
 		<hr class="line1"/>
 		<form>
 			<div class="user_order_info1">
 				<h3 >주문정보</h3>
 				<label id="title_name" for="name">이름</label>
-				<input type="text" id="name" name="name"><br/>
+				<input type="text" id="user_name" name="user_name"><br/>
 				
 				<label id="title_phone_number" for="phone_number">연락처</label>
-				<input type="text" id="phone_number" name="phone_number">
-				<input type="text" id="phone_number" name="phone_number">
-				<input type="text" id="phone_number" name="phone_number"><br/>
+				<input type="text" id="phone_number1" name="phone_number1" maxlength="3">
+				<input type="text" id="phone_number2" name="phone_number2" maxlength="4">
+				<input type="text" id="phone_number3" name="phone_number3" maxlength="4"><br/>
 				
 				<label id="title_email" for="email">이메일</label>
-				<input type="email" id="email" name="email"><br/>
+				<input type="email" id="user_email" name="user_email"><br/>
 			</div>
 		</form>
 		
 		<hr class="line2"/>
 		<form>
 			<div class="user_order_info2">
-				<div class="shipping-container">
+				<div class="shipping_container">
 					<h3>배송정보</h3>
   					<div>
-    					<input type="checkbox" id="shipping">
+    					<input type="checkbox" id="shipping" onchange="copyBillingToShipping()">
    						<label for="shipping">주문정보와 동일</label>
    					</div>
 				</div>
 				<div>
-					<label id="title_name" for="name">이름</label>
-					<input type="text" id="name" name="name"><br/>
+					<label id="title_name" for="shipping_user_name">이름</label>
+					<input type="text" id="shipping_user_name"><br/>
 					
 					<label id="title_phone_number" for="phone_number">연락처</label>
-					<input type="text" id="phone_number" name="phone_number">
-					<input type="text" id="phone_number" name="phone_number">
-					<input type="text" id="phone_number" name="phone_number"><br/>
+					<input type="text" id="shipping_phone_number1" name="shipping_phone_number1" maxlength="3">
+					<input type="text" id="shipping_phone_number2" name="shipping_phone_number2" maxlength="4">
+					<input type="text" id="shipping_phone_number3" name="shipping_phone_number3" maxlength="4"><br/>
 					
-					<div class="phone_number_additional_box">
-						<label id="title_phone_number_additional" for="phone_number_additional">추가 연락처</label>
-						<input type="text" id="phone_number_additional" name="phone_number_additional">
-						<input type="text" id="phone_number_additional" name="phone_number_additional">
-						<input type="text" id="phone_number_additional" name="phone_number_additional"><br/>
-					</div>
+					<label id="title_phone_number_additional" for="phone_number_additional">추가 연락처</label>
+					<input type="text" id="phone_number_additional" name="phone_number_additional" maxlength="3">
+					<input type="text" id="phone_number_additional" name="phone_number_additional" maxlength="4">
+					<input type="text" id="phone_number_additional" name="phone_number_additional" maxlength="4"><br/>
+					<!-- 배송지선택 체크박스 만들기 -->
+					<div class="last_delivery_address">
+						<label id="select_address" for="select_address">배송지선택</label>
+						<input type="checkbox" id="home" onclick="handleCheckboxClick(this)">
+	   					<label for="home">자택</label>
+	   					<input type="checkbox" id="company" onclick="handleCheckboxClick(this)">
+	   					<label for="company">회사</label>
+	   					<input type="checkbox" id="last_delivery" onclick="handleCheckboxClick(this)">
+	   					<label for="last_delivery">최근 배송지</label>
+	   					<a href="/payment/popup" target="_blank">배송지목록</a>
+	   					<input type="checkbox" id="new_delivery" onclick="handleCheckboxClick(this)">
+	   					<label for="new_delivery">신규 배송지</label>
+   					</div>
 					<label id="title_address" for="address">주소</label>
-      				<input type="text" id="address_code1" name="address">
-      				<button id="post_button" type="submit">우편번호 검색</button><br/>
-      				<label id="empty_space" for="address">  </label>
-      				<input type="text" id="address_code2" name="address"><br/>
-      				<label id="empty_space" for="address">  </label>
-      				<input type="text" id="remaining_address" name="address" placeholder="나머지 주소 입력"><br/>
+	      			<input type="text" id="address_code1" name="address_code1" maxlength="5" readonly>
+	      			<button id="post_button" type="button" value="우편번호검색" onclick="searchAddress()">우편번호 검색</button><br/>
+	      			<label id="empty_space" for="address">  </label>
+	      			<input type="text" id="address_code2" name="address_code2" readonly><br/>
+	      			<label id="empty_space" for="address">  </label>
+	      			<input type="text" id="remaining_address" name="remaining_address" placeholder="나머지 주소 입력"><br/>
       				<label id="title_shipping_request" for="shipping_request">배송요청사항</label>
       				<input type="text" id="shipping_request" name="shipping_request"><br/>
 				</div>
@@ -81,58 +98,70 @@
 		</form>
 		<hr class="line3"/>
 		<form>
+			<div class="coupon_reward">
+				<div class="coupon_reward_container">
+					<h3>쿠폰/적립금 사용</h3>
+					<label id="title_reserves" for="reserves">적립금</label>
+					<input type="tel" id="reserves" name="reserves" form="order_form" autocomplete="off" size="7" class="MS_input_txt form-textbox" value="0" onkeyup="reservecheck('2900')" data-okreserve="2900" onblur="getUseableMoney();" style="background: rgb(255, 255, 255);">
+					
+					<label class="textbox-button">
+					<input id="reserve_box" type="checkbox" name="all_check_reserve" onclick="allCheckUse('reserves')">모두 사용</label>
+					
+					<span class="available-amount">보유 적립금
+					<input type="tel" id="okreserve" name="okreserve" form="order_form" autocomplete="off" size="7" class="MS_input_txt" value="2900" readonly="">원</span>
+				</div>
+			</div>
+		</form>
+		<hr class="line4"/>
+		<form>
 			<div class="user_order_info3">
 				<h3>결제정보</h3>
 				<label id="payment_method" for="payment_method">결제방법</label>
-				
-				<input type="checkbox" id="kakaopay">
-   				<label for="kakaopay">카카오페이(kakaopay)</label><br/>
-   				
-   				<input type="checkbox" id="bankbook">
+			
+				<input type="checkbox" id="kakaopay" name="payment_method" value="kakaopay" onclick="handleCheckboxChange1()">
+	   			<label for="kakaopay">카카오페이(kakaopay)</label><br/>
+   			
+   				<!--  -->
+   				<input type="checkbox" id="bankbook" name="payment_method" value="bankbook" onclick="handleCheckboxChange1()"  onchange="toggleSelect()">
    				<label for="bankbook">무통장입금</label><br/>
-				<select id="dropdown" name="dropdown">
-					<option value="select">입금계좌 선택</option>
-					<option value="woori_bank">우리은행 1002-111-222222</option><br/>
-				</select><br/>
-				
-				<input type="checkbox" id="credit_card">
+   				<div id="select-container">
+					<select id="dropdown1" name="dropdown1" style="display: none;">
+						<option value="select">입금계좌 선택</option>
+						<option value="woori_bank">우리은행 1002-111-222222</option><br/>
+					</select><br/>
+				</div>
+				<input type="checkbox" id="credit_card" name="payment_method" value="credit_card" onclick="handleCheckboxChange1()">
    				<label for="credit_card">신용카드</label><br/>
    				
-   				<input type="checkbox" id="realtime_bank">
-   				<label for="realtime_bank">실시간 계좌이체</label><br/>
-   				
-   				<input type="checkbox" id="escrow">
-   				<label for="escrow">에스크로</label><br/>
-   				
-   				<input type="checkbox" id="mobile_payment">
+   				<input type="checkbox" id="mobile_payment" name="payment_method" value="mobile_payment" onclick="handleCheckboxChange1()">
    				<label for="mobile_payment">휴대폰 결제</label><br/>
    				
    				<div id="cash_receipts_container">
 	   				<label id="cash_receipts" for="cash_receipts">현금영수증</label>
 	   				
-	   				<input type="checkbox" id="cash_receipts_no">
+	   				<input type="checkbox" id="cash_receipts_no" name="cash_receipts" value="no" onclick=" handleCheckboxChange2(), handleCheckboxChange3()">
 	   				<label for="cash_receipts_no">발급 안 함</label><br/>
 	   				
-	   				<input type="checkbox" id="cash_receipts_yes">
+	   				<input type="checkbox" id="cash_receipts_yes" name="cash_receipts" value="yes" onclick=" handleCheckboxChange2(), handleCheckboxChange3()">
 	   				<label for="cash_receipts_yes">발급</label><br/>
 	   				
-	   				<select id="dropdown" name="dropdown">
+	   				<select id="dropdown2" name="dropdown2">
 						<option value="phone_number">핸드폰 번호</option>
 						<option value="business_number">사업자 번호</option>
 						<option value="revenue">국세청 현금영수증 카드</option><br/>
 					</select><br/>
-					<div id="phone_number_container">
+					<div id="phone_number_container" style="display: none;">
 						<input type="text" id="phone_number" name="phone_number">
 						<input type="text" id="phone_number" name="phone_number">
 						<input type="text" id="phone_number" name="phone_number"><br/>
 					</div>
-					<div id="business_number_container">
+					<div id="business_number_container" style="display: none;">
 						<input type="text" id="business_number" name="business_number">
 						<input type="text" id="business_number" name="business_number">
 						<input type="text" id="business_number" name="business_number">
 						<input type="text" id="business_number_company_name" name="business_number_company_name" placeholder="업체명"><br/>
 					</div>
-					<div id="revenue_container">
+					<div id="revenue_container" style="display: none;">
 						<input type="text" id="revenue_number" name="revenue_number">
 						<input type="text" id="revenue_number" name="revenue_number">
 						<input type="text" id="revenue_number" name="revenue_number">
@@ -141,53 +170,13 @@
    				</div>
 			</div>
 		</form>
-		<hr class="line4"/>
-		<form>
-			<div class="privacy">
-				<h3>비회원 구매동의</h3>
-				<h5>개인정보 수집·이용</h5>
-				<table class="privacy_table">
-					<colgroup>
-						<col width="33.33%">
-						<col width="33.33%">
-						<col width="33.33%">	
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">목적</th>
-							<th scope="col">항목</th>
-							<th scope="col">보유기간</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="privacy1">
-							<td>주문자 정보 확인, 주문 내역 안내, 주문 내역 조회</td>
-							<td>주문자 정보(이름, 연락처, 이메일)</td>
-							<td id="bold" rowspan="4">주문일로부터 90일까지 보유하며, 관계 법령에 따라<br/> 5년간 보관</td>
-						</tr>
-						<tr class="privacy2">
-	                        <td>상품 배송(구매/환불/취소/교환)을 위한 수취인 정보</td>
-	                        <td>수취인 정보(이름, 연락처1, 연락처2, 주소)</td>                     
-                   		</tr>
-                   		<tr class="privacy3" style="display: table-row;">
-	                        <td>무통장 결제 내역 확인을 위한 입금자명</td>
-	                        <td>무통장 입금자명(미입력 시, 주문자명 사용)</td>                   
-                   		</tr>
-                   		<tr class="privacy4" style="display: table-row;">
-	                        <td>현금영수증 발행</td>
-	                        <td>휴대폰번호, 국세청 현금영수증 카드번호</td>                      
-                    	</tr>				
-					</tbody>
-				</table>					
-			</div>
-		</form>
 		<hr class="line5"/>
 		<form>
 			<div class="checkout_summary">
 				<h3>주문요약 및 결제</h3>
 				<ul>
 					<li class="image">
-						<img src="/images/pants.jpg"> <!-- DB에서 받아오기 -->
+						<img src="/ootm/images/pants.jpg"> <!-- DB에서 받아오기 -->
 					</li>
 					<li class="product_info">
 						<h4>8036 버뮤다 카펜터 반밴딩 x 1</h4> 
@@ -221,8 +210,10 @@
 						</div>
 						</div>
 					</div>
+				
 				</div>
-				<hr class="line7"/>
+			</div>
+			<hr class="line7"/>
 				<div class="total_pay_summary">
 					<div class="summary_list2">
 						<div class="summary_total">
@@ -240,6 +231,6 @@
 				<button class="payment_button"><a href="javascript:send();" class="button primary">결제하기</a></button>
 			</div>
 		</form>
-	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
+		<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 	</body>		
 </html>

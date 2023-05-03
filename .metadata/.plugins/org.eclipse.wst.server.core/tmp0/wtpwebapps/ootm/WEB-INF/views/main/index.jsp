@@ -36,12 +36,20 @@ if(session.getAttribute("loginUser") != null)
     </head>
 
     <body>
-		<jsp:include page="/WEB-INF/layout/header.jsp">
+	   	<jsp:include page="/WEB-INF/layout/header.jsp">
+			<jsp:param value="true" name="logoDark" />
+			<jsp:param value="true" name="logoHoverDark" />
+			<jsp:param value="black" name="mTextColor" />
+			<jsp:param value="black" name="menuBtnColor" />
+			<jsp:param value="#F9F9F9" name="bgHoverColor" />
+			<jsp:param value="white" name="bgScrollColor"/>
+		</jsp:include>
+<%-- 		<jsp:include page="/WEB-INF/layout/header.jsp">
 			<jsp:param value="false" name="logoDark"/>
 			<jsp:param value="true" name="logoHoverDark"/>
 			<jsp:param value="white" name="menuBtnColor"/>
 			<jsp:param value="rgba(55,55,55,.5)" name="bgScrollColor"/>
-		</jsp:include>
+		</jsp:include> --%>
 
 		<jsp:include page="./main-section1.jsp"/>
         <jsp:include page="./main-section2.jsp"/>

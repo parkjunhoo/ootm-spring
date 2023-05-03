@@ -16,6 +16,9 @@ public interface ProductDAO {
 	public int countByCategory(int product_category_id);
 	public int countBySubCategory(int product_sub_category_id);
 	
+	public List<ProductDTO> selectByCategoryOrderByNewLimit(int product_category_id , int min, int max);
+	public List<ProductDTO> selectBySubCategoryOrderByNewLimit(int product_sub_category_id, int min , int max);
+	
 	public List<ProductDTO> selectByCategoryOrderByBestLimit(int product_category_id , int min, int max);
 	public List<ProductDTO> selectBySubCategoryOrderByBestLimit(int product_sub_category_id, int min , int max);
 	

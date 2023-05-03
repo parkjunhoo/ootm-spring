@@ -57,6 +57,7 @@ public class LoginManager {
 	
 	public static void removeLoginUser(HttpSession session) {
 		session.removeAttribute("loginUser");
+		session.invalidate();
 	}
 	
 }

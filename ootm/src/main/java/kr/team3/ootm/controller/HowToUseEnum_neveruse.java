@@ -23,6 +23,7 @@ public class HowToUseEnum_neveruse {
 		
 		System.out.println("=========================");
 		System.out.println(HeaderSubMenu.getLabel(1));
+		System.out.println(HeaderSubMenu.getParam(1));
 	}
 
 }

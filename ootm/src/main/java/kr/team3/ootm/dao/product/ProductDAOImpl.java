@@ -143,6 +143,24 @@ public class ProductDAOImpl implements ProductDAO{
 		return count;
 	}
 
+	@Override
+	public List<ProductDTO> selectByCategoryOrderByNewLimit(int product_category_id, int min, int max) {
+		String sql = "select * from product where product_category_id = ? order by product_regdate desc limit ? , ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_category_id, min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+
+	@Override
+	public List<ProductDTO> selectBySubCategoryOrderByNewLimit(int product_sub_category_id, int min, int max) {
+		String sql = "select * from product where product_sub_category_id = ? order by product_regdate desc limit ? , ?";
+		List<ProductDTO> result = template.query(sql,
+				new Object[] {product_sub_category_id, min , max} , new ProductRowMapper());
+		
+		return result;
+	}
+
 
 	
 }

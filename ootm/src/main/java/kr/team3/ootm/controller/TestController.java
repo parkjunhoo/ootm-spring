@@ -64,7 +64,11 @@ public class TestController {
 
 	@RequestMapping(value = "/payment")
 	public String payment() {
-		return "payment";
+		return "payment/payment";
+	}
+	@RequestMapping(value = "/payment/popup")
+	public String paymentpopup() {
+		return "payment/payment";
 	}
 	/////////////////////////////////////////////////
 

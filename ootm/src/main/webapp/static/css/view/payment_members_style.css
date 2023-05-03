@@ -5,7 +5,6 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	padding-top: 30px;
 }
 
 .checkout {
@@ -110,6 +109,11 @@ h3 {
 	margin-bottom: 40px;
 }
 
+.coupon_reward {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
 .user_order_info1 {
 	margin-left: 50px;
 	margin-top: 50px;
@@ -139,6 +143,15 @@ h3 {
 	padding: 10px;
 	margin-bottom: 20px;
 	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#reserves {
+	width: 200px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
 	border-radius: 1px;
 	border: 1px solid #ccc;
 }
@@ -188,7 +201,6 @@ h3 {
 }
 
 /*  */
-
 #title_name {
 	margin-right: 114px;
 }
@@ -221,9 +233,11 @@ h3 {
 	margin-right: 57px;
 }
 
+#title_reserves {
+	margin-right: 100px;
+}
+
 #shipping {
-	margin-top: 20px;
-	margin-left: 100px;
 	
 }
 
@@ -378,7 +392,21 @@ h3 {
 	resize: both;
 }
 
-#dropdown {
+#dropdown1 {
+	width: 520px;
+	height: 45px;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 145px;
+	margin-top: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	
+}
+
+#dropdown2 {
 	width: 520px;
 	height: 45px;
 	padding: 10px;
@@ -389,6 +417,7 @@ h3 {
 	border-radius: 1px;
 	border: 1px solid #ccc;
 	border-radius: 1px;
+	
 }
 
 .privacy #item {
@@ -455,6 +484,7 @@ h3 {
 
 #phone_number_container {
 	margin-left: 145px;
+	display: none;
 }
 
 #business_number_container {
@@ -668,7 +698,7 @@ a {
 	margin-right: 4px;
 }
 
-button {
+.payment_button {
 	background-color: white;
 	border: 2px solid #000000;
 	color: #333;
@@ -683,8 +713,148 @@ button {
 	margin-left: 50px;
 }
 
-button:hover {
+.payment_button:hover {
 	background-color: #333;
 	border-color: #333;
 	color: white;
+}
+
+.shipping_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 1107px;
+}
+
+.shipping_container h3 {
+	margin-right: 10px;
+}
+
+.textbox-button {
+	color: #222;
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	font-size: 10pt;
+	background-color: white;
+	width: 80px;
+	height: 16px;
+	padding: 12px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+
+.last_delivery_address {
+	margin-bottom: 20px;
+}
+
+#reserve_box[type="checkbox"] {
+	display: none; /* 기존 체크박스는 감춘다. */
+}
+
+.MS_input_txt {
+	display: inline-block;
+	float: none;
+	font-size: 13px;
+	text-align: right;
+	width: 50px;
+	padding: 0 2px;
+	border: none;
+}
+/* 밑으로는 윈도우에도 추가 밑 수정 non_members도 배송정보까지는 동일하므로 동일하게 적용 */
+#shipping_name {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#phone_number1 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#phone_number2 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#phone_number3 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#shipping_phone_number1 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#shipping_phone_number2 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#shipping_phone_number3 {
+	width: 80px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#user_name {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#user_email {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+}
+
+#shipping_user_name {
+	width: 500px;
+	height: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
 }

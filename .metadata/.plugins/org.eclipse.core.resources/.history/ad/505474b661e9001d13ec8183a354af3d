@@ -1,0 +1,11 @@
+package util;
+
+import java.text.DecimalFormat;
+
+public class Utils {
+	static DecimalFormat priceFormat = new DecimalFormat("###,###");
+	
+	public static String priceFormat String(int price) {
+		return priceFormat.format(price);
+	}
+}

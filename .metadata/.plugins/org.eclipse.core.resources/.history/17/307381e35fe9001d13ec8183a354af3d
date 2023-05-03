@@ -1,0 +1,61 @@
+package kr.team3.ootm.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class ProductPageController {
+
+	@RequestMapping(value = "/product/new")
+	public String productNew() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/best")
+	public String productBest() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/outer")
+	public String productOuter() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/shirt")
+	public String productShirt() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/longsleeve")
+	public String productLongsleeve() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/jean")
+	public String productJean() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/pants")
+	public String productPants() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/shortguys")
+	public String productShortguys() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/shoes")
+	public String productShoes() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/bag")
+	public String productBag() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/accessories")
+	public String productAcc() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/seasonoff")
+	public String productSeaonoff() {
+		return "product/product";
+	}
+	@RequestMapping(value = "/product/suit")
+	public String productSuit() {
+		return "product/product";
+	}
+}

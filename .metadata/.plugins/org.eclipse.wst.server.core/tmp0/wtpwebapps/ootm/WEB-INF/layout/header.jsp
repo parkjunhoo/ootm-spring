@@ -1,3 +1,4 @@
+<%@page import="util.define.HeaderSubMenu"%>
 <%@page import="kr.team3.ootm.dao.header_menu.HeaderMenuDAOImpl"%>
 <%@page import="kr.team3.ootm.service.header_menu.HeaderMenuService"%>
 <%@page import="org.springframework.beans.factory.annotation.Autowired"%>
@@ -90,7 +91,7 @@ if(session.getAttribute("loginUser") != null){
 						<ul class="dropList">
 							<%for (HeaderSubMenuDTO hsmd : subMenuList) {%>
 								<%if(hsmd.getMenuId() == hmd.getId()){ %>
-								<li onclick ="window.location.href='/product?subcategory=<%=hsmd.getId()%>'" 
+								<li onclick ="window.location.href='/product/<%=HeaderSubMenu.getParam(hsmd.getId())%>'" 
 									onmouseover="changeText(this , '<%= hsmd.getKorName()%>')" 
 									onmouseleave="changeText(this , '<%= hsmd.getName()%>')">
 									<p

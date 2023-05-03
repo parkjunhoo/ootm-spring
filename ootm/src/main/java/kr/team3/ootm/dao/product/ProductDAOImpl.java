@@ -163,11 +163,11 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public List<ProductDTO> selectByKeyword(String keyword) {
-		String sql = "select distinct p.* "
-				+ "from product p "
-				+ "inner join product_category c on p.product_category_id = c.product_category_id "
-				+ "left join product_sub_category s on p.product_sub_category_id = s.product_category_id "
-				+ "where concat(p.product_name, ' ', p.product_tag, ' ', c.product_category_kor_name, ' ', s.product_sub_category_kor_name) like ?";
+		String sql = "SELECT DISTINCT p.* "
+				+ "FROM product p "
+				+ "INNER JOIN product_category c ON p.product_category_id = c.product_category_id "
+				+ "LEFT JOIN product_sub_category s ON p.product_sub_category_id = s.product_sub_category_id "
+				+ "WHERE CONCAT(p.product_name, ' ', p.product_tag, ' ', c.product_category_name, ' ', s.product_sub_category_name) LIKE ? ";
 		
 		List<ProductDTO> list = template.query(sql,
 				new Object[] {"%"+keyword+"%"} , new ProductRowMapper());

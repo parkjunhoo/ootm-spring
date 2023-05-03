@@ -59,7 +59,9 @@ if(session.getAttribute("loginUser") != null){
 				<div class="searchRightDiv">
 					<h2>추천 검색어</h2>
 					<div class="searchInnerDiv">
-						<span>#9부팬츠</span><span>#자체제작</span><span>#맨투맨</span>
+						<span onclick="location.href='/search?keyword=여름'">#여름</span>
+						<span onclick="location.href='/search?keyword=남녀공용'">#남녀공용</span>
+						<span onclick="location.href='/search?keyword=인기'">#인기</span>
 					</div>
 				</div>
 			</div>

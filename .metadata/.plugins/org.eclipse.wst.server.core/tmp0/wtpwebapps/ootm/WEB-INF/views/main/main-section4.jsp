@@ -46,6 +46,6 @@ ArrayList<ProductDTO> newProductList = (ArrayList<ProductDTO>) request.getAttrib
 
 <section id="videoSection3" class="VideoSection">
 	<video  autoplay loop muted>
-	  <source src="/videos/deco7.mp4" type="video/mp4">
+	  <source src="/videos/deco6.mp4" type="video/mp4">
 	</video>
 </section>

@@ -38,7 +38,7 @@ public class ProductPageController {
 		List<ProductDTO> list = service.selectNewProduct(30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "new");
 		return mav;
 	}
 
@@ -50,7 +50,7 @@ public class ProductPageController {
 		List<ProductDTO> list = service.selectBestProduct(30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "best");
 		return mav;
 	}
 
@@ -62,7 +62,7 @@ public class ProductPageController {
 		List<ProductDTO> list = service.selectByCategoryOrderByBestLimit(ProductCategory.OUTER.getValue(), 0, 30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "outer");
 
 		return mav;
 	}
@@ -138,7 +138,7 @@ public class ProductPageController {
 		List<ProductDTO> list = service.selectBySubCategoryOrderByBestLimit(ProductSubCategory.PANTS.getValue(), 0, 30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "bottom");
 		return mav;
 	}
 
@@ -151,7 +151,7 @@ public class ProductPageController {
 				30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "bottom");
 		return mav;
 	}
 
@@ -175,7 +175,7 @@ public class ProductPageController {
 		List<ProductDTO> list = service.selectBySubCategoryOrderByBestLimit(ProductSubCategory.BAG.getValue(), 0, 30);
 
 		mav.addObject("productList", list);
-		mav.addObject("banner", "top");
+		mav.addObject("banner", "acc");
 		return mav;
 	}
 

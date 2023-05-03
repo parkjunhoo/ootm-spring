@@ -52,17 +52,6 @@ public class TestController {
 		return "find/find";
 	}
 
-
-
-
-	////////////////////////////////////////////////
-	@RequestMapping(value = "/product-detail")
-	public String product_detail() {
-		return "product_detail/product_detail";
-	}
-	/////////////////////////////////////////////////
-
-
 	@RequestMapping(value = "/payment/popup")
 	public String paymentpopup() {
 		return "payment/payment";

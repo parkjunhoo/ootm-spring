@@ -1,0 +1,9 @@
+package kr.team3.ootm.service.product_image;
+
+import kr.team3.ootm.service.product.ProductService;
+
+public class ProductImageServiceImpl implements ProductService{
+	
+	
+
+}

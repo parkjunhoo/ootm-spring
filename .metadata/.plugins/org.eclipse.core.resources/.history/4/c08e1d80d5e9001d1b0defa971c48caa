@@ -1,0 +1,36 @@
+package kr.team3.ootm.dao.wishlist;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class WishlistDAOImpl implements WishlistDAO{
+
+	@Autowired
+	JdbcTemplate tem;
+
+	
+	@Override
+	public List<WishlistDTO> selectByMemberId(String member_id) {
+		String sql = "select * from wishlist where member_id = ?";
+		List<WishlistDTO> list = tem.query(sql,
+				new Object[] {member_id} , new WishlistRowMapper());
+		return list;
+	}
+
+	@Override
+	public int insert(int wishlist_id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int wishlist_id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

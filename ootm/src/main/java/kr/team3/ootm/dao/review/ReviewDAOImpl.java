@@ -22,7 +22,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 
 	@Override
-	public List<ReviewDTO> read(int product_id) {
+	public List<ReviewDTO> selectByProductId(int product_id) {
 		return template.query("select * from review where product_id =?",new Object[] {product_id}, new ReviewRowMapper());
 	}
 

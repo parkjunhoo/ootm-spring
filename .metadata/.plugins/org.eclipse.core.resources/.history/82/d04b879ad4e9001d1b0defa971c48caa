@@ -1,0 +1,9 @@
+package kr.team3.ootm.dao.wishlist;
+
+public class WishlistDTO {
+	private int wishlist_id;
+	private String member_id;
+	private int product_id;
+	
+	
+}

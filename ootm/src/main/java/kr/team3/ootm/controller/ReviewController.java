@@ -22,31 +22,6 @@ public class ReviewController {
 	@RequestMapping("/review/insert.do")
 	public String showPage(ReviewDTO review,String product_id) {
 		reviewservice.insert(review);
-		System.out.println(review);
-		return "redirect:/review/read.do?product_id="+product_id;
+		return "redirect:/product-detail/?id="+product_id;
 	}
-	
-	@RequestMapping("/review/read.do")
-	public ModelAndView read(int product_id) {
-		ModelAndView mav = new ModelAndView();
-		//서비스메소드 호출
-		List<ReviewDTO> review = reviewservice.read(product_id);
-		ProductDTO product = productservice.read(product_id);
-		//데이터공유
-		mav.addObject("review",review);
-		mav.addObject("product",product);
-		//System.out.println(review);
-		//뷰정보셋팅
-		String view = "";
-		view = "product_detail/product_detail";	
-		mav.setViewName(view);
-		return mav;
-	}
-	
-//	@RequestMapping("/product_detail")
-//	public String showProductDetail(@ModelAttribute("review") List<ReviewDTO> review,Model model) {
-//		  model.addAttribute("review", review);
-//		  System.out.println(model.addAttribute("review", review));
-//		    return "product-detail";
-//	}
 }

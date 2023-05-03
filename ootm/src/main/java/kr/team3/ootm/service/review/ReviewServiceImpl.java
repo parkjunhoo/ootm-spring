@@ -18,8 +18,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public List<ReviewDTO> read(int product_id) {
-		return dao.read(product_id);
+	public List<ReviewDTO> selectByProductId(int product_id) {
+		return dao.selectByProductId(product_id);
 	}
 
 }

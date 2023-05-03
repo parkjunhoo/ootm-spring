@@ -48,3 +48,11 @@
 1683097656813	Rename type 'OrderRowMapper'
 1683100464655	Move files
 1683110159292	Delete element
+1683133160477	Rename package 'kr.team3.ootm.dao.product_Inquiry_post'
+1683133172610	Rename type 'ProductInquiryPostDAO'
+1683133176988	Rename type 'ProductInquiryPostDAOImpl'
+1683133181693	Rename type 'ProductInquiryPostDTO'
+1683133186332	Rename type 'ProductInquiryPostRowMapper'
+1683133201512	Rename package 'kr.team3.ootm.service.proudct_inquiry_post'
+1683133209046	Rename type 'ProductInquiryPostService'
+1683133216013	Rename type 'ProductInquiryPostServiceImpl'

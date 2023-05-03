@@ -1,0 +1,28 @@
+package kr.team3.ootm.service.wishlist;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.team3.ootm.dao.wishlist.WishlistDAO;
+import kr.team3.ootm.dao.wishlist.WishlistDTO;
+
+@Service
+public class WishlistServiceImpl implements WishlistService {
+
+	@Autowired
+	WishlistDAO dao;
+	
+	@Override
+	public List<WishlistDTO> selectByMemberId(String member_id) {
+		List<WishlistDTO> list = dao.selectByMemberId(member_id);
+		return null;
+	}
+
+	@Override
+	public int delete(int wishlist_id) {
+		return 0;
+	}
+
+}

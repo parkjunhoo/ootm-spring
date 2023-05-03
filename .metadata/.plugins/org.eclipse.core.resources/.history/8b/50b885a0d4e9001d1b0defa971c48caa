@@ -1,0 +1,11 @@
+package kr.team3.ootm.dao.wishlist;
+
+import java.sql.Timestamp;
+
+public class WishlistDTO {
+	private int wishlist_id;
+	private String member_id;
+	private int product_id;
+	private Timestamp wishlist_regdate;
+	
+}

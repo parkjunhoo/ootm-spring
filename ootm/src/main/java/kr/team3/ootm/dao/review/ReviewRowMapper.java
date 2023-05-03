@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import kr.team3.ootm.dao.product_Inquiry_post.ProductInquiryPostDTO;
+import kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO;
 
 public class ReviewRowMapper implements RowMapper<ReviewDTO>{
 

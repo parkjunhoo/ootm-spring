@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ReviewDAO {
 	public int insert(ReviewDTO review);
-	public List<ReviewDTO> read(int product_id);
+	public List<ReviewDTO> selectByProductId(int product_id);
 }

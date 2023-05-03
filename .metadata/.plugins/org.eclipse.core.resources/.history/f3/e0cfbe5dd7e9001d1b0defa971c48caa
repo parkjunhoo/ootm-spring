@@ -1,0 +1,8 @@
+package kr.team3.ootm.service.product_image;
+
+import kr.team3.ootm.dao.product_image.ProductImageDTO;
+
+public interface ProductImageService {
+	public int insert(ProductImageDTO productImage);
+	public List<ProductImageDTO> 
+}

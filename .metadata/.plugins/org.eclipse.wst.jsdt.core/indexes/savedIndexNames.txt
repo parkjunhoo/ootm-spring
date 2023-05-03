@@ -1,11 +1,3 @@
 INDEX VERSION 1.4+C:\Users\hoo\Desktop\programming\Web\ootm\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2975920679.index
-4124160989.index
-4240360548.index
 1667178376.index
-4294663525.index
 2172598211.index
-1121731780.index
-1106424622.index
-1603803289.index
-1049614284.index

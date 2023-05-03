@@ -5,7 +5,7 @@
 			<h1 class="best-text">Best of the week</h1>
 			<div class="product-box">
 				<div class="img-box">
-					<a href="/product-detail" class="product-detail-link"> <img
+					<a href="/review/read.do?product_id=3" class="product-detail-link"> <img
 						src="http://www.everfree.co.kr/shopimages/manish/0150020004142.jpg?1572248363">
 						<img
 						src="http://www.everfree.co.kr/shopimages/manish/015002000414.jpg?1572236629">

@@ -53,10 +53,7 @@ public class TestController {
 	}
 
 
-	@RequestMapping(value = "/product")
-	public String product() {
-		return "product/product";
-	}
+
 
 	////////////////////////////////////////////////
 	@RequestMapping(value = "/product-detail")

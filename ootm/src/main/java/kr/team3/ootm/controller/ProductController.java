@@ -13,11 +13,6 @@ import kr.team3.ootm.service.product.ProductService;
 public class ProductController {
 	@Autowired
 	ProductService service;
-
-	@RequestMapping(value = "/product/new")
-	public String product() {
-		return "product/product";
-	}
 	
 	@RequestMapping(value = "/product/insert.do")
 	public String insertProduct() {

@@ -1,0 +1,10 @@
+<%@page import="util.define.ProductSubCategory"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+int sc = Integer.parseInt(request.getParameter("subcategory"));
+String cateName = ProductSubCategory.getName(sc);
+%>
+<section style="position: relative;">
+		<h1 id="categoryLabel" class="pic_text"><%=cateName %></h1>
+</section>

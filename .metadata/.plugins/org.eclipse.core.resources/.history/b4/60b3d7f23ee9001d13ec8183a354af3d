@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<section style="position: relative;">
+		<h1 id="categoryLabel" class="pic_text"></h1>
+</section>
+
+<script type="text/javascript">
+	let test = document.getElementById("categoryLabel");
+	test.style.whiteSpace = "nowrap";
+	test.textContent = new URLSearchParams(location.search).get("subcategory");
+	
+	 let mainText = document.querySelector("#testID");
+	 
+	 window.addEventListener('scroll',function(){
+		let value = window.scrollY;
+		console.log(value);
+		
+		if(value>200){
+			mainText.style.animation="disappear 1s ease-out forwards";
+		}else{
+			mainText.style.animation=`slide 1s ease-out`;
+		}
+	});
+</script>

@@ -1,0 +1,32 @@
+package util.define;
+
+//ENUM 사용법
+//ProductCategory.OUTER.getValue() == outer에 해당하는 int 반환 ==> 1반환 해당 밸류값은 product_category_id 와 일치함
+//
+public enum HeaderSubMenu{
+	
+	New("New(10% SALE)",1),
+	Best("BEST",2)
+	Outer("OUTER",3)
+	Top("TOP",4)
+	Bottom("BOTTOM",5)
+	Acc("ACCESSORY",6)
+	Suit("SUIT",7)
+	Set("SET EVENT",8);
+
+    private final String label;
+    private final int value;
+
+    HeaderSubMenu(int value) { this.value = value; }
+
+    public int getValue() { return value; }
+    
+    public static String getName(int value) {
+        for (HeaderSubMenu c : HeaderSubMenu.values()) {
+            if (c.getValue() == value) {
+                return c.toString().replace("_", " ");
+            }
+        }
+        return null;
+    }
+}

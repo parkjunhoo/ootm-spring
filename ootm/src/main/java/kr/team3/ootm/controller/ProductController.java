@@ -14,6 +14,11 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 
+	@RequestMapping(value = "/product/new")
+	public String product() {
+		return "product/product";
+	}
+	
 	@RequestMapping(value = "/product/insert.do")
 	public String insertProduct() {
 		service.insertProduct(new ProductDTO(1, 1, "테스트제품", 3333, 0, "테스트제품컨텐츠", "https://picsum.photos/250/250",

@@ -90,7 +90,7 @@ if(session.getAttribute("loginUser") != null){
 						<ul class="dropList">
 							<%for (HeaderSubMenuDTO hsmd : subMenuList) {%>
 								<%if(hsmd.getMenuId() == hmd.getId()){ %>
-								<li onclick ="window.location.href='/product?category=<%=hsmd.getName() %>'" 
+								<li onclick ="window.location.href='/product?subcategory=<%=hsmd.getId()%>'" 
 									onmouseover="changeText(this , '<%= hsmd.getKorName()%>')" 
 									onmouseleave="changeText(this , '<%= hsmd.getName()%>')">
 									<p

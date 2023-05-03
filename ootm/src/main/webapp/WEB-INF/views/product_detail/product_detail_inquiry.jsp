@@ -12,7 +12,7 @@ String memberId ="";
 String memberName ="";
 if(session.getAttribute("loginUser")!=null){
 	MemberDTO loginUser = (MemberDTO) session.getAttribute("loginUser");
-	System.out.println(loginUser.getMember_name());
+	//System.out.println(loginUser.getMember_name());
 	memberId = loginUser.getMember_id();
 	memberName = loginUser.getMember_name();
 }

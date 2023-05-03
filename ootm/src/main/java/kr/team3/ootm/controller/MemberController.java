@@ -53,9 +53,9 @@ public class MemberController {
 				mav.setViewName("redirect:/mypage");
 			}
 			
-			System.out.println(loginUser.getMember_name()+"로그인 완료.");
+			//System.out.println(loginUser.getMember_name()+"로그인 완료.");
 		} else { // 로그인 실패
-			System.out.println(errorMessage);
+			//System.out.println(errorMessage);
 			mav.addObject("message", errorMessage); // View에 전달할 데이터 추가
 			mav.setViewName("/login");
 		}
@@ -85,7 +85,7 @@ public class MemberController {
 	@RequestMapping("/register.do")
 	public String register(MemberDTO member,String address2) {
 		member.setMember_address(member.getMember_address()+" "+address2);
-		System.out.println("<확인1>member값: "+member.getMember_address());
+		//System.out.println("<확인1>member값: "+member.getMember_address());
 		service.register(member);
 		return "redirect:/login";
 	}

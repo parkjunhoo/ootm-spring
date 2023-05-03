@@ -26,10 +26,24 @@ public class CartController {
 
 	@RequestMapping(value = "/cart/insert.do" , method = RequestMethod.POST)
 	public ModelAndView cartInsert(@ModelAttribute CartDTO cart ,HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView();
 		service.insert(cart);
 		//view 어디로 갈지는 일단 basket으로 해뒀지만
 		//호출한 곳이 어디냐에 따라서 여기서 분기처리해서 달라질수도있을것같ㅊ습니다,
-		ModelAndView mav = new ModelAndView("redirect:/basket");
+		// 같은옵션의 같은상품을 장바구니에 추가하하는거는..(update)
+		//분기처리를 해야되지만 ... ,,, pass..
+		System.out.println((String)req.getAttribute("toPayment"));
+		if(req.getParameter("toPayment") != null) {
+			String toPayment = (String)req.getParameter("toPayment");
+			if(toPayment.equals("true")) {
+				mav.setViewName("redirect:/payment");
+			}else {
+				mav.setViewName("redirect:/product-detail?product_id="+cart.getProduct_id());
+			}
+		}else {
+			mav.setViewName("redirect:/basket");
+		}
+		
 		return mav;
 	}
 	

@@ -5,7 +5,7 @@
 if(session.getAttribute("loginUser") != null)
 {
 	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser");
-	System.out.println("이메일:"+loginUser.getMember_email());
+	//System.out.println("이메일:"+loginUser.getMember_email());
 }
 %>
 <!DOCTYPE html>

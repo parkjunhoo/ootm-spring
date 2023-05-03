@@ -16,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	// id , name , email , password , birth , zipcode , address , telnum , opt
 	public int register(MemberDTO member) {
-		System.out.println("<확인3>member값: "+member.getMember_address());
+		//System.out.println("<확인3>member값: "+member.getMember_address());
 		String sql = "insert into ootm_member (member_id, member_name, member_email, member_password, member_birth,member_zipcode , member_address , member_telnum, member_opt) values(?,?,?,?,?,?,?,?,?)";
 		//(member_id, member_name, member_email, member_password, member_birth, "+ "member_zipcode , member_address , member_telnum, member_opt)
 		int result=template.update(sql,member.getMember_id(),member.getMember_name(),member.getMember_email(),member.getMember_password(),member.getMember_birth(),member.getMember_zipcode(),member.getMember_address(),member.getMember_telnum(),member.getMember_opt());

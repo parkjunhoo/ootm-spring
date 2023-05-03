@@ -12,7 +12,7 @@
  
  window.addEventListener('scroll',function(){
 	let value = window.scrollY;
-	console.log(value);
+	//console.log(value);
 	
 	if(value>200){
 		mainText.style.animation="disappear 1s ease-out forwards";

@@ -17,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- css -->
-		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_style.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_for_window_style.css"/>
         <!-- 우편번호 검색 팝업-->
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <!-- javascript -->

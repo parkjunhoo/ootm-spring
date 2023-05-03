@@ -183,7 +183,7 @@ if(session.getAttribute("loginUser") != null){
 		
 		<%if(bgScrollColor != null){%>
 		this.addEventListener('scroll' , ()=>{
-			console.log("scroll");
+			//console.log("scroll");
 			if(window.scrollY == 0 && !isHeaderScrollStyle){
 				isHeaderScrollStyle = true;
 				header.style.backgroundColor = "";

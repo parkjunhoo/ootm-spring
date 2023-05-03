@@ -12,7 +12,7 @@ Object ts = request.getAttribute("tempScroll");
 String scroll = "0";
 if(ts != null){
 	scroll = (String)ts;
-	System.out.println((String)ts);
+	//System.out.println((String)ts);
 }
 
 DecimalFormat priceFormat = new DecimalFormat("###,###");
@@ -132,7 +132,7 @@ int resultPrice = 0;
 	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
 	
 	<script type="text/javascript">
-		console.log(<%=scroll%>);
+		//console.log(<%=scroll%>);
 		window.scrollTo(0,<%=scroll %>);
 
 	

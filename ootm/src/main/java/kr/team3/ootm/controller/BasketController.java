@@ -50,7 +50,7 @@ public class BasketController {
 		}
 		
 		Object ts = req.getAttribute("tempScroll");
-		System.out.println((String)ts);
+		//System.out.println((String)ts);
 		if(ts!= null) {
 			mav.addObject("tempScroll" , ts);
 		}

@@ -121,7 +121,7 @@ public class HelpDeskController {
 		int postId = Integer.parseInt(id);
 		
 		InquiryPostDTO post = InquiryService.read(postId);
-		System.out.println(post.getInquiry_post_content());
+		//System.out.println(post.getInquiry_post_content());
 		if(post.getMember_id().equals(member.getMember_id())) {
 			mav.addObject("post",post);
 			mav.addObject("pass",true);

@@ -51,7 +51,7 @@ function searchAddress() {
   new daum.Postcode({
     oncomplete: function (data) {
       // 팝업에서 검색결과 항목을 클릭했을 때 실행할 코드를 작성하는 부분
-      console.log(data);
+      //console.log(data);
       //document.form1.address_code1.value = data.zonecode; //우편번호 넣기
       document.getElementById("address_code1").value = data.zonecode; //우편번호 넣기
       document.getElementById("address_code2").value = data.address; //주소 넣기 ==> 도로명만 들어감...

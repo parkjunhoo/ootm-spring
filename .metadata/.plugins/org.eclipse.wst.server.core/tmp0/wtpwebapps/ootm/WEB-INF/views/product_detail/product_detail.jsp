@@ -136,7 +136,7 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 			<script src="https://kit.fontawesome.com/your-font-awesome-kit.js"
 				crossorigin="anonymous"></script>
 
-			<button class="buy-now-button" data-toggle="modal"
+			<button <%if(!isLoggedIn){%>disabled<%}%>  class="buy-now-button" data-toggle="modal"
 				data-target="#orderModal">BUY NOW</button>
 		</section>
 		<!-- 팝업 상품 주문 폼 -->
@@ -174,8 +174,8 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">ADD TO BAG</button>
-						<button type="button" class="btn btn-primary">BUY NOW</button>
+						<button onclick="cartInsert('false')" type="button" class="btn btn-primary">ADD TO BAG</button>
+						<button onclick="cartInsert('true')" type="button" class="btn btn-primary">BUY NOW</button>
 					</div>
 				</div>
 			</div>
@@ -414,7 +414,69 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					
 				}
 			}
+			
+			
+			function cartInsert(toPayment) {
+			    let productId = <%=product.getProduct_id()%>;
+			    let memberId = "<%=memberId%>";
 
+			    let selectedColor = document.querySelector('.color-btn.selected');
+			    let color = selectedColor ? selectedColor.textContent : "";
+			    let selectedSize = document.querySelector('.size-btn.selected');
+			    let size = selectedSize ? selectedSize.textContent : "";
+			    let quantityInput = document.getElementById('quantity');
+			    let quantity = parseInt(quantityInput.value);
+
+			    orderForm = document.getElementById("orderForm");
+			    
+			     let form = document.createElement("form");
+			     form.setAttribute("action", "/cart/insert.do");
+			    form.setAttribute("method", "post");
+			     document.charset = "UTF-8";
+			     
+			     let input = document.createElement("input");
+			     input.setAttribute("type", "hidden");
+			     input.setAttribute("name", "product_id");
+			     input.setAttribute("value", productId);
+			     form.appendChild(input);
+			     
+			     let input2 = document.createElement("input");
+			     input2.setAttribute("type", "hidden");
+			     input2.setAttribute("name", "member_id");
+			     input2.setAttribute("value", memberId);
+			     form.appendChild(input2);
+			     
+			     let input3 = document.createElement("input");
+			     input3.setAttribute("type", "hidden");
+			     input3.setAttribute("name", "cart_quantity");
+			     input3.setAttribute("value", quantity);
+			     form.appendChild(input3);
+			     
+			     let input4 = document.createElement("input");
+			     input4.setAttribute("type", "hidden");
+			     input4.setAttribute("name", "color");
+			     input4.setAttribute("value", color);
+			     form.appendChild(input4);
+			     
+			     let input5 = document.createElement("input");
+			     input5.setAttribute("type", "hidden");
+			     input5.setAttribute("name", "size");
+			     input5.setAttribute("value", size);
+			     form.appendChild(input5);
+			     
+			     let input6 = document.createElement("input");
+			     input6.setAttribute("type", "hidden");
+			     input6.setAttribute("name", "toPayment");
+			     input6.setAttribute("value", toPayment);
+			     form.appendChild(input6);
+			     
+			     
+			     document.body.appendChild(form);
+			     form.submit();
+			     
+			     alert("장바구니 추가완료");
+			 }
+			
 			function wishlistInsert() {
 				let memberId = "<%=memberId%>";
 				let productId = <%=product.getProduct_id()%>;

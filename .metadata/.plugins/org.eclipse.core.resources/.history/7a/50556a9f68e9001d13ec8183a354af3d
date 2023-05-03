@@ -16,18 +16,18 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public int insert(ProductDTO product) {
+	public int insertProduct(ProductDTO product) {
 		return dao.insert(product);
 	}
 
 	@Override
-	public ProductDTO read(int product_id) {
-		return dao.read(product_id);
+	public ProductDTO readProduct(int id) {
+		return dao.read(id);
 	}
 
 	@Override
-	public int delete(int product_id) {
-		return dao.delete(product_id);
+	public int deleteProduct(int id) {
+		return dao.delete(id);
 	}
 
 	@Override

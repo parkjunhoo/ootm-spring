@@ -41,7 +41,7 @@ public class BasketController {
 			List<ProductDTO> productList = new ArrayList<ProductDTO>();
 			
 			for(CartDTO cart : cartList) {
-				productList.add(productService.read(cart.getProduct_id()));
+				productList.add(productService.readProduct(cart.getProduct_id()));
 			}
 			
 			mav.addObject("myCartList",cartList);

@@ -6,9 +6,9 @@ import java.util.List;
 import kr.team3.ootm.dao.product.ProductDTO;
 
 public interface ProductService {
-	public int insert(ProductDTO product);
-	public ProductDTO read(int product_id);
-	public int delete(int product_id);
+	public int insertProduct(ProductDTO product);
+	public ProductDTO readProduct(int id);
+	public int deleteProduct(int id);
 	
 	public List<ProductDTO> selectAllProduct();
 	public List<ProductDTO> selectBestProduct(int amount);

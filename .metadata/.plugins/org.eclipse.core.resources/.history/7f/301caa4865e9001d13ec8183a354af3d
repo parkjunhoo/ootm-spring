@@ -18,18 +18,6 @@ public class ProductPageController {
 	@Autowired
 	ProductService service;
 	
-	/*
-	 * @RequestMapping(value = "/product/*") public ModelAndView productTEST() {
-	 * ModelAndView mav = new ModelAndView("product/product");
-	 * mav.addObject("cateName","NEW (10% SALE)");
-	 * 
-	 * List<ProductDTO> list = service.selectNewProduct(30);
-	 * 
-	 * mav.addObject("productList",list);
-	 * 
-	 * return mav; }
-	 */
-	
 	@RequestMapping(value = "/product/new")
 	public ModelAndView productNew() {
 		ModelAndView mav = new ModelAndView("product/product");
@@ -82,30 +70,6 @@ public class ProductPageController {
 		mav.addObject("cateName","LONG SLEEVE");
 		
 		List<ProductDTO> list = service.selectBySubCategoryOrderByBestLimit(ProductSubCategory.LONG_SLEEVE.getValue(),
-				0, 30);
-		
-		mav.addObject("productList",list);
-		
-		return mav;
-	}
-	@RequestMapping(value = "/product/knit")
-	public ModelAndView productKnit() {
-		ModelAndView mav = new ModelAndView("product/product");
-		mav.addObject("cateName","KNIT");
-		
-		List<ProductDTO> list = service.selectBySubCategoryOrderByBestLimit(ProductSubCategory.KNIT.getValue(),
-				0, 30);
-		
-		mav.addObject("productList",list);
-		
-		return mav;
-	}
-	@RequestMapping(value = "/product/shortsleeve")
-	public ModelAndView productShortsleeve() {
-		ModelAndView mav = new ModelAndView("product/product");
-		mav.addObject("cateName","SHORT SLEEVE");
-		
-		List<ProductDTO> list = service.selectBySubCategoryOrderByBestLimit(ProductSubCategory.SHORT_SLEEVE.getValue(),
 				0, 30);
 		
 		mav.addObject("productList",list);
@@ -172,7 +136,7 @@ public class ProductPageController {
 		
 		return mav;
 	}
-	@RequestMapping(value = "/product/acc")
+	@RequestMapping(value = "/product/accessories")
 	public ModelAndView productAcc() {
 		ModelAndView mav = new ModelAndView("product/product");
 		mav.addObject("cateName","ACCESSORIES");

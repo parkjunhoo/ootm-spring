@@ -40,7 +40,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/read.do")
 	public String readProduct(int id, String state) {
-		ProductDTO product = service.read(id);
+		ProductDTO product = service.readProduct(id);
 
 		/*
 		 * 여기서는 테스트용으로 여기서 끝냈지만 페이지로 넘길땐 ModelAndView mav = new

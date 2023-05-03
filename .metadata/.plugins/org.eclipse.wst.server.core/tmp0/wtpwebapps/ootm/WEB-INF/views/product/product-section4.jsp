@@ -11,7 +11,7 @@ ArrayList<ProductDTO> list = (ArrayList<ProductDTO>)request.getAttribute("produc
 <%for(ProductDTO dto : list){ %>
 <div class="product-box">
 	<div class="img-box">
-		<a href="/product-detail" class="product-detail-link"><img
+		<a href="/product-detail?id=<%=dto.getProduct_id() %>" class="product-detail-link"><img
 			src="<%=dto.getProduct_image() %>"><img
 			src="<%=dto.getProduct_image2() %>"></a>
 	</div>

@@ -22,12 +22,12 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public ProductDTO read(int product_id) {
-		return dao.read(product_id);
+		return dao.read(id);
 	}
 
 	@Override
-	public int delete(int product_id) {
-		return dao.delete(product_id);
+	public int deleteProduct(int product_id) {
+		return dao.delete(id);
 	}
 
 	@Override

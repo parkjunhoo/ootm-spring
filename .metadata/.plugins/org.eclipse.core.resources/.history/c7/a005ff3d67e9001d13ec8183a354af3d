@@ -18,18 +18,6 @@ public class ProductPageController {
 	@Autowired
 	ProductService service;
 	
-	/*
-	 * @RequestMapping(value = "/product/*") public ModelAndView productTEST() {
-	 * ModelAndView mav = new ModelAndView("product/product");
-	 * mav.addObject("cateName","NEW (10% SALE)");
-	 * 
-	 * List<ProductDTO> list = service.selectNewProduct(30);
-	 * 
-	 * mav.addObject("productList",list);
-	 * 
-	 * return mav; }
-	 */
-	
 	@RequestMapping(value = "/product/new")
 	public ModelAndView productNew() {
 		ModelAndView mav = new ModelAndView("product/product");

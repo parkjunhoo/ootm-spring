@@ -1,5 +1,12 @@
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+ArrayList<ProductDTO> list = (ArrayList<ProductDTO>) request.getAttribute("searchResult");
+int count = list.size();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,12 +31,6 @@
 	href="/web-component/carousel/carousel.css" />
 <link rel="stylesheet" type="text/css"
 	href="/web-component/hoverbox/hoverbox.css" />
-
-
-
-
-
-
 <body>
 	<jsp:include page="/WEB-INF/layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
@@ -37,32 +38,51 @@
 		<jsp:param value="black" name="mTextColor" />
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
-		<jsp:param value="white" name="bgScrollColor"/>
+		<jsp:param value="white" name="bgScrollColor" />
 	</jsp:include>
 
 	<section id="searchResultSection">
 		<div class="searchPageOuter">
-			<form action="/jsp/search.jsp" id="searchPageForm"
-				name="searchPageForm">
+			<form action="/search" id="searchPageForm" name="searchPageForm">
 				<h1>#</h1>
-				<input onkeydown="" type="text" id="searchPageInput"
-					name="searchPageInput" />
+				<input onkeydown="" type="text" id="searchPageInput" name="keyword" />
 				<div id="searchformOutline">
 					<p>검색어 입력 후 엔터</p>
 				</div>
 			</form>
 
 			<div id="searchResultDiv">
-				<p id="searchResCountText">검색어와 관련된 230개의 상품을 찾았습니다.</p>
+				<p id="searchResCountText">
+					검색어와 관련된
+					<%=count%>개의 상품을 찾았습니다.
+				</p>
 				<span onclick="focusToSearchBar()" class="anotherSearch">다른
 					검색어로 찾기</span>
 
-				<div id="searchResultTable"></div>
+				<div id="searchResultTable">
+					<%for(ProductDTO dto : list){%>
+						<div onclick="location.href = '/product-detail?id=<%=dto.getProduct_id()%>'" class="searchResItemDiv">
+							<hoverbox-component class="searchResProduct">
+								<div class="beforeBox"
+									style="background-image: url(<%=dto.getProduct_image2()%>);"></div>
+								<div class="afterBox">
+									<img style="width:100%; height:100%;"
+										src="<%=dto.getProduct_image() %>">
+								</div>
+							</hoverbox-component>
+							<div class="searchResDesc">
+								<h1><%=dto.getProduct_name()%></h1>
+								<h2><%=dto.getProduct_price()%></h2>
+								<h3>Free / 3 Colors</h3>
+							</div>
+						</div>
+					<%}%>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
+	<jsp:include page="/WEB-INF/layout/footer.jsp" />
 
 
 	<script src="/js/searchPage.js"></script>

@@ -28,4 +28,5 @@ public interface ProductDAO {
 	public List<ProductDTO> selectBestProduct(int amount);
 	public List<ProductDTO> selectNewProduct(int amount);
 	
+	public List<ProductDTO> selectByKeyword(String keyword);
 }

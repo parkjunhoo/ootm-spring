@@ -1,0 +1,133 @@
+let searchRes = [
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    },
+    {
+        name:"B 라벨 카라 T - NEW",
+        price:"34,000",
+        tags:["#오버핏","#인기"],
+        size:"Free",
+        colorCount:"3",
+        image:"https://www.everfree.co.kr/shopimages/manish/0130070007972.jpg?1556696940",
+        image2:"http://www.everfree.co.kr/shopimages/manish/013007000797.jpg?1556696940",
+        link:"/"
+    }
+];
+
+let usp = new URLSearchParams(location.search);
+let searchKeyword = usp.get("keyword");
+document.searchPageForm.searchPageInput.value = searchKeyword;
+
+
+function focusToSearchBar(){
+    document.getElementById("searchPageInput").focus();
+    
+}
+

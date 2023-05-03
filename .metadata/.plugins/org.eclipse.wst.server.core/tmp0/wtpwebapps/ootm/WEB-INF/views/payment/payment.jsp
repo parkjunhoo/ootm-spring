@@ -46,7 +46,7 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 			<div class="user_order_info1">
 				<h3 >주문정보</h3>
 				<label id="title_name" for="name">이름</label>
-				<input type="text" id="user_name" name="user_name" value="<%=member.getMember_name() %>"><br/>
+				<input readonly type="text" id="user_name" name="user_name" value="<%=member.getMember_name() %>"><br/>
 				
 				<label id="title_phone_number" for="phone_number">연락처</label>
 				<input type="text" id="phone_number1" name="phone_number1" maxlength="3">
@@ -185,14 +185,21 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 			<div class="checkout_summary">
 				<h3>주문요약 및 결제</h3>
 				<ul>
+				<%
+				int count = cartList.size();
+				for(int i=0; i<count; i++){ 
+				CartDTO cart = cartList.get(i);
+				ProductDTO product = productList.get(i);
+				%>
 					<li class="image">
-						<img src="/images/pants.jpg"> <!-- DB에서 받아오기 -->
+						<img width="80px;" height="80px;" src="<%=product.getProduct_image2() %>"> <!-- DB에서 받아오기 -->
 					</li>
 					<li class="product_info">
-						<h4>8036 버뮤다 카펜터 반밴딩 x 1</h4> 
+						<h4><%=product.getProduct_name()%> x <%=cart.getCart_quantity()%></h4> 
 						<div class="product-option">컬러 : 중청, 사이즈 : L</div>
 						<h4 class="price">37,000원</h4>
 					</li>
+					<%}%>
 				</ul>
 				<hr class="line6"/>
 				<div class="pay_summary">

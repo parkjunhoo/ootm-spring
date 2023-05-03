@@ -4,7 +4,7 @@
 	<carousel-component auto="5000">
 	<div id="videoSection1" id="carouselVideo" class="carouselItem">
 		<video  autoplay loop muted>
-	  		<source src="/images/banner.mp4" type="video/mp4">
+	  		<source src="/videos/banner.mp4" type="video/mp4">
 		</video>
 	</div>
 <!-- 	<div class="carouselItem"

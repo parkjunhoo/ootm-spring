@@ -1,0 +1,25 @@
+package kr.team3.ootm.dao.product_image;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ProductImageDAOImpl implements ProductImageDAO{
+
+	@Autowired
+	JdbcTemplate tem;
+	
+	@Override
+	public int insert(ProductImageDTO productImage) {
+		return 0;
+	}
+
+	@Override
+	public List<ProductImageDTO> selectByProductId(int product_id) {
+		return null;
+	}
+	
+}

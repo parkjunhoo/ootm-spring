@@ -1,0 +1,9 @@
+package kr.team3.ootm.dao.product_category;
+
+public class ProductCategoryDTO {
+	private int product_category_id;
+	private String product_category_name;
+	private String product_category_kor_name;
+	
+	
+}

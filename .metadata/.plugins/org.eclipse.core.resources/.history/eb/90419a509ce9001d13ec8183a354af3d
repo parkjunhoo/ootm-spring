@@ -1,0 +1,8 @@
+package kr.team3.ootm.dao.product_image;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class ProductImageRowMapper implements RowMapper<ProductImageDTO>{
+	
+
+}

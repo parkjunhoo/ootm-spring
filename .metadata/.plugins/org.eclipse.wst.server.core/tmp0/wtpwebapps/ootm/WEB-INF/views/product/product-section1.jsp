@@ -3,7 +3,11 @@
     pageEncoding="UTF-8"%>
 <%
 String cateName = (String)request.getAttribute("cateName");
+String bannerPath = (String)request.getAttribute("banner");
 %>
-<section id="titleSection" style="position: relative;">
-		<h1 id="testID" class="pic_text"><%=cateName %></h1>
+<section id="titleSection" style="position: relative; margin-top:80px;">
+		<video class="productTitleBanner" autoplay loop muted>
+	  		<source src="/videos/productbanner/<%=bannerPath%>.mp4" type="video/mp4">
+		</video>
+		<h1 style="font-family: 'Rock Salt', cursive; font-size: 4rem;" id="testID" class="pic_text"><%=cateName %></h1>
 </section>

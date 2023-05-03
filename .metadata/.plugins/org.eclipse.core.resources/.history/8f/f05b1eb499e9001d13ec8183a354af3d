@@ -1,0 +1,8 @@
+package kr.team3.ootm.dao.product_image;
+
+public class ProductImageDTO {
+    private int product_image_id;
+    private int product_id;
+    private String product_image_url;
+    
+}

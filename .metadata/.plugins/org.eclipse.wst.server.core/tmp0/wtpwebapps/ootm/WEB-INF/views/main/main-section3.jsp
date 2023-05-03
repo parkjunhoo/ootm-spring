@@ -42,7 +42,7 @@ ArrayList<ProductDTO> bestProductList = (ArrayList<ProductDTO>) request.getAttri
 </section>
 <section id="videoSection2" class="VideoSection">
 	<video autoplay loop muted>
-	  <source src="/images/deco6.mp4" type="video/mp4">
+	  <source src="/videos/deco6.mp4" type="video/mp4">
 	</video>
 </section>
 

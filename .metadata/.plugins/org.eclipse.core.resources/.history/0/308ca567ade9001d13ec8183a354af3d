@@ -1,0 +1,7 @@
+
+
+function focusToSearchBar(){
+    document.getElementById("searchPageInput").focus();
+    
+}
+

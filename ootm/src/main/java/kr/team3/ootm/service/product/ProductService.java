@@ -23,4 +23,6 @@ public interface ProductService {
 	public List<ProductDTO> selectByCategoryOrderByPriceLimit(int product_category_id , int min, int max);
 	public List<ProductDTO> selectBySubCategoryOrderByPriceDescLimit(int product_sub_category_id, int min , int max);
 	
+	public List<ProductDTO> selectByKeyword(String keyword);
+	
 }

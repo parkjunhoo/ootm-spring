@@ -75,4 +75,9 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectBySubCategoryOrderByPriceDescLimit(product_sub_category_id, min, max);
 	}
 
+	@Override
+	public List<ProductDTO> selectByKeyword(String keyword) {
+		return dao.selectByKeyword(keyword);
+	}
+
 }

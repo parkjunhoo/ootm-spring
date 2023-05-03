@@ -52,7 +52,7 @@ if(session.getAttribute("loginUser") != null){
 						<h1>#</h1>
 						<form id="searchForm" name="searchForm"
 							action="/search">
-							<input id="headerSearchInput" type="text" name="searchPageInput">
+							<input id="headerSearchInput" type="text" name="keyword">
 						</form>
 					</div>
 				</div>

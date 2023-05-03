@@ -22,6 +22,6 @@ public class ReviewController {
 	@RequestMapping("/review/insert.do")
 	public String showPage(ReviewDTO review,String product_id) {
 		reviewservice.insert(review);
-		return "redirect:/product-detail/?id="+product_id;
+		return "redirect:/product-detail/?product_id="+product_id;
 	}
 }

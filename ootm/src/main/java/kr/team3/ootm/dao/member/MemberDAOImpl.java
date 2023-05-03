@@ -21,7 +21,7 @@ public class MemberDAOImpl implements MemberDAO {
 		//(member_id, member_name, member_email, member_password, member_birth, "+ "member_zipcode , member_address , member_telnum, member_opt)
 		int result=template.update(sql,member.getMember_id(),member.getMember_name(),member.getMember_email(),member.getMember_password(),member.getMember_birth(),member.getMember_zipcode(),member.getMember_address(),member.getMember_telnum(),member.getMember_opt());
 		return result;
-
+		
 	}
 
 

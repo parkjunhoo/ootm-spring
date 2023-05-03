@@ -7,29 +7,37 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.team3.ootm.dao.order.OrderDAO;
-import kr.team3.ootm.dao.order.OrderDTO;
 
 @Repository
-public class OrderDetailsDAOImpl implements OrderDAO{
+public class OrderDetailsDAOImpl implements OrderDetailsDAO{
 
 	@Autowired
 	JdbcTemplate tem;
 	
 	@Override
-	public int insert(OrderDTO order) {
-		return 0;
+	public int insert(OrderDetailsDTO orderDetails) {
+		String sql = "insert into order_details values(null,?,?,?,?,?,?)";
+		int result = tem.update(sql,
+					orderDetails.getOrder_nuber(),
+					orderDetails.getProduct_id(),
+					orderDetails.getMember_id(),
+					orderDetails.getQuantity(),
+					orderDetails.getPrice(),
+					orderDetails.getResult()
+				);
+		
+		return result;
 	}
 
-	@Override
-	public OrderDTO read(int orderNumber) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<OrderDTO> selectAllByMemberId(String member_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderDetailsDTO> selectAllByOrderNumber(int order_number) {
+		String sql = "select * from order_details where order_number = ?";
+		List<OrderDetailsDTO> list = tem.query(sql, 
+					new Object[] {order_number} , new OrderDetailsRowMapper()
+				);
+		
+		return list;
 	}
 
 }

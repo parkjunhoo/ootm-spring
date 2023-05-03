@@ -17,7 +17,7 @@ public class InquiryProductPostDAOImpl implements InquiryProductPostDAO {
 	@Override
 	public int insert(InquiryProductPostDTO inquiryPost) {
 		
-		return template.update("insert into inquiry_post values(null,?,?,?,?,now())",
+		return template.update("insert into inquiry_product_post values(null,?,?,?,?,now())",
 				inquiryPost.getProduct_id(),
 				inquiryPost.getMember_id(),
 				inquiryPost.getInquiry_post_title(),
@@ -27,25 +27,25 @@ public class InquiryProductPostDAOImpl implements InquiryProductPostDAO {
 
 	@Override
 	public InquiryProductPostDTO read(int inquiry_post_id) {
-		return template.queryForObject("select * from product where inquiry_post_id =?",
+		return template.queryForObject("select * from inquiry_product_post where inquiry_post_id =?",
 				new Object[] {inquiry_post_id} , new InquiryProductPostRowMapper());
 	}
 
 	@Override
 	public List<InquiryProductPostDTO> selectAllInquiryPost() {
-		return template.query("select * from inquiry_post", new InquiryProductPostRowMapper());
+		return template.query("select * from inquiry_product_post", new InquiryProductPostRowMapper());
 	}
 
 	@Override
 	public List<InquiryProductPostDTO> selectAllInquiryPostByProductId(int product_id) {
-		return template.query("select * from inquiry_post where product_id = ?",
+		return template.query("select * from inquiry_product_post where product_id = ?",
 				new Object[] {product_id} , new InquiryProductPostRowMapper());
 	}
 	
 
 	@Override
 	public List<InquiryProductPostDTO> selectAllInquiryPostByMemberId(String member_id) {
-		return template.query("select * from inquiry_post where member_id =?",
+		return template.query("select * from inquiry_product_post where member_id =?",
 				new Object[] {member_id} ,  new InquiryProductPostRowMapper());
 	}
 

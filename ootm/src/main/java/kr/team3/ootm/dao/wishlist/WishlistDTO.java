@@ -14,10 +14,9 @@ public class WishlistDTO {
 
 	
 	//insert용
-	public WishlistDTO(String member_id, int product_id, Timestamp wishlist_regdate) {
+	public WishlistDTO(String member_id, int product_id) {
 		this.member_id = member_id;
 		this.product_id = product_id;
-		this.wishlist_regdate = wishlist_regdate;
 	}
 	
 	//read용

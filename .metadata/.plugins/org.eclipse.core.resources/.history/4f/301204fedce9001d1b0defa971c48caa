@@ -1,0 +1,5 @@
+package kr.team3.ootm.service.order;
+
+public class OrderServiceImpl implements OrderService{
+
+}

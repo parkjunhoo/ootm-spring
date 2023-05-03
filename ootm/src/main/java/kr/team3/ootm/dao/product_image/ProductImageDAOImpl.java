@@ -24,7 +24,7 @@ public class ProductImageDAOImpl implements ProductImageDAO{
 
 	@Override
 	public List<ProductImageDTO> selectByProductId(int product_id) {
-		String sql ="select * from product_image where product_id = product_id";
+		String sql ="select * from product_image where product_id = ?";
 		List<ProductImageDTO> list = tem.query(sql,
 				new Object[] {product_id} , new ProductImageRowMapper());
 		

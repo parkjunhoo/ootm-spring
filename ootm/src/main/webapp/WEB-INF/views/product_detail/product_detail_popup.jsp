@@ -1,3 +1,4 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="kr.team3.ootm.dao.product.ProductDAO"%>
@@ -5,15 +6,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-/* List<ProductDTO> listAll = (List<ProductDTO>) request.getAttribute("listAll"); */
 ProductDTO product = (ProductDTO) request.getAttribute("product");
-System.out.println(product);
-/* System.out.println(listAll); */
-List<ReviewDTO> review = (List<ReviewDTO>) request.getAttribute("review");
+List<ReviewDTO> review = (List<ReviewDTO>) request.getAttribute("reviewList");
 int size = review.size();	
 
-
-/* List<ProductDTO> productlist = (List<ProductDTO>) request.getAttribute("listall"); */
+String memberName = "";
+if(session.getAttribute("loginUser") != null){
+	MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+	memberName = member.getMember_name();
+}
 
 %>
 
@@ -37,7 +38,6 @@ int size = review.size();
 				method="POST" name="review">
 				<div class="modal-body">
 					<h3>리뷰를 남겨주세요</h3>
-
 					<div id="rating">
 						<!-- 별점 입력 부분 -->
 
@@ -61,7 +61,7 @@ int size = review.size();
 					
 					<div class="form-group">
 						<div class="center">
-							<label for="reviewerName">상품</label> <input type="hidden"  
+							<label for="productName">상품</label> <input type="hidden"  
 								class="form-control" id="ProductId" name="product_id" 
 								value="<%=product.getProduct_id()%>">
 								<input type="text" readonly style="text-align:center" 
@@ -70,7 +70,7 @@ int size = review.size();
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="reviewerHeight">이름</label> <input type="text"
+						<label for="reviewerHeight">이름</label> <input readonly type="text" value="<%=memberName%>"
 							class="form-control" id="reviewerName" name="review_author_id"
 							placeholder="이름을 입력하세요">
 					</div>

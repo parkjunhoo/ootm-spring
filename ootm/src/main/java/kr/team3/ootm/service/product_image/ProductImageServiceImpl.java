@@ -3,10 +3,12 @@ package kr.team3.ootm.service.product_image;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.team3.ootm.dao.product_image.ProductImageDAO;
 import kr.team3.ootm.dao.product_image.ProductImageDTO;
 
+@Service
 public class ProductImageServiceImpl implements ProductImageService{
 
 	@Autowired

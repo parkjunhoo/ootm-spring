@@ -28,4 +28,14 @@ public class WishlistServiceImpl implements WishlistService {
 		return result;
 	}
 
+	@Override
+	public WishlistDTO readByProductIdAndMemberId(int product_id, String member_id) {
+		return dao.readByProductIdAndMemberId(product_id, member_id);
+	}
+
+	@Override
+	public int insert(WishlistDTO wishlist) {
+		return dao.insert(wishlist);
+	}
+
 }

@@ -43,21 +43,22 @@ function handleCheckboxClick(clickedCheckbox) {
 	});
 }
 
-//우편번호검색 팝업
+//우편번호검색 팝업 ==> 중복해서 뜨는 문제 해결
+const post_btn = document.querySelector("#post_button"); // 버튼 아이디
+post_btn.addEventListener("click", searchAddress);
+
 function searchAddress() {
-	const post_btn = document.querySelector("#post_button"); //버튼 아이디
-	post_btn.addEventListener("click", () => {
-		new daum.Postcode({
-			oncomplete: function(data) {
-				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분
-				console.log(data);
-				//document.form1.address_code1.value = data.zonecode; //우편번호 넣기
-				document.getElementById('address_code1').value = data.zonecode; //우편번호 넣기
-				document.getElementById('address_code2').value = data.address; //주소 넣기 ==> 도로명만 들어감...
-			}
-		}).open();
-	});
+  new daum.Postcode({
+    oncomplete: function (data) {
+      // 팝업에서 검색결과 항목을 클릭했을 때 실행할 코드를 작성하는 부분
+      console.log(data);
+      //document.form1.address_code1.value = data.zonecode; //우편번호 넣기
+      document.getElementById("address_code1").value = data.zonecode; //우편번호 넣기
+      document.getElementById("address_code2").value = data.address; //주소 넣기 ==> 도로명만 들어감...
+    },
+  }).open();
 }
+
 
 //결제정보 체크박스 따로 눌리게..
 function handleCheckboxChange1() {
@@ -180,15 +181,49 @@ function handleCheckboxChange3() {
 	});
 }
 
-//보유적립금의 모두사용 버튼 클릭시 이벤트
-function allCheckUse(target) {
-  var reserves = parseInt(document.getElementById('okreserve').value);
-  if (document.getElementById('reserve_box').checked) {
-    document.getElementById(target).value = reserves;
-    document.getElementById('okreserve').value = '0';
-  } else {
-    document.getElementById(target).value = '0';
-    document.getElementById('okreserve').value = reserves;
-  }
+//보유적립금 
+function getUseableMoney() {
+    let reserves = parseInt(document.getElementById('reserves').value);
+    // 토탈 가격을 가져오고, 적립금을 빼기
+    let totalAmount = 369000; //***************가격 변동 있을시 수정해야함******************
+    let finalAmount = totalAmount - reserves;
+    // 최종 금액을 화면에 출력
+    document.querySelector(".total_price").innerText = finalAmount.toLocaleString() + " 원";
 }
 
+function useAllReserves() {
+  var reservesInput = document.getElementById("reserves");
+  var reservesCheckbox = document.getElementById("reserve_box");
+  var okReservesInput = document.getElementById("okreserve");
+  var salePrice = document.querySelector(".sale_price");
+  var totalPrice = parseInt(document.querySelector(".product_price").getAttribute("price"));
+
+  if (reservesCheckbox.checked) {
+    var availableReserves = parseInt(okReservesInput.value.replace(/[^0-9]/g, ""));
+    if (availableReserves > 0) {
+      reservesInput.value = availableReserves;
+      okReservesInput.value = "0";
+      var discountPrice = totalPrice - availableReserves;
+      salePrice.innerText = "-" + availableReserves.toLocaleString() + " 원";
+    }
+  } else {
+    var usedReserves = parseInt(reservesInput.value.replace(/[^0-9]/g, ""));
+    if (usedReserves > 0) {
+      var currentReserves = parseInt(okReservesInput.value.replace(/[^0-9]/g, ""));
+      okReservesInput.value = (currentReserves + usedReserves) + "";
+      reservesInput.value = "0";
+      var discountPrice = totalPrice;
+      salePrice.innerText = "-" + currentReserves.toLocaleString() + " 원";
+    }
+  }
+
+  // Update the total price with the discount applied
+  document.querySelector(".total_price").innerText = discountPrice.toLocaleString() + " 원";
+  // 최종 금액 갱신
+  getUseableMoney();
+}
+
+// 페이지 로드 시 최초 실행
+$(document).ready(function () {
+    getUseableMoney();
+});

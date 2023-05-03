@@ -56,3 +56,4 @@
 1683133201512	Rename package 'kr.team3.ootm.service.proudct_inquiry_post'
 1683133209046	Rename type 'ProductInquiryPostService'
 1683133216013	Rename type 'ProductInquiryPostServiceImpl'
+1683144228648	Rename type 'wishlistController'

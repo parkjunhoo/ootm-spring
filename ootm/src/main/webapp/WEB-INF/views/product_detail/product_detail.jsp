@@ -1,19 +1,39 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
+<%@page import="util.Utils"%>
+<%@page import="kr.team3.ootm.dao.wishlist.WishlistDTO"%>
+<%@page import="kr.team3.ootm.dao.product_image.ProductImageDTO"%>
+<%@page
+	import="kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO"%>
 <%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.team3.ootm.dao.review.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-/* List<ProductDTO> listAll = (List<ProductDTO>) request.getAttribute("listAll"); */
 ProductDTO product = (ProductDTO) request.getAttribute("product");
-System.out.println(product);
-/* System.out.println(listAll); */
-List<ReviewDTO> review = (List<ReviewDTO>) request.getAttribute("review");
-int size = review.size();	
 
+boolean isLoggedIn = session.getAttribute("loginUser") != null;
+String memberId = "";
+if (isLoggedIn) {
+	memberId = ((MemberDTO) session.getAttribute("loginUser")).getMember_id();
+}
 
-/* List<ProductDTO> productlist = (List<ProductDTO>) request.getAttribute("listall"); */
+List<ProductImageDTO> productImageList = (List<ProductImageDTO>) request.getAttribute("productImageList");
+int productImageCount = productImageList.size();
 
+WishlistDTO wishlist = (WishlistDTO) request.getAttribute("wishlist");
+int wishlistId = -1;
+if(wishlist != null){
+	wishlistId = wishlist.getWishlist_id();
+}
+
+List<ReviewDTO> reviewList = (List<ReviewDTO>) request.getAttribute("reviewList");
+int reviewCount = reviewList.size();
+
+List<InquiryProductPostDTO> inquiryList = (List<InquiryProductPostDTO>) request.getAttribute("inquiryList");
+int inquiryCount = inquiryList.size();
+
+boolean wishRed = (isLoggedIn && wishlist != null);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,6 +53,7 @@ int size = review.size();
 <title>홈쇼핑웹 상품 상세 페이지</title>
 <link rel="icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="/css/view/1.css">
+
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,14 +81,14 @@ int size = review.size();
 		<jsp:param value="black" name="mTextColor" />
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
-		<jsp:param value="white" name="bgScrollColor"/>
+		<jsp:param value="white" name="bgScrollColor" />
 	</jsp:include>
 	<div class="content-container">
 		<!-- 섹션 1: 제품 이름 및 구매 버튼 -->
 
 		<section style="padding-top: 150px;">
-			<h1>B 라벨 카라 T - NEW</h1>
-			<span class="price-now">34,000</span>
+			<h1><%=product.getProduct_name()%></h1>
+			<span class="price-now"><%=Utils.priceDot(product.getProduct_price())%></span>
 			<div class="option-detail">
 				Free : 95~105<br> 디테일 수정 및 컬러 변경 ! <br> 한경 : 170/58,
 				베이지(삭제) 그린 블루(삭제) 블랙 착용<br> 이탁 : 170/52, 그레이 착용 - 추 후 피팅사진 업데이트
@@ -100,7 +121,17 @@ int size = review.size();
 			</div>
 			<!-- 위시리스트 버튼 -->
 			<button class="wishlist-btn" onclick="toggleWishlist(this)">
+				<%
+				if (wishRed) {
+				%>
+				<i class="fa fa-heart" aria-hidden="true"></i>
+				<%
+				} else {
+				%>
 				<i class="fa fa-heart-o" aria-hidden="true"></i>
+				<%
+				}
+				%>
 			</button>
 			<script src="https://kit.fontawesome.com/your-font-awesome-kit.js"
 				crossorigin="anonymous"></script>
@@ -159,166 +190,71 @@ int size = review.size();
 				style="display: block; margin: 0 auto;">
 		</section>
 		<!-- 섹션 3: 리뷰 -->
-      <section>
-         <h1 class="testh1">Reviews</h1>
-         <button class="review_button" data-toggle="modal"
-            data-target="#reviewModal">리뷰 작성하기</button>
-         <ul>리뷰 작성 시 텍스트 리뷰 500원, 포토리뷰 + 텍스트 리뷰는 1,000원, 착용샷 + 텍스트는
-            2,000원의 적립금을 드립니다.
-         </ul>
-         <div class="review-display">
-          <% 
-          for(int i=0;i<size;i++){ 
-            ReviewDTO re = review.get(i);
-            int starsize = re.getReview_star();
-         %>
-             <h3>상품 리뷰</h3>
-             <p>작성자: <%=re.getReview_author_id()%></p>
-             <p>리뷰 내용: <%=re.getReview_content()%></p>
-             <p>별점: <%for(int j=1;j<=starsize;j++){%>
-                   <span><img src="/images/star.png"></span>
-                   <%} %>
-             </p>
-             <hr/>
-         <%} %>
-         </div>
+		<section>
+			<h1 class="testh1">Reviews</h1>
+			<button <%if (!isLoggedIn) {%> disabled <%}%> class="review_button"
+				data-toggle="modal" data-target="#reviewModal">리뷰 작성하기</button>
+			<ul>리뷰 작성 시 텍스트 리뷰 500원, 포토리뷰 + 텍스트 리뷰는 1,000원, 착용샷 + 텍스트는
+				2,000원의 적립금을 드립니다.
+			</ul>
+			<div class="review-display">
+				<%
+				for (ReviewDTO review : reviewList) {
+					int starsize = review.getReview_star();
+				%>
+				<h3>상품 리뷰</h3>
+				<p>
+					작성자:<%=review.getReview_author_id()%></p>
+				<p>
+					리뷰 내용:<%=review.getReview_content()%></p>
+				<p>
+					별점:
+					<%
+				for (int j = 1; j <= starsize; j++) {
+				%>
+					<span><img src="/images/star.png"></span>
+					<%
+					}
+					%>
+				</p>
+				<hr />
+				<%
+				}
+				%>
+			</div>
 		</section>
 		<!-- 팝업 리뷰 작성 폼 -->
 		<jsp:include page="./product_detail_popup.jsp"></jsp:include>
-		<!-- <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
-			aria-labelledby="reviewModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="reviewModalLabel">제품 이름</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<h3>리뷰를 남겨주세요</h3>
-
-						<div id="rating">
-							별점 입력 부분
-
-							<fieldset class="rating">
-								<input type="radio" id="star5" name="rating" value="5" /><label
-									for="star5" title="5점">5 stars</label> <input type="radio"
-									id="star4" name="rating" value="4" /><label for="star4"
-									title="4점">4 stars</label> <input type="radio" id="star3"
-									name="rating" value="3" /><label for="star3" title="3점">3
-									stars</label> <input type="radio" id="star2" name="rating" value="2" /><label
-									for="star2" title="2점">2 stars</label> <input type="radio"
-									id="star1" name="rating" value="1" /><label for="star1"
-									title="1점">1 star</label>
-							</fieldset>
-
-						</div>
-						<hr>
-						<hr>
-						<hr>
-						<form id="reviewForm">
-							<div class="form-group">
-								<label for="reviewerName">이름</label> <input type="text"
-									class="form-control" id="reviewerName" placeholder="이름을 입력하세요">
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label for="reviewerHeight">키</label> <input type="number"
-										class="form-control" id="reviewerHeight"
-										placeholder="키를 입력하세요">
-								</div>
-								<div class="form-group col-md-4">
-									<label for="reviewerWeight">체중</label> <input type="number"
-										class="form-control" id="reviewerWeight"
-										placeholder="체중을 입력하세요">
-								</div>
-								<div class="form-group col-md-4">
-									<label for="productSize">상품 사이즈</label> <input type="text"
-										class="form-control" id="productSize"
-										placeholder="상품 사이즈를 입력하세요">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="reviewText">리뷰 내용</label>
-								<textarea class="form-control" id="reviewText" rows="3"
-									placeholder="리뷰 내용을 입력하세요"></textarea>
-							</div>
-							<div class="form-group">
-								<label for="imageUpload">이미지 업로드</label> <input type="file"
-									class="form-control-file" id="imageUpload">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-primary"
-							onclick="submitReview()">리뷰 작성하기</button>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
 
 		<!-- 섹션 4: Q&A -->
-		<section>
+		<section class="slide">
 			<h1 class="testh1">Q&A</h1>
-			<button class="Q-A_button" data-toggle="modal"
-				data-target="#productInquiryModal">상품 문의하기</button>
+			<button <%if (!isLoggedIn) {%> disabled <%}%> class="Q-A_button"
+				data-toggle="modal" data-target="#productInquiryModal">상품
+				문의하기</button>
 			<ul>궁금한 점이 있으신가요? 언제든지 질문해주세요.
 			</ul>
+			<div class="inquiry-display">
+				<ul class="qnaTableBody">
+					<%
+					for (InquiryProductPostDTO inquiry : inquiryList) {
+					%>
+					<li><span>작성자 : <%=inquiry.getMember_id()%></span>
+						<h3 class="hyperlink">
+							<a href="javascript:0"><%=inquiry.getInquiry_post_title()%></a>
+						</h3>
+						<div class="hide">
+							<a><%=inquiry.getInquiry_post_content()%></a>
+						</div>
+						<hr /></li>
+					<%
+					}
+					%>
+				</ul>
+			</div>
 		</section>
 		<!-- 상품 문의하기 모달 -->
-		<div class="modal fade" id="productInquiryModal" tabindex="-1"
-			role="dialog" aria-labelledby="productInquiryModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="productInquiryModalLabel">상품 문의하기</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="productInquiryForm">
-							<div class="form-group">
-								<label for="inquirerName">이름</label> <input type="text"
-									class="form-control" id="inquirerName" required>
-							</div>
-							<div class="form-group">
-								<label for="inquirerPassword">비밀번호</label> <input
-									type="password" class="form-control" id="inquirerPassword"
-									required>
-							</div>
-							<div class="form-group">
-								<label for="inquiryTitle">제목</label> <input type="text"
-									class="form-control" id="inquiryTitle" required>
-							</div>
-							<div class="form-group">
-								<label for="inquiryContent">문의 내용</label>
-								<textarea class="form-control" id="inquiryContent" rows="3"
-									required></textarea>
-							</div>
-							<div class="form-group">
-								<label for="attachment">파일 첨부</label> <input type="file"
-									class="form-control-file" id="attachment">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-primary"
-							onclick="submitInquiry()">문의하기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		<jsp:include page="./product_detail_inquiry.jsp" />
 
 		<!-- 섹션 5: Shopping -->
 		<section>
@@ -358,6 +294,19 @@ int size = review.size();
 
 
 		<script>
+			$(document).ready(function() {
+				// menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+				$(".hyperlink").click(function() {
+					var menu = $(this).next(".hide");
+
+					// submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+					if (menu.is(":visible")) {
+						menu.slideUp();
+					} else {
+						menu.slideDown();
+					}
+				});
+			});
 			function submitReview() {
 				const reviewerName = document.getElementById("reviewerName").value;
 				const reviewerHeight = document
@@ -449,26 +398,95 @@ int size = review.size();
 			}
 
 			function toggleWishlist(btn) {
-				var heartIcon = btn.querySelector("i");
-
+		<%if (!isLoggedIn) {%>
+			alert("위시리스트는 로그인 이후 가능합니다.");
+				return;
+		<%}%>
+			var heartIcon = btn.querySelector("i");
 				if (heartIcon.classList.contains("fa-heart-o")) {
 					heartIcon.classList.remove("fa-heart-o");
 					heartIcon.classList.add("fa-heart");
+					wishlistInsert();
 				} else {
 					heartIcon.classList.remove("fa-heart");
 					heartIcon.classList.add("fa-heart-o");
+					wishlistDelete();
+					
 				}
 			}
+
+			function wishlistInsert() {
+				let memberId = "<%=memberId%>";
+				let productId = <%=product.getProduct_id()%>;
+
+				if (memberId == "") {
+					alert("위시 리스트 등록에 실패하였습니다.");
+					return;
+				}
+
+				let form = document.createElement("form");
+				form.setAttribute("action", "/wishlist/insert.do");
+				form.setAttribute("method", "post");
+				document.charset = "UTF-8";
+
+				let input = document.createElement("input");
+				input.setAttribute("type", "hidden");
+				input.setAttribute("name", "member_id");
+				input.setAttribute("value", memberId);
+				form.appendChild(input);
+
+				let input2 = document.createElement("input");
+				input2.setAttribute("type", "hidden");
+				input2.setAttribute("name", "product_id");
+				input2.setAttribute("value", productId);
+				form.appendChild(input2);
+
+				alert("위시리스트 추가 완료");
+
+				document.body.appendChild(form);
+				form.submit();
+			}
+			
+			function wishlistDelete() {
+				let wishlistId = "<%=wishlistId%>";
+				let productId = <%=product.getProduct_id()%>;
+
+				if (wishlistId == -1) {
+					alert("위시 리스트 삭제에 실패하였습니다.");
+					return;
+				}
+
+				let form = document.createElement("form");
+				form.setAttribute("action", "/wishlist/delete.do");
+				form.setAttribute("method", "post");
+				document.charset = "UTF-8";
+
+				let input = document.createElement("input");
+				input.setAttribute("type", "hidden");
+				input.setAttribute("name", "product_id");
+				input.setAttribute("value", productId);
+				form.appendChild(input);
+
+				let input2 = document.createElement("input");
+				input2.setAttribute("type", "hidden");
+				input2.setAttribute("name", "wishlist_id");
+				input2.setAttribute("value", wishlistId);
+				form.appendChild(input2);
+
+				alert("위시리스트 삭제 완료");
+
+				document.body.appendChild(form);
+				form.submit();
+			}
 		</script>
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 		<script
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 	</div>
 	<!-- 푸터 -->
-	<jsp:include page="/WEB-INF/layout/footer.jsp"/>
+	<jsp:include page="/WEB-INF/layout/footer.jsp" />
 </body>
 </html>

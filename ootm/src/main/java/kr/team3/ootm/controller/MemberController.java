@@ -27,15 +27,20 @@ public class MemberController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute MemberDTO member, HttpSession session, Model model) {
-		
-		MemberDTO loginUser = service.login(member);
+		ModelAndView mav = new ModelAndView();
 		String errorMessage = "아이디 또는 비밀번호가 일치하지 않습니다.";
+		MemberDTO loginUser = service.login(member);
+		if(loginUser == null) {
+			mav.setViewName("/login");
+			return mav;
+		}
+		
 		if(loginUser.getMember_status().equals("1")) {
 			loginUser = null;
 			errorMessage = "탈퇴한 회원입니다";
 		}
 		
-		ModelAndView mav = new ModelAndView();
+		
 
 		if (loginUser != null) { // 로그인 성공
 			session.setAttribute("loginUser", loginUser);

@@ -1,19 +1,14 @@
-<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
-<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="kr.team3.ootm.dao.cart.CartDTO"%>
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("CartList");
-ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("CartProductList");
 
-MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
-%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>이달의 룩 - 결제페이지</title>
 		<!-- 파비콘 -->
 		<link rel="icon" href="/images/favicon.ico">
@@ -22,13 +17,13 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- css -->
-		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_for_window_style.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/view/payment_members_style.css"/>
         <!-- 우편번호 검색 팝업-->
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <!-- javascript -->
+        <script type="text/javascript" src="/js/payment_members_js.js"></script>
         
-       <style type="text/css">
-       </style>
+       
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/layout/header.jsp">
@@ -39,6 +34,28 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
 		<jsp:param value="white" name="bgScrollColor"/>
 	</jsp:include>
+	<% 
+		//멤버정보를 받아와서 이름, 연락처, 이메일, 포인트를 뿌려줌.
+     	MemberDTO member=(MemberDTO)session.getAttribute("loginUser");
+		String name = member.getMember_name(); //이름 가져오기
+   		String phone = member.getMember_telnum(); //연락처 가져오기
+   		String email = member.getMember_email(); //이메일 가져오기
+   		int point = member.getMember_point(); //포인트 가져오기
+   		
+   		ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("CartList");
+   		ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("CartProductList");
+   		
+   		/* //장바구니 정보를 받아오기
+   		CartDTO cart = (CartDTO)session.getAttribute("cart");
+   		String size = cart.getSize(); //사이즈 정보 가져오기
+   		String color = cart.getColor(); //색상 정보 가져오기 */
+   		
+   		/* //상품 정보 가져오기
+   		ProductDTO product = (ProductDTO)session.getAttribute("product");
+   		int price = product.getProduct_price(); */
+    %>
+    
+
 
 		<h1 class="checkout">Checkout</h1>
 		<hr class="line1"/>
@@ -46,15 +63,15 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 			<div class="user_order_info1">
 				<h3 >주문정보</h3>
 				<label id="title_name" for="name">이름</label>
-				<input readonly type="text" id="user_name" name="user_name" value="<%=member.getMember_name() %>"><br/>
+				<input type="text" id="user_name" name="user_name" value="<%= name %>"><br/>
 				
 				<label id="title_phone_number" for="phone_number">연락처</label>
-				<input type="text" id="phone_number1" name="phone_number1" maxlength="3">
-				<input type="text" id="phone_number2" name="phone_number2" maxlength="4">
-				<input type="text" id="phone_number3" name="phone_number3" maxlength="4"><br/>
+				<input type="text" id="phone_number1" name="phone_number1" maxlength="3" value="<%= phone %>">
+				<input type="text" id="phone_number2" name="phone_number2" maxlength="4" value="<%= phone %>">
+				<input type="text" id="phone_number3" name="phone_number3" maxlength="4" value="<%= phone %>"><br/>
 				
 				<label id="title_email" for="email">이메일</label>
-				<input type="email" id="user_email" name="user_email"><br/>
+				<input type="email" id="user_email" name="user_email" value="<%= email %>"><br/>
 			</div>
 		</form>
 		
@@ -90,13 +107,13 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 	   					<label for="company">회사</label>
 	   					<input type="checkbox" id="last_delivery" onclick="handleCheckboxClick(this)">
 	   					<label for="last_delivery">최근 배송지</label>
-	   					<a href="/payment/popup" target="_blank">배송지목록</a>
+	   					<a href="/addplace" >배송지목록</a>
 	   					<input type="checkbox" id="new_delivery" onclick="handleCheckboxClick(this)">
 	   					<label for="new_delivery">신규 배송지</label>
    					</div>
 					<label id="title_address" for="address">주소</label>
 	      			<input type="text" id="address_code1" name="address_code1" maxlength="5" readonly>
-	      			<button id="post_button" type="button" value="우편번호검색" onclick="searchAddress()">우편번호 검색</button><br/>
+	      			<button id="post_button" type="button" value="우편번호검색" onclick="searchAddress(), searchAddressHandler()">우편번호 검색</button><br/>
 	      			<label id="empty_space" for="address">  </label>
 	      			<input type="text" id="address_code2" name="address_code2" readonly><br/>
 	      			<label id="empty_space" for="address">  </label>
@@ -107,21 +124,21 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 			</div>
 		</form>
 		<hr class="line3"/>
-		<form>
-			<div class="coupon_reward">
-				<div class="coupon_reward_container">
-					<h3>쿠폰/적립금 사용</h3>
-					<label id="title_reserves" for="reserves">적립금</label>
-					<input type="tel" id="reserves" name="reserves" form="order_form" autocomplete="off" size="7" class="MS_input_txt form-textbox" value="0" onkeyup="reservecheck('2900')" data-okreserve="2900" onblur="getUseableMoney();" style="background: rgb(255, 255, 255);">
-					
-					<label class="textbox-button">
-					<input id="reserve_box" type="checkbox" name="all_check_reserve" onclick="allCheckUse('reserves')">모두 사용</label>
-					
-					<span class="available-amount">보유 적립금
-					<input type="tel" id="okreserve" name="okreserve" form="order_form" autocomplete="off" size="7" class="MS_input_txt" value="2900" readonly="">원</span>
-				</div>
-			</div>
-		</form>
+		 <form method="POST">
+        	<div class="coupon_reward">
+            <div class="coupon_reward_container">
+                <h3>쿠폰/적립금 사용</h3>
+                <label id="title_reserves" for="reserves">적립금</label>
+                <input type="tel" id="reserves" name="reserves" form="order_form" autocomplete="off" size="7" class="MS_input_txt form-textbox" value="0" onkeyup="reservecheck('2900')" data-okreserve="2900" onblur="getUseableMoney();" style="background: rgb(255, 255, 255);">
+
+                <label class="textbox-button">
+                <input id="reserve_box" type="checkbox" name="all_check_reserve" onclick="useAllReserves()">모두 사용</label>
+
+                <span class="available-amount">보유 적립금
+                <input type="tel" id="okreserve" name="okreserve" form="order_form" autocomplete="off" size="7" class="MS_input_txt" value="<%=point %>" readonly="">원</span>
+            </div>
+        </div>
+    </form>
 		<hr class="line4"/>
 		<form>
 			<div class="user_order_info3">
@@ -181,32 +198,48 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 			</div>
 		</form>
 		<hr class="line5"/>
-		<form>
+		<form method="POST">
 			<div class="checkout_summary">
 				<h3>주문요약 및 결제</h3>
 				<ul>
 				<%
-				int count = cartList.size();
-				for(int i=0; i<count; i++){ 
-				CartDTO cart = cartList.get(i);
-				ProductDTO product = productList.get(i);
+					
+					if (cartList != null) {
+    					int count = cartList.size();
+    					for (int i = 0; i < count; i++) {
+       						CartDTO cart = cartList.get(i);
+        					ProductDTO product = productList.get(i);
+        				
+   				%> 
+   				<%
+  					point = 0;
+  					int totalprice = 0;
+  					String all_check_reserve = request.getParameter("all_check_reserve");
+  					if (all_check_reserve == null) {
+    					// 적립금 모두 사용 버튼이 체크되지 않은 경우
+    					totalprice = product.getProduct_price() * cart.getCart_quantity();
+  					} else {
+    					// 적립금 모두 사용 버튼이 체크된 경우
+    					point = Integer.parseInt(all_check_reserve);
+    					totalprice = product.getProduct_price() * cart.getCart_quantity() - point;
+  					}
 				%>
+
 					<li class="image">
-						<img width="80px;" height="80px;" src="<%=product.getProduct_image2() %>"> <!-- DB에서 받아오기 -->
+						<img src="<%=product.getProduct_image2() %>" width="80px;" height="80px;"> <!-- DB에서 받아오기 -->
 					</li>
-					<li class="product_info">
-						<h4><%=product.getProduct_name()%> x <%=cart.getCart_quantity()%></h4> 
-						<div class="product-option">컬러 : 중청, 사이즈 : L</div>
-						<h4 class="price">37,000원</h4>
-					</li>
-					<%}%>
+                    <li class="product_info">
+                        <h4><%=product.getProduct_name()%> x <%=cart.getCart_quantity()%> </h4> 
+                        <div class="product-option">컬러 : <%=cart.getColor() %> , 사이즈 : <%=cart.getSize() %> </div>
+                        <h4 class="price"><%=product.getProduct_price() %> 원</h4>
+                    </li>
 				</ul>
 				<hr class="line6"/>
 				<div class="pay_summary">
 					<div class="summary_list">
 						<div class="summary_item_subtotal">
 							<div class="label">주문금액 
-								<span class="product_price" price="DB">37,000원</span>
+								<span class="product_price" price="DB"><%=product.getProduct_price() * cart.getCart_quantity() %> 원</span>
 							</div>
 						<div class="summary_item_shipping">
 							<div class="label">배송비
@@ -216,7 +249,9 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 						<div class="summary_discount">
 							<div>
 								<div class="lable">할인
-									<span class="sale_price" price="DB">-0원</span>
+									<span class="sale_price">-<%=point %></span>
+									 <span class="used-reserves"></span>
+									<%-- <input class="sale_price" style=" border: none;  box-shadow: none; text-align: right; font-size: 10pt;" value="-<%=point%>"/> --%>
 								</div>
 							</div>
 						</div>
@@ -235,22 +270,22 @@ MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
 					<div class="summary_list2">
 						<div class="summary_total">
 							<div class="lable">총 결제금액
-								<span class="total_price" price="DB">37000원</span>
+								<span class="total_price" price="DB"><%=totalprice %> 원</span>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="last_checkout">
 					<div class="checkout-agreement">
                     	<label><input type="checkbox" id="pay_agree" name="pay_agree" form="order_form" class="agree_terms" onclick="javascript_method()"> 모든 주문, 결제정보를 확인하였으며 진행에 동의합니다.</label>
                     </div>
 				</div>
-				<button class="payment_button"><a href="javascript:send();" class="button primary">결제하기</a></button>
+				<button type="submit" class="payment_button"><a>결제하기</a></button>
 			</div>
+		 	<%} %>
+         <%} %> 
 		</form>
 		<jsp:include page="/WEB-INF/layout/footer.jsp"/>
-		
-		
-		<script type="text/javascript" src="/js/payment_members_js.js"></script>
 	</body>		
 </html>

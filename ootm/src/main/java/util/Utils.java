@@ -15,4 +15,7 @@ public class Utils {
 	public static String tagReplaceToSpace(String tag) {
 		return tag.replace("#"," ");
 	}
+	public static String tagReplaceToSharp(String tag) {
+		return tag.replace(" ","#");
+	}
 }

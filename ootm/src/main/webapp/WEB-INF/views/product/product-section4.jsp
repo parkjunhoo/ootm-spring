@@ -11,14 +11,14 @@ ArrayList<ProductDTO> list = (ArrayList<ProductDTO>)request.getAttribute("produc
 <%for(ProductDTO dto : list){ %>
 <div class="product-box">
 	<div class="img-box">
-		<a href="/product-detail?id=<%=dto.getProduct_id() %>" class="product-detail-link"><img
-			src="<%=dto.getProduct_image() %>"><img
-			src="<%=dto.getProduct_image2() %>"></a>
+		<a href="/product-detail?product_id=<%=dto.getProduct_id() %>" class="product-detail-link"><img
+			src="<%=dto.getProduct_image2() %>"><img
+			src="<%=dto.getProduct_image() %>"></a>
 	</div>
 	<div class="txt-box">
 		<p><%=dto.getProduct_name() %></p>
-		<P><%=Utils.priceDot(dto.getProduct_price()) %></P>
-		<p class="hashtag"><%=Utils.tagReplaceToSpace(dto.getProduct_tag()) %></p>
+		<P><%=Utils.priceDot(dto.getProduct_price()) %>원</P>
+		<p class="hashtag"><%=Utils.tagReplaceToSharp(dto.getProduct_tag())%></p>
 	</div>
 </div>
 <%}%>

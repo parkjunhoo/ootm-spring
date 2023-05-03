@@ -1,0 +1,32 @@
+package kr.team3.ootm.dao.order_details;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import kr.team3.ootm.dao.order.OrderDAO;
+
+@Repository
+public class OrderDetailsDAOImpl implements OrderDAO{
+
+	@Autowired
+	JdbcTemplate tem;
+	
+	@Override
+	public int insert(OrderDetailsDTO orderDatails) {
+		String sql = "insert into order_details values(null,?,?,?,?,?,?,?)";
+		int result = tem.update(sql,
+					
+				);
+		return 0;
+	}
+
+
+	@Override
+	public List<OrderDetailsDTO> selectAllByOrderNumber(int order_number) {
+		return null;
+	}
+
+}

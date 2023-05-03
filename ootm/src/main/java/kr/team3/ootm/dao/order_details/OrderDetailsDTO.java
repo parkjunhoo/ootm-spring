@@ -2,7 +2,7 @@ package kr.team3.ootm.dao.order_details;
 
 public class OrderDetailsDTO {
 	private int order_detail_no;
-	private int order_nuber;
+	private int order_number;
 	private int product_id;
 	private String member_id;
 	private int quantity;
@@ -14,10 +14,10 @@ public class OrderDetailsDTO {
 		
 	}
 	
-	public OrderDetailsDTO(int order_nuber, int product_id, String member_id, int quantity, int price,
+	//insert용
+	public OrderDetailsDTO(int order_number, int product_id, String member_id, int quantity, int price,
 			String order_addr, String result) {
-		this.order_detail_no = order_detail_no;
-		this.order_nuber = order_nuber;
+		this.order_number = order_number;
 		this.product_id = product_id;
 		this.member_id = member_id;
 		this.quantity = quantity;
@@ -27,10 +27,10 @@ public class OrderDetailsDTO {
 	}
 	
 	//read select 용
-	public OrderDetailsDTO(int order_detail_no, int order_nuber, int product_id, String member_id, int quantity, int price,
+	public OrderDetailsDTO(int order_detail_no, int order_number, int product_id, String member_id, int quantity, int price,
 			String order_addr, String result) {
 		this.order_detail_no = order_detail_no;
-		this.order_nuber = order_nuber;
+		this.order_number = order_number;
 		this.product_id = product_id;
 		this.member_id = member_id;
 		this.quantity = quantity;
@@ -48,11 +48,11 @@ public class OrderDetailsDTO {
 	}
 
 	public int getOrder_nuber() {
-		return order_nuber;
+		return order_number;
 	}
 
-	public void setOrder_nuber(int order_nuber) {
-		this.order_nuber = order_nuber;
+	public void setOrder_nuber(int order_number) {
+		this.order_number = order_number;
 	}
 
 	public int getProduct_id() {

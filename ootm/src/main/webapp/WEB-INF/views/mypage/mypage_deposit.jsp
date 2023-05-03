@@ -1,5 +1,9 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String memberName = ((MemberDTO)session.getAttribute("loginUser")).getMember_name();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +125,7 @@ h4 {
 			<div class="page-content">
 
 				<div class="section-title">
-					<h4>서소영님의 예치금 내역입니다.</h4>
+					<h4><%=memberName %>님의 예치금 내역입니다.</h4>
 				</div>
 
 				<div class="section page-list point-list">

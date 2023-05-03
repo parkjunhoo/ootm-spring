@@ -1,3 +1,4 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@page import="util.Utils"%>
 <%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="kr.team3.ootm.dao.wishlist.WishlistDTO"%>
@@ -7,6 +8,8 @@
 <%
 	
 	ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("productList");
+
+	String memberName = ((MemberDTO)session.getAttribute("loginUser")).getMember_name();
 %>
 <!DOCTYPE html>
 <html>
@@ -178,7 +181,7 @@ h4 {
 			<div class="page-content">
 
 				<div class="section-title">
-					<h4>???님이 ♥를 누른 상품들입니다.</h4>
+					<h4><%=memberName %>님이 ♥를 누른 상품들입니다.</h4>
 				</div>
 				<div class="section recommendations">
 					<div class="product-list">
@@ -189,7 +192,7 @@ h4 {
 									<%for(ProductDTO product : productList){
 										String price = Utils.priceDot(product.getProduct_price());
 									%>
-										<li onclick="location.href='/product-detail?id=<%=product.getProduct_id() %>'" class="image">
+										<li onclick="location.href='/product-detail?product_id=<%=product.getProduct_id() %>'" class="image">
 											<div class="image-holder"
 												style="background-image: url('<%=product.getProduct_image2()%>');"></div>
 										</li>

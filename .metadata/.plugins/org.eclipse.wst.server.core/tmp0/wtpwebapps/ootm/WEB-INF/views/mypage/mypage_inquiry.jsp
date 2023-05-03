@@ -1,3 +1,4 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@page import="kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO"%>
 <%@page import="kr.team3.ootm.dao.inquiry_post.InquiryPostDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,7 +7,9 @@
 <%
 	ArrayList<InquiryPostDTO> inquiryList = (ArrayList<InquiryPostDTO>)request.getAttribute("inquiryList");
 	ArrayList<InquiryProductPostDTO> inquiryProductList = (ArrayList<InquiryProductPostDTO>)request.getAttribute("inquiryProductList");
+	boolean noInquiry = ( inquiryList.size() + inquiryProductList.size() ) <= 0;
 	
+	String memberName = ((MemberDTO)session.getAttribute("loginUser")).getMember_name();
 %>
 <!DOCTYPE html>
 <html>
@@ -95,6 +98,24 @@ h4 {
 .footer {
 	clear: both;
 }
+
+
+/* 임시추가 */
+.testheader{
+    border-bottom: 1px solid #dcdcdc;
+    padding: 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.test{
+	border-bottom: 1px solid #dcdcdc;
+    padding: 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    }
+/* 임시추가 */
 </style>
 </head>
 <body>
@@ -130,12 +151,35 @@ h4 {
 			</div>
 			<div class="page-content">
 				<div class="section-title">
-					<h4>서소영님의 문의 내역입니다.</h4>
+					<h4><%=memberName %>님의 문의 내역입니다.</h4>
 				</div>
-
-				<div class="section page-list table-list">
-					<div class="empty-list">문의 내역이 없습니다.</div>
-				</div>
+				<%if(noInquiry){%>
+					<div class="section page-list table-list">
+						<div class="empty-list">문의 내역이 없습니다.</div>
+					</div>
+				<%}else{%>
+					<div class="section page-list point-list">
+						<div class="list-header list-row testheader">
+							<div style="width:10%;" class="item date">번호</div>
+							<div style="width:80%;" class="item detail">제목</div>
+							<div style="width:10%;" class="item balance">날짜</div>
+						</div>
+						<%for(InquiryPostDTO inq : inquiryList){%>
+							<div class="list-row test">
+								<div style="width:10%;" class="item date"><%=inq.getInquiry_post_id()%></div>
+								<div style="width:80%;" class="item detail"><%=inq.getInquiry_post_title()%></div>
+								<div style="width:10%;" class="item balance"><%=inq.getInquiry_post_regdate()%></div>
+							</div>
+						<%}%>
+						<%for(InquiryProductPostDTO inq : inquiryProductList){%>
+							<div class="list-row test">
+								<div style="width:10%;" class="item date"><%=inq.getInquiry_product_post_id()%></div>
+								<div style="width:80%;" class="item detail"><%=inq.getInquiry_product_post_title()%></div>
+								<div style="width:10%;" class="item balance"><%=inq.getInquiry_product_post_regdate()%></div>
+							</div>
+						<%}%>
+					</div>
+				<%}%>
 			</div>
 		</div>
 	</div>

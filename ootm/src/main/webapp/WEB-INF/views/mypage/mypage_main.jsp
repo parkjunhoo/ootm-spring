@@ -1,3 +1,4 @@
+<%@page import="util.Utils"%>
 <%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -166,6 +167,8 @@ h4 {
 	<% 
 	MemberDTO member=(MemberDTO)session.getAttribute("loginUser");
 	String member_id=member.getMember_id();
+	int point = member.getMember_point();
+	String pointdot = Utils.priceDot(point);
 	%>
 	
 	<jsp:include page="/WEB-INF/layout/header.jsp">
@@ -225,7 +228,7 @@ h4 {
 							<div class="label">
 								<a href="#">적립금</a>
 							</div>
-							<div class="value">2000원</div>
+							<div class="value"><%=pointdot %>원</div>
 						</div>
 						<div class="item">
 							<div class="label">

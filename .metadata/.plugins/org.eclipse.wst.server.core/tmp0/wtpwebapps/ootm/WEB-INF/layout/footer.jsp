@@ -1,5 +1,9 @@
+<%@page import="util.LoginManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	boolean isLoggedIn = LoginManager.isLoggedIn(session);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,20 +39,20 @@
 				<div class="footerContentRightDiv">
 					<div class="footerMenuDiv">
 						<h5>OOTM News</h5>
-						<a href="/">유선 문의 불가 안내<span class="date">08.16</span></a><a
-							href="/">2022년 8월 휴무 일정 안내<span class="date">07.27</span></a><a
-							href="/">2022년 6월 휴무 일정 안내<span class="date">05.31</span></a>
+						<a href="/helpdesk/notice">유선 문의 불가 안내<span class="date">08.16</span></a><a
+							href="/helpdesk/notice">2022년 8월 휴무 일정 안내<span class="date">07.27</span></a><a
+							href="/helpdesk/notice">2022년 6월 휴무 일정 안내<span class="date">05.31</span></a>
 					</div>
 					<div class="footerMenuDiv">
 						<h5>My Account</h5>
-						<a href="/mypage">마이페이지</a>
-						<a href="/mypage/orderlist">주문내역</a>
+						<a <%if(isLoggedIn){%>href="/mypage"<%}else{%>href="/login"<%}%>>마이페이지</a>
+						<a <%if(isLoggedIn){%>href="/mypage/orderlist"<%}else{%>href="/login"<%}%>>주문내역</a>
 					</div>
 					<div class="footerMenuDiv">
 						<h5>Shipping &amp; Returns</h5>
 						<a href="/helpdesk/inquiry">문의게시판</a>
 						<a href="/helpdesk/returns">교환반품안내</a>
-						<a href="https://www.cjlogistics.com/ko/tool/parcel/reservation-return">CJ대한통운
+						<a target=”_blank” href="https://www.cjlogistics.com/ko/tool/parcel/reservation-return">CJ대한통운
 							택배 반품접수</a>
 					</div>
 					<div style="display:flex; flex-direction: column; " class="footerIconMenu">

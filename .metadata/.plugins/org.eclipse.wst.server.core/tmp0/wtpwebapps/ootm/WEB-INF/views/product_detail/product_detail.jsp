@@ -87,7 +87,7 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 
 		<section style="padding-top: 150px;">
 			<h1><%=product.getProduct_name()%></h1>
-			<span class="price-now"><%=Utils.priceDot(product.getProduct_price())%></span>
+			<span class="price-now"><%=Utils.priceDot(product.getProduct_price())%>원</span>
 			<div class="option-detail">
 				Free : 95~105<br> 디테일 수정 및 컬러 변경 ! <br> 한경 : 170/58,
 				베이지(삭제) 그린 블루(삭제) 블랙 착용<br> 이탁 : 170/52, 그레이 착용 - 추 후 피팅사진 업데이트

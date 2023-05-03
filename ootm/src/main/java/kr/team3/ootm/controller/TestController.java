@@ -1,7 +1,24 @@
 package kr.team3.ootm.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.team3.ootm.dao.inquiry_post.InquiryPostDTO;
+import kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO;
+import kr.team3.ootm.dao.member.MemberDTO;
+import kr.team3.ootm.dao.product.ProductDTO;
+import kr.team3.ootm.dao.wishlist.WishlistDTO;
+import kr.team3.ootm.service.inquiry_post.InquiryPostService;
+import kr.team3.ootm.service.inquiry_proudct_post.InquiryProductPostService;
+import kr.team3.ootm.service.product.ProductService;
+import kr.team3.ootm.service.wishlist.WishlistService;
 
 /**
  * Handles requests for the application home page.
@@ -9,6 +26,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
+	@Autowired
+	WishlistService wishService;
+	
+	@Autowired
+	InquiryPostService inquiryService;
+	
+	@Autowired
+	InquiryProductPostService inquiryProductService;
+	
+	@Autowired
+	ProductService productService;
 	///////////////////////////////////////////
 
 	@RequestMapping(value = "/mypage/coupon")
@@ -22,8 +50,20 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/mypage/inquiry")
-	public String mypage_inquiry() {
-		return "mypage/mypage_inquiry";
+	public ModelAndView mypage_inquiry(HttpSession session) {
+		ModelAndView mav = new ModelAndView("mypage/mypage_inquiry");
+		
+		MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+		String memberId = member.getMember_id();
+		List<InquiryPostDTO> inquiryList = inquiryService.selectAllInquiryPostByMemberId(memberId);
+		List<InquiryProductPostDTO> inquiryProductList = inquiryProductService.selectAllInquiryPostByMemberId(memberId);
+		
+		mav.addObject("inquiryList",inquiryList);
+		
+		mav.addObject("inquiryProductList",inquiryProductList);
+		
+		
+		return mav;
 	}
 
 	@RequestMapping(value = "/mypage")
@@ -42,8 +82,20 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/mypage/wishlist")
-	public String mypage_wishlist() {
-		return "mypage/mypage_wishlist";
+	public ModelAndView mypage_wishlist(HttpSession session) {
+		ModelAndView mav = new ModelAndView("mypage/mypage_wishlist");
+		
+		MemberDTO member = (MemberDTO)session.getAttribute("loginUser");
+		List<WishlistDTO> wishList = wishService.selectByMemberId(member.getMember_id());
+		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
+		for(WishlistDTO wish : wishList) {
+			productList.add(productService.read(wish.getProduct_id()));
+		}
+		
+		mav.addObject("productList",productList);
+		
+		
+		return mav;
 	}
 
 	/////////////////////////////////////////////

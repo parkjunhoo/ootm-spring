@@ -64,7 +64,6 @@ public class ProductDetailController {
 		mav.addObject("reviewList",reviewList);
 		mav.addObject("inquiryList",inquiryList);
 		
-		
 		return mav;
 	}
 	

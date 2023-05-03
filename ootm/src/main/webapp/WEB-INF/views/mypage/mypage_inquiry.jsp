@@ -1,5 +1,13 @@
+<%@page import="kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO"%>
+<%@page import="kr.team3.ootm.dao.inquiry_post.InquiryPostDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	ArrayList<InquiryPostDTO> inquiryList = (ArrayList<InquiryPostDTO>)request.getAttribute("inquiryList");
+	ArrayList<InquiryProductPostDTO> inquiryProductList = (ArrayList<InquiryProductPostDTO>)request.getAttribute("inquiryProductList");
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>

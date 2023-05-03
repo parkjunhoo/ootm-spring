@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@page import="util.Utils"%>
 <%@page import="kr.team3.ootm.dao.wishlist.WishlistDTO"%>
@@ -18,7 +19,7 @@ if (isLoggedIn) {
 	memberId = ((MemberDTO) session.getAttribute("loginUser")).getMember_id();
 }
 
-List<ProductImageDTO> productImageList = (List<ProductImageDTO>) request.getAttribute("productImageList");
+ArrayList<ProductImageDTO> productImageList = (ArrayList<ProductImageDTO>) request.getAttribute("productImageList");
 int productImageCount = productImageList.size();
 
 WishlistDTO wishlist = (WishlistDTO) request.getAttribute("wishlist");
@@ -27,12 +28,10 @@ if(wishlist != null){
 	wishlistId = wishlist.getWishlist_id();
 }
 
-List<ReviewDTO> reviewList = (List<ReviewDTO>) request.getAttribute("reviewList");
+ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
 int reviewCount = reviewList.size();
 
-List<InquiryProductPostDTO> inquiryList = (List<InquiryProductPostDTO>) request.getAttribute("inquiryList");
-int inquiryCount = inquiryList.size();
-
+ArrayList<InquiryProductPostDTO> inquiryList = (ArrayList<InquiryProductPostDTO>) request.getAttribute("inquiryList");
 boolean wishRed = (isLoggedIn && wishlist != null);
 %>
 <!DOCTYPE html>
@@ -99,13 +98,10 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					data-ride="carousel carousel-dark">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="../images/A.jpg" class="d-block w-50" alt="제품 이미지 1">
+							<img src="<%=product.getProduct_image2()%>" class="d-block w-50" alt="제품 이미지 1">
 						</div>
 						<div class="carousel-item">
-							<img src="../images/B.jpg" class="d-block w-50" alt="제품 이미지 2">
-						</div>
-						<div class="carousel-item">
-							<img src="../images/C.jpg" class="d-block w-50" alt="제품 이미지 3">
+							<img src="<%=product.getProduct_image()%>" class="d-block w-50" alt="제품 이미지 2">
 						</div>
 					</div>
 					<a class="carousel-control-prev" href="#carouselExample"
@@ -209,18 +205,16 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					리뷰 내용:<%=review.getReview_content()%></p>
 				<p>
 					별점:
-					<%
-				for (int j = 1; j <= starsize; j++) {
-				%>
+					
+				<%for (int j = 1; j <= starsize; j++) {%>
+				
 					<span><img src="/images/star.png"></span>
 					<%
 					}
 					%>
 				</p>
 				<hr />
-				<%
-				}
-				%>
+				<%}%>
 			</div>
 		</section>
 		<!-- 팝업 리뷰 작성 폼 -->
@@ -241,10 +235,10 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					%>
 					<li><span>작성자 : <%=inquiry.getMember_id()%></span>
 						<h3 class="hyperlink">
-							<a href="javascript:0"><%=inquiry.getInquiry_post_title()%></a>
+							<a href="javascript:0"><%=inquiry.getInquiry_product_post_title()%></a>
 						</h3>
 						<div class="hide">
-							<a><%=inquiry.getInquiry_post_content()%></a>
+							<a><%=inquiry.getInquiry_product_post_content()%></a>
 						</div>
 						<hr /></li>
 					<%

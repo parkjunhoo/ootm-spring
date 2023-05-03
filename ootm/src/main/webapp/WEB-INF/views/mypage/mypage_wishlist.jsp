@@ -1,5 +1,13 @@
+<%@page import="util.Utils"%>
+<%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
+<%@page import="kr.team3.ootm.dao.wishlist.WishlistDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	
+	ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("productList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,15 +183,19 @@ h4 {
 				<div class="section recommendations">
 					<div class="product-list">
 						<div class="product">
-							<a href="/shop/shopdetail.html?branduid=998506">
+							<a>
 								<div class="overview">
 									<ul>
-										<li class="image">
+									<%for(ProductDTO product : productList){
+										String price = Utils.priceDot(product.getProduct_price());
+									%>
+										<li onclick="location.href='/product-detail?id=<%=product.getProduct_id() %>'" class="image">
 											<div class="image-holder"
-												style="background-image: url('/images/pants1.png');"></div>
+												style="background-image: url('<%=product.getProduct_image2()%>');"></div>
 										</li>
-										<li class="name">3105 와이드 사트 진</li>
-										<li class="price">28,000</li>
+										<li class="name"><%=product.getProduct_name()%></li>
+										<li class="price"><%=price%></li>
+									<%}%>
 									</ul>
 								</div>
 							</a> <a href="#삭제서블릿?" class="remove-button"></a>

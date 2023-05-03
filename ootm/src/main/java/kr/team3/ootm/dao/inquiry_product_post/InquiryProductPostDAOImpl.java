@@ -15,19 +15,19 @@ public class InquiryProductPostDAOImpl implements InquiryProductPostDAO {
 	
 	
 	@Override
-	public int insert(InquiryProductPostDTO inquiryPost) {
+	public int insert(InquiryProductPostDTO inquiryProductPost) {
 		
 		return template.update("insert into inquiry_product_post values(null,?,?,?,?,now())",
-				inquiryPost.getProduct_id(),
-				inquiryPost.getMember_id(),
-				inquiryPost.getInquiry_post_title(),
-				inquiryPost.getInquiry_post_content()
+				inquiryProductPost.getProduct_id(),
+				inquiryProductPost.getMember_id(),
+				inquiryProductPost.getInquiry_product_post_title(),
+				inquiryProductPost.getInquiry_product_post_content()
 				);
 	}
 
 	@Override
 	public InquiryProductPostDTO read(int inquiry_post_id) {
-		return template.queryForObject("select * from inquiry_product_post where inquiry_post_id =?",
+		return template.queryForObject("select * from inquiry_product_post where inquiry_product_post_id =?",
 				new Object[] {inquiry_post_id} , new InquiryProductPostRowMapper());
 	}
 

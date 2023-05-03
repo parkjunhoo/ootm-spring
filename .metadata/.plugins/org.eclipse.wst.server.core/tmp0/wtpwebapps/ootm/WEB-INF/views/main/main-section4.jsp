@@ -18,7 +18,7 @@ ArrayList<ProductDTO> newProductList = (ArrayList<ProductDTO>) request.getAttrib
 				<%
 				for (ProductDTO dto : newProductList) {
 				%>
-				<hoverbox-component class="promotionProduct">
+				<hoverbox-component onclick="location.href='/product-detail?product_id=<%=dto.getProduct_id()%>'" class="promotionProduct">
 				<div class="beforeBox"
 					style="background-image: url(<%=dto.getProduct_image()%>);"></div>
 				<div class="afterBox">

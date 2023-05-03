@@ -32,7 +32,7 @@ if(session.getAttribute("loginUser")!=null){
 				</button>
 			</div>
 			<div class="modal-body">
-				<form id="productInquiryForm" action="/inquiry/insert.do"
+				<form id="productInquiryForm" action="/inquiryproductpost/insert.do"
 					method="POST" name="inquiry">
 					<div class="form-group">
 						<div class="center">

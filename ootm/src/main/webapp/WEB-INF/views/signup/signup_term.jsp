@@ -17,6 +17,8 @@
 <link rel="stylesheet" type="text/css" href="/css/view/signup_style.css" />
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<!-- javascript -->
+<script type="text/javascript" src="/js/signup_js.js"></script>
 
 
 <script
@@ -37,7 +39,6 @@ $( document ).ready( function() {
     $("#opt").val(member_opt)
     })
 })
-
 </script>
 </head>
 <body>
@@ -118,7 +119,7 @@ $( document ).ready( function() {
 				바랍니다.</p>
 			<div class="agree_box">
 				<div class="agree_content">
-					<input type="checkbox" id="full_agreement"> <label
+					<input type="checkbox" id="full_agreement" onclick="checkAll()"> <label
 						for="full_agreement">전체동의</label><br /> <input type="checkbox"
 						id="terms_of_use"> <label for="terms_of_use">이용약관</label>
 
@@ -139,7 +140,7 @@ $( document ).ready( function() {
 	
 	<form action="/signup/insert" method="POST">
 		<input type="hidden" value="" name="member_opt" id="opt">
-		<button class="my-button">CONTINUE</button>
+		<button class="my-button" onclick="checkAgreement(), validateAgreements()">CONTINUE</button>
 	</form>
 
 	<jsp:include page="../../layout/footer.jsp"/>

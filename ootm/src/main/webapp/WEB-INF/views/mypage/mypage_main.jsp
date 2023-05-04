@@ -216,7 +216,7 @@ h4 {
 							<div class="label">
 								<a href="#">등급</a>
 							</div>
-							<div class="value" data-member-grade="">Group</div>
+							<div style="color:#b57a3e;" class="value" data-member-grade="">Bronze</div>
 						</div>
 						<div class="item">
 							<div class="label">

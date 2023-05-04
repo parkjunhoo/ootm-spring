@@ -29,4 +29,12 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.withdraw(member_id);
 	}
+	
+	public int id_check(String member_id) {
+		return dao.id_check(member_id);
+	}
+	
+	public int email_check(String member_email) {
+		return dao.email_check(member_email);
+	}
 }

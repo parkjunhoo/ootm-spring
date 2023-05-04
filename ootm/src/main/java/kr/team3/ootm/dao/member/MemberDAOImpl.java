@@ -23,7 +23,26 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 		
 	}
-
+	public int id_check(String id) {
+		int result=0;
+		try {
+			MemberDTO member = template.queryForObject("select * from ootm_member where member_id=?",new Object[] {id},new MemberRowMapper());
+			result=1;
+		} catch (EmptyResultDataAccessException e) {
+			result=0;
+		}
+		return result;
+	}
+	public int email_check(String email) {
+		int result=0;
+		try {
+			MemberDTO member = template.queryForObject("select * from ootm_member where member_email=?",new Object[] {email},new MemberRowMapper());
+			result=1;
+		} catch (EmptyResultDataAccessException e) {
+			result=0;
+		}
+		return result;
+	}
 
 	@Override
 	public MemberDTO login(MemberDTO member) {

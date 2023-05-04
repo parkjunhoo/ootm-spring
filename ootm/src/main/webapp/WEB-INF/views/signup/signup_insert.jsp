@@ -1,3 +1,4 @@
+<%@page import="kr.team3.ootm.dao.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +10,9 @@
 <link rel="stylesheet" href="/css/view/all.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+
 	function goPopup() {
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 		var pop = window.open("/signup/addr.popup", "pop",
@@ -29,19 +32,29 @@
 			$('div').remove('#checkID');
 		}
 		var idNode = document.getElementById("id");
+		var member_id=idNode.value;
 		var parentNode = document.getElementById("id-element");
 		var newDiv = document.createElement("div")
 		newDiv.setAttribute("id", "checkID")
-		if (idNode.value == "java") {
-			var text = "중복되는 아이디입니다."
-			newDiv.setAttribute("style", "color:red; margin-left:150px")
-		} else {
-			var text = "사용가능한 아이디입니다."
-			newDiv.setAttribute("style", "color:blue; margin-left:150px")
-		}
-		var text_node = document.createTextNode(text);
-		parentNode.appendChild(newDiv);
-		document.getElementById("checkID").appendChild(text_node);
+		
+		$.ajax({
+			type:'GET',
+			url:"/idcheck.do",
+			data:{"member_id":member_id},
+			async: false,
+			success: function(result){
+				if(result==0){
+					var text = "사용가능한 아이디입니다."
+						newDiv.setAttribute("style", "color:blue; margin-left:150px")
+				}else{
+					var text = "중복되는 아이디입니다."
+						newDiv.setAttribute("style", "color:red; margin-left:150px")
+				}
+				var text_node = document.createTextNode(text);
+				parentNode.appendChild(newDiv);
+				document.getElementById("checkID").appendChild(text_node);
+			}
+		})
 	}
 	//이메일 change id@naver.com
 	
@@ -50,20 +63,30 @@
 		if (!!document.getElementById("checkEmail")) {
 			$('div').remove('#checkEmail');
 		}
-		var mailNode = document.getElementById("email");
+		var mailNode = document.getElementById("member_email");
+		var member_email=mailNode.value
 		var parentNode = document.getElementById("email-element");
 		var newDiv = document.createElement("div")
 		newDiv.setAttribute("id", "checkEmail")
-		if (mailNode.value == "java@naver.com") {
-			var text = "중복되는 메일입니다."
-			newDiv.setAttribute("style", "color:red; margin-left:150px")
-		} else {
-			var text = "사용가능한 메일입니다."
-			newDiv.setAttribute("style", "color:blue; margin-left:150px")
-		}
-		var text_node = document.createTextNode(text);
-		parentNode.appendChild(newDiv);
-		document.getElementById("checkEmail").appendChild(text_node);
+				
+		$.ajax({
+			type:'GET',
+			url:"/emailcheck.do",
+			data:{"member_email":member_email},
+			async: false,
+			success: function(result){
+				if (result!=0) {
+					var text = "중복되는 메일입니다."
+					newDiv.setAttribute("style", "color:red; margin-left:150px")
+				} else {
+					var text = "사용가능한 메일입니다."
+					newDiv.setAttribute("style", "color:blue; margin-left:150px")
+				}
+				var text_node = document.createTextNode(text);
+				parentNode.appendChild(newDiv);
+				document.getElementById("checkEmail").appendChild(text_node);
+			}
+		})
 	}
 	//비밀번호 확인
 	function confirmPassword() {
@@ -253,6 +276,9 @@ input[type="radio"] {
 <link rel="stylesheet" type="text/css" href="/css/test.css" />
 </head>
 <body>
+	<% 
+		
+	%>
 	<jsp:include page="../../layout/header.jsp">
 		<jsp:param value="true" name="logoDark" />
 		<jsp:param value="true" name="logoHoverDark" />
@@ -281,7 +307,7 @@ input[type="radio"] {
 				<div class="form-element" id="id-element">
 					<label class="form-label">*아이디</label> <input type="text" name="member_id"
 						id="id" value="" class="form-textbox" size="10" maxlength="12">
-					<a href="javascript:;" class="textbox-button"
+					<a href="javascript:0" class="textbox-button"
 						onclick="checkDuplicateId();">중복확인</a>
 				</div>
 				<div class="form-element email" id="email-element">
@@ -355,7 +381,7 @@ input[type="radio"] {
 				<% String member_opt=(String)request.getAttribute("member_opt"); %>
 				<div class="form-element">
 					 <input type="hidden"
-						name="member_opt" value="<%=member_opt %>"> 
+						name="member_opt" value="<%=member_opt%>"> 
 				</div>
 				<div class="signup-button">
 					<input type="submit" value="가입하기" class="sub_button" />

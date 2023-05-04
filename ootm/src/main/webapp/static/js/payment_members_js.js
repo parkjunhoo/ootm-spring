@@ -43,6 +43,7 @@ function handleCheckboxClick(clickedCheckbox) {
 	});
 }
 
+
 //우편번호검색 팝업 ==> 중복해서 뜨는 문제 해결
 const post_btn = document.querySelector("#post_button"); // 버튼 아이디
 post_btn.addEventListener("click", searchAddress);
@@ -51,7 +52,7 @@ function searchAddress() {
   new daum.Postcode({
     oncomplete: function (data) {
       // 팝업에서 검색결과 항목을 클릭했을 때 실행할 코드를 작성하는 부분
-      //console.log(data);
+      console.log(data);
       //document.form1.address_code1.value = data.zonecode; //우편번호 넣기
       document.getElementById("address_code1").value = data.zonecode; //우편번호 넣기
       document.getElementById("address_code2").value = data.address; //주소 넣기 ==> 도로명만 들어감...
@@ -185,7 +186,7 @@ function handleCheckboxChange3() {
 function getUseableMoney() {
     let reserves = parseInt(document.getElementById('reserves').value);
     // 토탈 가격을 가져오고, 적립금을 빼기
-    let totalAmount = 369000; //***************가격 변동 있을시 수정해야함******************
+    let totalAmount = 747000; //***************가격 변동 있을시 수정해야함******************
     let finalAmount = totalAmount - reserves;
     // 최종 금액을 화면에 출력
     document.querySelector(".total_price").innerText = finalAmount.toLocaleString() + " 원";
@@ -227,3 +228,52 @@ function useAllReserves() {
 $(document).ready(function () {
     getUseableMoney();
 });
+
+
+
+//결제하기 버튼 클릭시 필수정보 입력 여부 확인
+function submitForm(event) {
+  event.preventDefault();
+
+  var form = document.getElementById('order_form');
+
+  if (form.checkValidity()) {
+    alert('결제가 완료되었습니다.');
+    window.location.href = "/";
+  } else {
+    var invalidElement = form.querySelector(':invalid'); //받아옴
+    var errorMessage;
+
+    switch (invalidElement.id) {
+  case 'name':
+    errorMessage = '이름을 입력해주세요.';
+    break;
+  case 'contact':
+    errorMessage = '연락처를 입력해주세요.';
+    break;
+  case 'address':
+    errorMessage = '주소를 입력해주세요.';
+    break;
+  case 'pay_method':
+    errorMessage = '결제 방법을 체크해주세요.';
+    break;
+  case 'receipt':
+    errorMessage = '현금 영수증 체크 여부를 확인해주세요.';
+    break;
+  case 'pay_agree':
+    errorMessage = '주문 및 결제 정보 동의를 체크해주세요.';
+    break;
+  default:
+    errorMessage = '모든 필드를 채워주세요.';
+}
+
+    alert(errorMessage);
+    invalidElement.scrollIntoView();
+  }
+}
+
+//최근배송지 체크박스 클릭하면 최근배송지 받아서 input태그에 뿌려줌.
+//jsp <script></script>에 구현.. 여기서 받으면 undefined
+
+
+

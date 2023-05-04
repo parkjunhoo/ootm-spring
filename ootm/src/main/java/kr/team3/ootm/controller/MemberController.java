@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.team3.ootm.dao.member.MemberDTO;
@@ -102,5 +103,18 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		LoginManager.removeLoginUser(session);
 		return "redirect:/login";
+	}
+	@ResponseBody
+	@RequestMapping("/idcheck.do")
+	public int id_check(String member_id) {
+		int result= service.id_check(member_id);
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping("/emailcheck.do")
+	public int email_check(String member_email) {
+
+		int result= service.email_check(member_email);
+		return result;
 	}
 }

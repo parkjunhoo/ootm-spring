@@ -21,9 +21,7 @@
         <!-- 우편번호 검색 팝업-->
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <!-- javascript -->
-        <script type="text/javascript" src="/js/payment_members_js.js"></script>
-        
-       
+        <script type="text/javascript" src="/js/payment_members_js.js"></script>       
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/layout/header.jsp">
@@ -41,6 +39,12 @@
    		String phone = member.getMember_telnum(); //연락처 가져오기
    		String email = member.getMember_email(); //이메일 가져오기
    		int point = member.getMember_point(); //포인트 가져오기
+   		String addr = member.getMember_address(); //주소 가져오기
+   		
+   		//전화번호 구분짓기
+   		String phone1 = phone.substring(0, 3); // 첫 번째 input 칸에 입력되는 값
+		String phone2 = phone.substring(3, 7); // 두 번째 input 칸에 입력되는 값
+		String phone3 = phone.substring(7);   // 세 번째 input 칸에 입력되는 값
    		
    		ArrayList<CartDTO> cartList = (ArrayList<CartDTO>)request.getAttribute("CartList");
    		ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("CartProductList");
@@ -66,9 +70,9 @@
 				<input type="text" id="user_name" name="user_name" value="<%= name %>"><br/>
 				
 				<label id="title_phone_number" for="phone_number">연락처</label>
-				<input type="text" id="phone_number1" name="phone_number1" maxlength="3" value="<%= phone %>">
-				<input type="text" id="phone_number2" name="phone_number2" maxlength="4" value="<%= phone %>">
-				<input type="text" id="phone_number3" name="phone_number3" maxlength="4" value="<%= phone %>"><br/>
+				<input type="text" id="phone_number1" name="phone_number1" maxlength="3" value="<%= phone1 %>">
+				<input type="text" id="phone_number2" name="phone_number2" maxlength="4" value="<%= phone2 %>">
+				<input type="text" id="phone_number3" name="phone_number3" maxlength="4" value="<%= phone3 %>"><br/>
 				
 				<label id="title_email" for="email">이메일</label>
 				<input type="email" id="user_email" name="user_email" value="<%= email %>"><br/>
@@ -105,15 +109,15 @@
 	   					<label for="home">자택</label>
 	   					<input type="checkbox" id="company" onclick="handleCheckboxClick(this)">
 	   					<label for="company">회사</label>
-	   					<input type="checkbox" id="last_delivery" onclick="handleCheckboxClick(this)">
+	   					<input type="checkbox" id="last_delivery" onclick="handleCheckboxClick(this), handleCheckboxClicka(checkbox)">
 	   					<label for="last_delivery">최근 배송지</label>
-	   					<a href="/addplace" >배송지목록</a>
+	   					<a href="/addplace" target="_blank">배송지목록</a>
 	   					<input type="checkbox" id="new_delivery" onclick="handleCheckboxClick(this)">
 	   					<label for="new_delivery">신규 배송지</label>
    					</div>
 					<label id="title_address" for="address">주소</label>
 	      			<input type="text" id="address_code1" name="address_code1" maxlength="5" readonly>
-	      			<button id="post_button" type="button" value="우편번호검색" onclick="searchAddress(), searchAddressHandler()">우편번호 검색</button><br/>
+	      			<button id="post_button" type="button" value="<%= addr %>" onclick="searchAddress(), searchAddressHandler()">우편번호 검색</button><br/>
 	      			<label id="empty_space" for="address">  </label>
 	      			<input type="text" id="address_code2" name="address_code2" readonly><br/>
 	      			<label id="empty_space" for="address">  </label>
@@ -198,48 +202,47 @@
 			</div>
 		</form>
 		<hr class="line5"/>
-		<form method="POST">
+		<form id="order_form" method="POST">
 			<div class="checkout_summary">
 				<h3>주문요약 및 결제</h3>
 				<ul>
-				<%
-					
-					if (cartList != null) {
-    					int count = cartList.size();
-    					for (int i = 0; i < count; i++) {
-       						CartDTO cart = cartList.get(i);
-        					ProductDTO product = productList.get(i);
-        				
-   				%> 
-   				<%
-  					point = 0;
-  					int totalprice = 0;
-  					String all_check_reserve = request.getParameter("all_check_reserve");
-  					if (all_check_reserve == null) {
-    					// 적립금 모두 사용 버튼이 체크되지 않은 경우
-    					totalprice = product.getProduct_price() * cart.getCart_quantity();
-  					} else {
-    					// 적립금 모두 사용 버튼이 체크된 경우
-    					point = Integer.parseInt(all_check_reserve);
-    					totalprice = product.getProduct_price() * cart.getCart_quantity() - point;
-  					}
-				%>
+			<%
+				int totalprice = 0;
+				if (cartList != null) {
+					for (int i = 0; i < cartList.size(); i++) {
+						CartDTO cart = cartList.get(i);
+						ProductDTO product = productList.get(i);
 
-					<li class="image">
-						<img src="<%=product.getProduct_image2() %>" width="80px;" height="80px;"> <!-- DB에서 받아오기 -->
-					</li>
-                    <li class="product_info">
-                        <h4><%=product.getProduct_name()%> x <%=cart.getCart_quantity()%> </h4> 
-                        <div class="product-option">컬러 : <%=cart.getColor() %> , 사이즈 : <%=cart.getSize() %> </div>
-                        <h4 class="price"><%=product.getProduct_price() %> 원</h4>
-                    </li>
+						point = 0;
+						String all_check_reserve = request.getParameter("all_check_reserve");
+						if (all_check_reserve == null) {
+							totalprice += product.getProduct_price() * cart.getCart_quantity();
+						} else {
+							point = Integer.parseInt(all_check_reserve);
+							totalprice += product.getProduct_price() * cart.getCart_quantity() - point;
+						}
+
+						
+			%>
+		            <li class="image">
+		                <img src="<%=product.getProduct_image2() %>" width="80px;" height="80px;">
+		            </li>
+		            <li class="product_info">
+		                <h4><%=product.getProduct_name()%> x <%=cart.getCart_quantity()%></h4> 
+		                <div class="product-option">컬러 : <%=cart.getColor() %> , 사이즈 : <%=cart.getSize() %> </div>
+		                <h4 class="price"><%=product.getProduct_price() %> 원</h4>
+		            </li>
+		     <% 
+	            	}
+	        	}
+        	 %>
 				</ul>
 				<hr class="line6"/>
 				<div class="pay_summary">
 					<div class="summary_list">
 						<div class="summary_item_subtotal">
 							<div class="label">주문금액 
-								<span class="product_price" price="DB"><%=product.getProduct_price() * cart.getCart_quantity() %> 원</span>
+								<span class="product_price" price="DB"><%= totalprice %>원</span>
 							</div>
 						<div class="summary_item_shipping">
 							<div class="label">배송비
@@ -251,7 +254,6 @@
 								<div class="lable">할인
 									<span class="sale_price">-<%=point %></span>
 									 <span class="used-reserves"></span>
-									<%-- <input class="sale_price" style=" border: none;  box-shadow: none; text-align: right; font-size: 10pt;" value="-<%=point%>"/> --%>
 								</div>
 							</div>
 						</div>
@@ -270,7 +272,7 @@
 					<div class="summary_list2">
 						<div class="summary_total">
 							<div class="lable">총 결제금액
-								<span class="total_price" price="DB"><%=totalprice %> 원</span>
+								<span class="total_price" price="DB"><%=totalprice %>원</span>
 							</div>
 						</div>
 					</div>
@@ -278,14 +280,25 @@
 				
 				<div class="last_checkout">
 					<div class="checkout-agreement">
-                    	<label><input type="checkbox" id="pay_agree" name="pay_agree" form="order_form" class="agree_terms" onclick="javascript_method()"> 모든 주문, 결제정보를 확인하였으며 진행에 동의합니다.</label>
+                    	<label><input type="checkbox" id="pay_agree" name="pay_agree" form="order_form" class="agree_terms"> 모든 주문, 결제정보를 확인하였으며 진행에 동의합니다.</label>
                     </div>
 				</div>
-				<button type="submit" class="payment_button"><a>결제하기</a></button>
-			</div>
-		 	<%} %>
-         <%} %> 
+				<div> 
+					<button type="submit" class="payment_button" onclick="submitForm(event)"><a href="/" >결제하기</a></button>
+				</div>
 		</form>
 		<jsp:include page="/WEB-INF/layout/footer.jsp"/>
-	</body>		
+	</body>	
+	<script type="text/javascript">
+			//최근배송지 체크박스를 클릭하면 최근 배송지가 address_code2로 넘어감
+	        var addr = " <%=addr %>" ; //잘 뜨다가 왜 또 안 뜨는거지...
+	
+	        function handleCheckboxClicka(checkbox) {
+	            if (checkbox.id === "last_delivery" && checkbox.checked) {
+	                document.getElementById("address_code2").value = addr;
+	            } else {
+	                document.getElementById("address_code2").value = "";
+	            }
+	        }
+		</script>	
 </html>

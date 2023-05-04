@@ -6,10 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	
-	ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>)request.getAttribute("productList");
+ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
 
-	String memberName = ((MemberDTO)session.getAttribute("loginUser")).getMember_name();
+String memberName = ((MemberDTO) session.getAttribute("loginUser")).getMember_name();
 %>
 <!DOCTYPE html>
 <html>
@@ -135,7 +134,7 @@ h4 {
 }
  .product .remove-button:hover{
  	opacity: 1;
- } */ 
+ } */  
 .product .remove-button {
 	position: absolute;
 	right: 10px;
@@ -154,7 +153,7 @@ h4 {
 		<jsp:param value="black" name="mTextColor" />
 		<jsp:param value="black" name="menuBtnColor" />
 		<jsp:param value="#F9F9F9" name="bgHoverColor" />
-		<jsp:param value="white" name="bgScrollColor"/>
+		<jsp:param value="white" name="bgScrollColor" />
 	</jsp:include>
 
 
@@ -169,10 +168,9 @@ h4 {
 				<ul>
 					<li data-page-target="dashboard"><a href="/mypage">마이페이지</a></li>
 					<li data-page-target="orders"><a href="/mypage/orderlist">주문내역</a></li>
-					<li data-page-target="wishlist"><a
-						href="/mypage/wishlist"  class="current">위시리스트</a></li>
-					<li data-page-target="coupons"><a
-						href="/mypage/coupon">쿠폰</a></li>
+					<li data-page-target="wishlist"><a href="/mypage/wishlist"
+						class="current">위시리스트</a></li>
+					<li data-page-target="coupons"><a href="/mypage/coupon">쿠폰</a></li>
 					<li data-page-target="points"><a href="/mypage/reserve">적립금</a></li>
 					<li data-page-target="balance"><a href="/mypage/deposit">예치금</a></li>
 					<li data-page-target="support"><a href="/mypage/inquiry">문의내역</a></li>
@@ -181,7 +179,8 @@ h4 {
 			<div class="page-content">
 
 				<div class="section-title">
-					<h4><%=memberName %>님이 ♥를 누른 상품들입니다.</h4>
+					<h4><%=memberName%>님이 ♥를 누른 상품들입니다.
+					</h4>
 				</div>
 				<div class="section recommendations">
 					<div class="product-list">
@@ -189,16 +188,21 @@ h4 {
 							<a>
 								<div class="overview">
 									<ul>
-									<%for(ProductDTO product : productList){
-										String price = Utils.priceDot(product.getProduct_price());
-									%>
-										<li onclick="location.href='/product-detail?product_id=<%=product.getProduct_id() %>'" class="image">
+										<%
+										for (ProductDTO product : productList) {
+											String price = Utils.priceDot(product.getProduct_price());
+										%>
+										<li
+											onclick="location.href='/product-detail?product_id=<%=product.getProduct_id()%>'"
+											class="image">
 											<div class="image-holder"
 												style="background-image: url('<%=product.getProduct_image2()%>');"></div>
 										</li>
 										<li class="name"><%=product.getProduct_name()%></li>
 										<li class="price"><%=price%></li>
-									<%}%>
+										<%
+										}
+										%>
 									</ul>
 								</div>
 							</a> <a href="#삭제서블릿?" class="remove-button"></a>
@@ -207,8 +211,9 @@ h4 {
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<jsp:include page="/WEB-INF/layout/footer.jsp"/>
-		</div>
+	</div>
+	<div class="footer">
+		<jsp:include page="/WEB-INF/layout/footer.jsp" />
+	</div>
 </body>
 </html>

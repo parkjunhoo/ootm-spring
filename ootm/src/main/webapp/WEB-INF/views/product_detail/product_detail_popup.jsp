@@ -79,10 +79,6 @@ if(session.getAttribute("loginUser") != null){
 						<textarea class="form-control" id="reviewText" rows="3"
 							name="review_content" placeholder="리뷰 내용을 입력하세요"></textarea>
 					</div>
-					<div class="form-group">
-						<label for="imageUpload">이미지 업로드</label> <input type="file"
-							class="form-control-file" id="imageUpload">
-					</div>
 					<!-- </form> -->
 				</div>
 

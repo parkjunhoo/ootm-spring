@@ -1,0 +1,535 @@
+
+/* -------------------------------- *//* -------------------------------- */
+
+/* 헤더
+         header -   |headerNav
+
+*/
+header p{
+    font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 80px;
+    z-index: 970;
+    overflow: visible;
+    transition : 1s;
+}
+
+/* 헤더 호버시 내려오는 배경 */
+header #headerMenuBackground{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height:0%;
+    background-color: white;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    opacity: 0;
+}
+/* -------------------------------- *//* -------------------------------- */
+
+/* 헤더의 Nav 영역 묶은 div */
+/* 
+    headerNav-  |-headerNavLogoHolder
+                |-headerNavTextMenu
+                |-headerNavIconMenu
+                |-headerNavMenuBtn
+*/
+
+
+header #headerNav{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    z-index: -2;
+}
+
+/* headerNavLogoHolder *//* 헤더 로고 div  */
+header #headerNavLogoHolder{
+    height:80px;
+    z-index: 2;
+    padding: 0 25px 0 25px;
+    display: flex;
+    justify-content: center;
+}
+header #headerNavLogoHolder a{
+    align-self: center;
+}
+/* 헤더 로고 img */
+header #headerLogoImg{
+    height: auto;
+    max-height: 100%;
+    width:200px;
+    margin: 0 auto;
+}
+
+/* headerNavTextMenu *//* 헤더 Text 메뉴  */
+header #headerNavTextMenu{
+    width: 60%;
+}
+/* 헤더 메뉴 리스트 클래스 */
+header .menuList{
+    white-space: nowrap;
+    display: flex;
+    width: 100%;
+    margin: auto;
+    color: white;
+    list-style-type : none;
+}
+header .menuListUnderline{
+    width: 0px;
+    border-bottom: 1.2px solid black;
+    transition: .5s;
+}
+header .menuList li>div{
+    width: fit-content;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 25px 0 25px;
+}
+
+header .dropList{
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+}
+header .dropList li{
+    width: fit-content;
+    pointer-events : none;
+}
+header .dropList li>p{
+    padding: 0px 25px 0 25px;
+    cursor: pointer;
+}
+header .dropList *{
+    height: 0px;
+}
+
+/* 헤더 아이콘메뉴 */
+header #headerNavIconMenu{
+    width: fit-content;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-left: auto;
+    margin-right:25px;
+    fill:white;
+}
+/* 헤더 아이콘메뉴 svg 조정 */
+header #headerNavIconMenu > svg{
+    width: auto;
+    max-height: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+header #searchBarDiv{
+    display: none;
+    position: fixed;
+    z-index: 991;
+    background-color: transparent;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    top:0;
+    left:0;
+}
+header #searchExitBtnDiv{
+    top:0;
+    left:0;
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    z-index: 994;
+    width: 100%;
+}
+header #searchExitBtnDiv #searchExitBtn{
+    padding: 20px 40px 0 0;
+    font-size: 30px;
+    cursor: pointer;
+    color:#aaa;
+}
+header #searchBarDiv h1{
+    align-self: center;
+    color :#222;
+    font-size: 45px;
+    font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+    font-weight: bold;
+}
+
+header #searchBarDiv h2{
+    color :#222;
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+    font-weight: bold;
+}
+
+header #searchBar span{
+    color :#aaa;
+    text-decoration: none;
+    font-size: 45px;
+    font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+    font-weight: bold;
+    margin: auto 10px;
+    cursor: pointer;
+    
+}
+header #searchBarDiv span:hover{
+    transition: color .5s;
+    color :black;
+}
+
+header #searchBar{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top:-32vh;
+    left:0;
+    width: 100%;
+    min-height: 32vh;
+    padding-bottom: 30px;
+    background-color: #fbfbfb;
+    z-index: 993;
+}
+header .openSearchBar{
+    animation: openSearchBar .5s forwards;
+}
+header .closeSearchBar{
+    animation: closeSearchBar .5s forwards;
+}
+@keyframes openSearchBar {
+    0%{
+        top:-32vh;
+    }
+    100%{
+        top:0;
+    }
+}
+@keyframes closeSearchBar {
+    0%{
+        top:0;
+    }
+    100%{
+        top:-32vh;
+    }
+}
+
+header .searchLeftDiv{
+    padding: 12vh 0 0 10%;
+    width: 43%;
+    height: 100%;
+    box-sizing: border-box;
+}
+header .searchRightDiv{
+    padding: 12vh 5% 0 0;
+    width: 53%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+header .searchInnerDiv{
+    display: flex;
+    padding-bottom: 10px;
+    height: 72px;
+}
+header .borderBottom2{
+    border-bottom: 2px solid black;
+}
+
+
+#searchForm{
+    width: 100%;
+}
+#headerSearchInput{
+    border: none;
+    background-color: #fbfbfb;
+    height: 70px;
+    width: 100%;
+
+    align-self: flex-end;
+    color :#222;
+    font-size: 45px;
+    font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+    font-weight: bold;
+}
+header #headerSearchInput:focus {
+    outline: none;
+}
+
+
+
+header #searchBarBG{
+    position: absolute;
+    z-index: 992;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+}
+
+
+/* 버거메뉴 버튼 width 작을때나타남*/
+header #headerNavMenuBtn{
+    display: none;
+    width: 50px;
+    height: 35px;
+    cursor: pointer;
+    align-self: center;
+    margin-left: auto;
+    padding: 0 25px;
+}
+
+header .headerMenuBtnIcon{
+    align-self: center;
+    margin-top: 10px;
+    background-color: white;
+    width: 30px;
+    height: 2px;
+    transition: 0.5s ease;
+}
+
+
+header #drawer{
+	position: fixed;
+	z-index: 980;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: white;
+	overflow-y: scroll;
+	transform: translateX(100%);
+}
+
+header .openDrawerAnim{
+    animation: openDrawer .5s forwards;
+}
+header .closeDrawerAnim{
+    animation: closeDrawer .5s forwards;
+}
+
+@keyframes openDrawer {
+    0%{
+		transform: translateX(100%);
+    }
+    
+    100%{
+		transform: translateX(0);
+    }
+}
+@keyframes closeDrawer {
+    0%{
+		transform:translateX(0);
+    }
+    
+    100%{
+		transform:  translateX(100%);
+    }
+}
+
+
+header #drawer #headerNavIconMenu{
+	display:flex;
+	max-width:100%;
+	width:100%;
+	fill:black;
+}
+
+header #drawer #headerNavTextMenu{
+	display:block;
+	max-width:100%;
+	width:100%;
+	margin: 0 0 0 auto;
+	justify-content: end;
+	fill:black;
+}
+
+header #drawer #headerNavTextMenu .dropListHeader{
+	display: block;
+}
+header #drawer #headerNavTextMenu .dropListHeader li>div{
+	height: fit-content;
+	padding: 0;
+}
+header #drawer #headerNavTextMenu .dropListHeader li>div p{
+	color: #bcbcbc;
+	font-weight: 700;
+	font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+	font-size : 13px;
+	padding: 12px 0 12px 3vw;
+}
+header #drawer .dropList{
+	width:100%;
+	height:auto;
+	opacity:1;
+}
+header #drawer .dropList *{
+	pointer-events: auto;
+	height:auto;
+}
+header #drawer .dropList p{
+	padding: 6px 0 6px 3vw;
+	pointer-events: auto;
+	font-weight: 500;
+	font-family: 'Montserrat', 'Noto Sans KR', 'sans-serif';
+	font-size : 22px;
+	color: black;
+}
+
+
+header #drawer #headerNavMenuBtn{
+	display:flex;
+	height:80px;
+	position: fixed;
+	right:0;
+	top:30px;
+	fill:black;
+}
+header #drawer .headerMenuBtnIcon{
+	background-color: black;
+}
+
+header #drawer .menuListUnderline{
+	display:none;
+}
+
+header #drawer #headerNavMenuBtn:hover .headerMenuBtnIcon:nth-child(1){
+    position: absolute;
+    z-index : 985;
+    transform: rotate(45deg);
+}
+header #drawer #headerNavMenuBtn:hover .headerMenuBtnIcon:nth-child(2){
+    position: absolute;
+    top:0;
+    bottom: 10px;
+    z-index : 985;
+    transform: rotate(-45deg);
+}
+
+/* -------------------------------- *//* -------------------------------- */
+
+
+
+
+/* 헤더 호버시 글자,svg 색변경 */
+header:hover .menuList{
+    color: #222;
+    font: #222;
+}
+header:hover #headerNavIconMenu svg{
+    fill:#222;
+}
+
+/* 헤더 호버시 배경 내려옴 */
+header .dropListHeader>li:hover .menuListUnderline{
+    width: 100%;
+}
+
+
+
+/* 반응형 */
+@media (min-width: 1100px){
+    header:hover #headerMenuBackground{
+        opacity: 1;
+        height: 100%;
+        display: block;
+        transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+    }
+    header .dropListHeader>li:hover>.dropList{
+        height: fit-content;
+        opacity: 1;
+        padding-bottom: 30px;
+        transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+    }
+    header .dropListHeader>li:hover>.dropList *{
+        pointer-events : auto;
+        height: auto;
+    }
+}
+
+@media (max-width: 1300px) {
+    header #headerNavIconMenu {
+        width: 0px;
+        display: none;
+        pointer-events: none;
+    }
+    header #drawer #headerNavIconMenu{
+        width: 100%;
+        display: block;
+        pointer-events: auto;
+    }
+    header #drawer #headerNavIconMenu{
+	display:flex;
+	width:100%;
+	}
+    header #searchBar{
+        flex-wrap: wrap;
+        height: fit-content;
+        padding-top:10%;
+    }
+    header .searchLeftDiv{
+        width: 100%;
+        padding: 0% 5% 5% 5%;
+    }
+    header .searchRightDiv{
+        width: 100%;
+        padding: 0% 5% 5% 5%;
+    }
+    header #searchBar span{
+        font-size: 16px;
+    }
+
+}
+@media (max-width: 1100px) {
+    header #headerNavTextMenu{
+        width: 0px;
+        visibility: hidden;
+    }
+    header #drawer #headerNavTextMenu{
+        width: 100%;
+        visibility: visible;
+    }
+    header #drawer #headerNavIconMenu{
+		display:flex;
+		width:100%;
+		visibility: visible;
+	}
+    header #headerNavMenuBtn{
+        z-index: 985;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+header #headerNavTextMenu ol,header #headerNavTextMenu ul {
+	list-style: none;
+    padding-inline-start: 0px;
+   
+}
+header #headerNavTextMenu p{
+ 	margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+

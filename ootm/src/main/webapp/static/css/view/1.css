@@ -4,7 +4,9 @@ section {
 	margin-bottom: 20px;
 }
 
-
+.hide{
+   display:none;
+}
 button {
 	
     background-color: transparent;

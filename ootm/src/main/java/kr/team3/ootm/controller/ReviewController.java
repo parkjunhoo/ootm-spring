@@ -2,6 +2,8 @@ package kr.team3.ootm.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,11 @@ public class ReviewController {
 	ProductDAO productservice;
 	
 	@RequestMapping("/review/insert.do")
-	public String showPage(ReviewDTO review,String product_id) {
+	public String showPage(ReviewDTO review,String product_id, HttpServletRequest req) {
 		reviewservice.insert(review);
+		
+		req.getSession().setAttribute("detailScroll", "toReview");
+		
 		return "redirect:/product-detail/?product_id="+product_id;
 	}
 }

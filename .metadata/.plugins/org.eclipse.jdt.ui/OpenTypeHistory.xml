@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=ootm/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.team3.ootm.dao.wishlist{WishlistDAO.java[WishlistDAO" modifiers="513" timestamp="1683142787927"/>
-    <typeInfo handle="=ootm/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.team3.ootm.service.wishlist{WishlistService.java[WishlistService" modifiers="513" timestamp="1683142947554"/>
+    <typeInfo handle="=ootm/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.team3.ootm.service.wishlist{WishlistService.java[WishlistService" modifiers="513" timestamp="1683144322830"/>
     <typeInfo handle="=ootm/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.team3.ootm.service.order_details{OrderDetailsService.java[OrderDetailsService" modifiers="513" timestamp="1683137599436"/>
 </typeInfoHistroy>

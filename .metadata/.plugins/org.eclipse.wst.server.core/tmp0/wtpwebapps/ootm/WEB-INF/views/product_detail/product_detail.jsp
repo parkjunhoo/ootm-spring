@@ -33,6 +33,11 @@ int reviewCount = reviewList.size();
 
 ArrayList<InquiryProductPostDTO> inquiryList = (ArrayList<InquiryProductPostDTO>) request.getAttribute("inquiryList");
 boolean wishRed = (isLoggedIn && wishlist != null);
+
+String scroll = "";
+if(session.getAttribute("detailScroll") != null){
+	scroll = (String)session.getAttribute("detailScroll");
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -186,7 +191,7 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 				style="display: block; margin: 0 auto;">
 		</section>
 		<!-- 섹션 3: 리뷰 -->
-		<section>
+		<section id="toReview">
 			<h1 class="testh1">Reviews</h1>
 			<button <%if (!isLoggedIn) {%> disabled <%}%> class="review_button"
 				data-toggle="modal" data-target="#reviewModal">리뷰 작성하기</button>
@@ -221,7 +226,7 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 		<jsp:include page="./product_detail_popup.jsp"></jsp:include>
 
 		<!-- 섹션 4: Q&A -->
-		<section class="slide">
+		<section id="toInquiry" class="slide">
 			<h1 class="testh1">Q&A</h1>
 			<button <%if (!isLoggedIn) {%> disabled <%}%> class="Q-A_button"
 				data-toggle="modal" data-target="#productInquiryModal">상품
@@ -301,6 +306,13 @@ boolean wishRed = (isLoggedIn && wishlist != null);
 					}
 				});
 			});
+			
+			let sc = "<%=scroll%>";
+			if(sc != ""){
+				document.getElementById(sc).scrollIntoView(true);
+				<%session.removeAttribute("detailScroll"); %>
+			}
+			
 			function submitReview() {
 				const reviewerName = document.getElementById("reviewerName").value;
 				const reviewerHeight = document

@@ -1,3 +1,4 @@
+<%@page import="util.Utils"%>
 <%@page import="kr.team3.ootm.dao.product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -60,8 +61,10 @@ int count = list.size();
 					검색어로 찾기</span>
 
 				<div id="searchResultTable">
-					<%for(ProductDTO dto : list){%>
-						<div onclick="location.href = '/product-detail?id=<%=dto.getProduct_id()%>'" class="searchResItemDiv">
+					<%for(ProductDTO dto : list){
+						String price = Utils.priceDot(dto.getProduct_price());
+					%>
+						<div onclick="location.href = '/product-detail?product_id=<%=dto.getProduct_id()%>'" class="searchResItemDiv">
 							<hoverbox-component class="searchResProduct">
 								<div class="beforeBox"
 									style="background-image: url(<%=dto.getProduct_image2()%>);"></div>
@@ -72,7 +75,7 @@ int count = list.size();
 							</hoverbox-component>
 							<div class="searchResDesc">
 								<h1><%=dto.getProduct_name()%></h1>
-								<h2><%=dto.getProduct_price()%></h2>
+								<h2><%=price%> 원</h2>
 								<h3>Free / 3 Colors</h3>
 							</div>
 						</div>

@@ -33,7 +33,6 @@
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.cart.CartRowMapper"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="util.LoginUtil"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
@@ -59,4 +58,5 @@
     <fullyQualifiedTypeName name="kr.team3.ootm.dao.inquiry_product_post.InquiryProductPostDTO"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="kr.team3.ootm.service.product.ProductService"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 </qualifiedTypeNameHistroy>

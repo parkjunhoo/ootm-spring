@@ -1,5 +1,7 @@
 package kr.team3.ootm.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,9 +17,12 @@ public class InquiryProductPostContoller {
 	InquiryProductPostService service;
 	
 	@RequestMapping(value = "/inquiryproductpost/insert.do", method = RequestMethod.POST)
-	public String inquiryProductInsert(@ModelAttribute InquiryProductPostDTO inquiryProductPost) {
+	public String inquiryProductInsert(@ModelAttribute InquiryProductPostDTO inquiryProductPost , HttpServletRequest req) {
 		
 		service.insert(inquiryProductPost);
+		
+		req.getSession().setAttribute("detailScroll", "toInquiry");
+
 		
 		return "redirect:/product-detail?product_id="+inquiryProductPost.getProduct_id();
 	}

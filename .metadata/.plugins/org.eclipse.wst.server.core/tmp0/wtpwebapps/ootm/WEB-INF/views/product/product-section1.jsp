@@ -9,5 +9,5 @@ String bannerPath = (String)request.getAttribute("banner");
 		<video class="productTitleBanner" autoplay loop muted>
 	  		<source src="/videos/productbanner/<%=bannerPath%>.mp4" type="video/mp4">
 		</video>
-		<h1 style="padding-bottom:100px; font-family: 'Rock Salt', cursive; font-size: 4rem;" id="testID" class="pic_text"><%=cateName %></h1>
+		<h1 style="padding-bottom:100px; font-size: 4rem;" id="testID" class="pic_text"><%=cateName %></h1>
 </section>

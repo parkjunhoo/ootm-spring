@@ -2,6 +2,7 @@ package kr.team3.ootm.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class ProductDetailController {
 	InquiryProductPostService inquiryService;
 	
 	@RequestMapping(value = "/product-detail")
-	public ModelAndView productDetail(@RequestParam int product_id , HttpSession session) {
+	public ModelAndView productDetail(@RequestParam int product_id , HttpSession session , HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("product_detail/product_detail");
 		MemberDTO loginUser = LoginManager.getLoginUserDTO(session);
 		String member_id = "";
@@ -63,6 +64,8 @@ public class ProductDetailController {
 		mav.addObject("wishlist",wishlist);
 		mav.addObject("reviewList",reviewList);
 		mav.addObject("inquiryList",inquiryList);
+		
+		
 		
 		return mav;
 	}

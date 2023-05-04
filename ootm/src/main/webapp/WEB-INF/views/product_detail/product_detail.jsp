@@ -480,7 +480,8 @@ if(session.getAttribute("detailScroll") != null){
 			     document.body.appendChild(form);
 			     form.submit();
 			     
-			     alert("장바구니 추가완료");
+			     if(toPayment != "true") alert("장바구니 추가완료");
+			     
 			 }
 			
 			function wishlistInsert() {
